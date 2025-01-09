@@ -134,7 +134,7 @@ const Home = () => {
           </div>
         </div>
         <div
-          className={`absolute top-[36%] flex w-full items-center justify-center font-bold transition-all duration-1000 md:top-[38%] ${
+          className={`absolute top-[36%] z-20 flex w-full items-center justify-center font-bold transition-all duration-1000 md:top-[38%] ${
             isClicked
               ? 'text-md cursor-normal translate-y-[-920%] md:text-2xl'
               : 'translate-y-0 cursor-pointer text-xl sm:text-3xl md:text-4xl xl:text-6xl'
