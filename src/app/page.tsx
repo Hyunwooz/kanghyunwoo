@@ -1,11 +1,9 @@
 'use client';
 
-const Home = () => {
-  return (
-    <div>
-      Hello, World !!
-    </div>
-  );
+import Home from './home/home';
+
+const App = () => {
+  return <Home />;
 };
 
-export default Home;
+export default App;
