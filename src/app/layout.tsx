@@ -2,7 +2,6 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
-
 // 스타일링
 import './globals.css';
 
@@ -14,8 +13,9 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'woohyun website',
-  description: "This is a page where you'll find my portfolio and an introduction about me.",
+  title: 'wooh.dev',
+  description:
+    "This is a page where you'll find my portfolio and an introduction about me.",
 };
 
 export default function RootLayout({
@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-white text-black`}>
+      <body className={`${pretendard.className} bg-[#0f172a] text-[#e2e8f0]`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
     </html>
