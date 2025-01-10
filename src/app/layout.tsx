@@ -13,7 +13,7 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'wooh.dev',
+  title: 'WoohDev | 프론트엔드 개발자',
   description:
     "This is a page where you'll find my portfolio and an introduction about me.",
 };
