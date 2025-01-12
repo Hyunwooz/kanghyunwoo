@@ -242,7 +242,7 @@ const Home = () => {
         >
           <h2
             id="h2About"
-            className={`mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px] bg-[#0f172a] transition-all duration-300`}
+            className={`mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px] bg-[#0f172a] transition-all duration-300 ${stickySection === 'h2About' ? 'active' : ''}`}
           >
             About
           </h2>
