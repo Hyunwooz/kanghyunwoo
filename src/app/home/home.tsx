@@ -5,6 +5,14 @@ const Home = () => {
   const [visibleChars, setVisibleChars] = useState(0); // 현재 보이는 글자 수
   const [isClicked, setIsClicked] = useState(false);
   const [activeSection, setActiveSection] = useState(''); // 현재 활성화된 섹션 ID
+  const [stickySection, setStickySection] = useState(''); // 현재 고정된 섹션 이름
+
+  const sections = [
+    {name:'About'},
+    {name:'Experience'},
+    {name:'Projects'},
+    {name:'Skills'},
+  ]
 
   const textParts = [
     { content: ' ' },
@@ -76,6 +84,20 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
+    const handleScroll = () => {
+      if (!isClicked) {
+        setIsClicked(true);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [isClicked]);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       setVisibleChars((prev) => {
         if (prev < textParts.length) return prev + 1; // 글자 하나씩 추가
@@ -86,8 +108,27 @@ const Home = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // useEffect(() => {
+  //   const sections = document.querySelectorAll('section'); // 모든 섹션 가져오기
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           setActiveSection(entry.target.id); // 현재 뷰포트에 보이는 섹션 ID 설정
+  //         }
+  //       });
+  //     },
+  //     { threshold: 0.9 }, // 50% 이상 보이면 트리거
+  //   );
+
+  //   sections.forEach((section) => observer.observe(section));
+
+  //   return () => observer.disconnect();
+  // }, []);
+
   useEffect(() => {
     const sections = document.querySelectorAll('section'); // 모든 섹션 가져오기
+    const h2s = document.querySelectorAll('h2'); // 모든 섹션 가져오기
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -96,12 +137,35 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.9 }, // 50% 이상 보이면 트리거
+      { threshold: 0.9 }, // 90% 이상 보이면 트리거
     );
 
-    sections.forEach((section) => observer.observe(section));
+    const stickyObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          
+          if (!entry.isIntersecting) {
+            setStickySection(entry.target.id);
+          } else {
+            setStickySection('');
+          }
+        });
+      },
+      { threshold: 0 }, //
+    );
 
-    return () => observer.disconnect();
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    h2s.forEach((h2) => {
+      stickyObserver.observe(h2);
+    });
+
+    return () => {
+      observer.disconnect();
+      stickyObserver.disconnect();
+    };
   }, []);
 
   return (
@@ -111,7 +175,10 @@ const Home = () => {
         className='relative min-h-[100vh] w-full pb-[80px] pt-[50px]'
       >
         <div
-          onClick={() => scrollToSection('Experience')}
+          onClick={() => {
+            scrollToSection('Experience')
+            setIsClicked(true);
+          }}
           className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
         >
           <svg
@@ -133,10 +200,10 @@ const Home = () => {
           <p>Scroll</p>
         </div>
         <div
-          className={`z-10 mb-[40px] items-center justify-center pl-4 text-start transition-all duration-1000 md:fixed md:bottom-0 md:pl-[60px] lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
+          className={`z-10 mb-[80px] md:mb-[40px] items-center justify-center pl-4 text-start transition-all duration-1000 md:fixed md:bottom-0 md:pl-[60px] lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
             isClicked
-              ? 'opacity-100 md:translate-y-[-50%] lg:translate-y-[-12%] xl:translate-y-[-23%]'
-              : 'translate-y-0 opacity-0'
+              ? 'translate-y-0 opacity-100 md:translate-y-[-52%] lg:translate-y-[-12%] xl:translate-y-[-26%]'
+              : 'translate-y-[100%] md:translate-y-0 opacity-0'
           }`}
         >
           <p className='mb-1 text-5xl font-bold md:text-[72px] xl:mb-4 xl:text-[100px]'>
@@ -148,30 +215,18 @@ const Home = () => {
           <p className='mb-10 text-sm font-medium md:mb-12 xl:text-[18px]'>
             안녕하세요. 본질에 집중하는 프론트 엔드 개발자 강현우입니다.
           </p>
-          <div
-            className={`mb-4 hidden items-center gap-4 md:flex ${
-              activeSection === 'About' ? 'opacity-100' : 'opacity-50'
-            }`}
-          >
-            <div className='h-[2px] w-[80px] bg-white'></div>
-            <p className='text-sm font-medium xl:text-[18px]'>About</p>
-          </div>
-          <div
-            className={`mb-4 hidden items-center gap-4 md:flex ${
-              activeSection === 'Experience' ? 'opacity-100' : 'opacity-50'
-            }`}
-          >
-            <div className='h-[2px] w-[80px] bg-white'></div>
-            <p className='text-sm font-medium xl:text-[18px]'>Experience</p>
-          </div>
-          <div
-            className={`mb-4 hidden items-center gap-4 md:flex ${
-              activeSection === 'Projects' ? 'opacity-100' : 'opacity-50'
-            }`}
-          >
-            <div className='h-[2px] w-[80px] bg-white'></div>
-            <p className='text-sm font-medium xl:text-[18px]'>Projects</p>
-          </div>
+          {sections.map((section, index) => (
+            <div
+              key={index}
+              className={`mb-4 hidden items-center gap-4 md:flex cursor-pointer hover:opacity-100 ${
+                activeSection === section.name ? 'opacity-100 ' : 'opacity-50'
+              }`}
+              onClick={()=>scrollToSection(section.name)}
+            >
+              <div className={`h-[2px] transition-all duration-300 ease-in-out ${activeSection === section.name ? 'w-[80px]' : 'w-[40px]'} bg-white`}></div>
+              <p className='text-sm font-medium xl:text-[18px]'>{section.name}</p>
+            </div>
+          ))}
           <div className='mt-0 flex gap-2 md:mt-60'>
             <Icon icon='akar-icons:github-fill' width={26} height={26} />
             <Icon icon='ri:instagram-fill' width={26} height={26} />
@@ -179,13 +234,16 @@ const Home = () => {
           </div>
         </div>
         <div
-          className={`right-0 top-[16%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 md:absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
+          className={`right-0 top-[12%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 md:absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
             isClicked
               ? 'translate-y-0 opacity-100'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2 className='mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]'>
+          <h2
+            id="h2About"
+            className={`mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px] bg-[#0f172a] transition-all duration-300`}
+          >
             About
           </h2>
           <p className='mb-6 md:mb-4 xl:text-[18px]'>
@@ -218,10 +276,10 @@ const Home = () => {
           </p>
         </div>
         <div
-          className={`absolute top-[10px] z-20 flex w-full items-center justify-center font-bold transition-all duration-1000 md:top-[38%] ${
+          className={`absolute top-[10px] z-20 flex w-full items-center justify-center  font-bold transition-all duration-1000 md:top-[38%] ${
             isClicked
-              ? 'text-md cursor-normal md:translate-y-[-1020%] md:text-2xl lg:translate-y-[-840%] xl:translate-y-[-920%]'
-              : 'translate-y-[830%] cursor-pointer text-xl sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
+              ? 'text-md cursor-normal md:translate-y-[-1020%] md:text-2xl lg:translate-y-[-840%] xl:translate-y-[-920%] opacity-0'
+              : 'translate-y-[830%] cursor-pointer text-xl sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl opacity-100'
           }`}
           onClick={() => setIsClicked(true)}
         >
@@ -248,7 +306,10 @@ const Home = () => {
         className='relative h-[100vh] w-full bg-[#1a191d]'
       >
         <div
-          onClick={() => scrollToSection('Projects')}
+          onClick={() => {
+            scrollToSection('Projects')
+            setIsClicked(true);
+          }}
           className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
         >
           <svg
@@ -270,13 +331,13 @@ const Home = () => {
           <p>Scroll</p>
         </div>
         <div
-          className={`right-0 top-[16%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 md:absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
+          className={`md:absolute pt-20 md:pt-0 right-0 top-[12%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
             isClicked
               ? 'translate-y-0 opacity-100'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2 className='mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]'>
+          <h2 id="h2Experience" className={`mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]`}>
             Experience
           </h2>
           <p className='mb-6 md:mb-4 xl:text-[18px]'>
@@ -298,7 +359,61 @@ const Home = () => {
       </section>
       <section id='Projects' className='relative h-[100vh] w-full bg-[#0a3629]'>
         <div
-          onClick={() => scrollToSection('About')}
+          onClick={() => {
+            scrollToSection('Skills')
+            setIsClicked(true);
+          }}
+          className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
+        >
+          <svg
+            xmlns='http://www.w3.org/2000/svg'
+            width='48'
+            height='48'
+            viewBox='0 0 48 32'
+            className='animate-bounce-updown'
+          >
+            <path
+              fill='none'
+              stroke='#fff'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+              strokeWidth='3'
+              d='M36 18L24 30L12 18'
+            />
+          </svg>
+          <p>Scroll</p>
+        </div>
+        <div
+          className={`right-0 top-[12%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
+            isClicked
+              ? 'translate-y-0 opacity-100'
+              : 'translate-y-[30%] opacity-0'
+          }`}
+        >
+          <h2 id="h2Projects" className='mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]'>
+            Projects
+          </h2>
+          <p className='mb-10 md:mb-4 xl:text-[18px]'>
+            {`In the past, I've had the opportunity to develop
+            software across a variety of settings — from advertising agencies
+            and large corporations to start-ups and small digital product
+            studios. Additionally, I also released a comprehensive video course
+            a few years ago, guiding learners through building a web app with
+            the Spotify API.`}
+          </p>
+          <p className='xl:text-[18px]'>
+            {`In my spare time, I’m usually climbing, reading,
+            hanging out with my wife and two cats, or running around Hyrule
+            searching for Korok seeds K o r o k s e e d s .`}
+          </p>
+        </div>
+      </section>
+      <section id='Skills' className='relative h-[100vh] w-full bg-[#200340]'>
+        <div
+          onClick={() => {
+            scrollToSection('About')
+            setIsClicked(true);
+          }}
           className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
         >
           <svg
@@ -320,14 +435,14 @@ const Home = () => {
           <p>Scroll</p>
         </div>
         <div
-          className={`right-0 top-[16%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 md:absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
+          className={`right-0 top-[12%] items-center justify-center px-4 text-start text-sm font-medium transition-all duration-1000 absolute md:bottom-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px] ${
             isClicked
               ? 'translate-y-0 opacity-100'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2 className='mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]'>
-            Projects
+          <h2 id="h2Skills" className='mb-[30px] text-[24px] font-bold md:mb-10 xl:text-[32px]'>
+            Skills
           </h2>
           <p className='mb-10 md:mb-4 xl:text-[18px]'>
             {`In the past, I've had the opportunity to develop
