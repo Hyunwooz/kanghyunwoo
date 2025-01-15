@@ -20,7 +20,7 @@ const SkillBox: React.FC<SkillBoxProps> = ({ title, skills }) => {
             key={index}
             src={skill.src}
             alt={skill.alt}
-            className='border-normal rounded-full border-2'
+            className='rounded-full border-2 border-normal'
             width={50}
             height={50}
           />
@@ -36,26 +36,26 @@ export default function SkillSection() {
       <SkillBox
         title='Front-End'
         skills={[
-          { src: '/svgs/html.svg', alt: 'html' },
-          { src: '/svgs/css.svg', alt: 'css' },
-          { src: '/svgs/javascript.svg', alt: 'javascript' },
-          { src: '/svgs/typescript.svg', alt: 'typescript' },
-          { src: '/svgs/nextjs-light.svg', alt: 'nextjs' },
-          { src: '/svgs/react-light.svg', alt: 'react' },
+          { src: '/svgs/HTML.svg', alt: 'html' },
+          { src: '/svgs/CSS.svg', alt: 'css' },
+          { src: '/svgs/JavaScript.svg', alt: 'javascript' },
+          { src: '/svgs/TypeScript.svg', alt: 'typescript' },
+          { src: '/svgs/NextJS-Light.svg', alt: 'nextjs' },
+          { src: '/svgs/React-Light.svg', alt: 'react' },
         ]}
       />
       <SkillBox
         title='Back-End'
         skills={[
-          { src: '/svgs/python-light.svg', alt: 'python' },
-          { src: '/svgs/django.svg', alt: 'django' },
+          { src: '/svgs/Python-Light.svg', alt: 'python' },
+          { src: '/svgs/Django.svg', alt: 'django' },
         ]}
       />
       <SkillBox
         title='DataBase'
         skills={[
-          { src: '/svgs/postgresql-light.svg', alt: 'postgresql' },
-          { src: '/svgs/sqlite.svg', alt: 'sqlite' },
+          { src: '/svgs/Postgresql-Light.svg', alt: 'postgresql' },
+          { src: '/svgs/SQLite.svg', alt: 'sqlite' },
         ]}
       />
       <SkillBox
@@ -63,7 +63,7 @@ export default function SkillSection() {
         skills={[
           { src: '/svgs/aws-ec2.svg', alt: 'ec2' },
           { src: '/svgs/aws-s3.svg', alt: 's3' },
-          { src: '/svgs/vercel-light.svg', alt: 'vercel' },
+          { src: '/svgs/Vercel-Light.svg', alt: 'vercel' },
         ]}
       />
     </div>
