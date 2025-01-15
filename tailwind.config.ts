@@ -11,11 +11,16 @@ module.exports = {
       },
       animation: {
         'bounce-updown': 'bounce-updown 1s infinite ease-in-out',
+        blink: 'blink 1s infinite',
       },
       keyframes: {
         'bounce-updown': {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        blink: {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
         },
       },
     },
