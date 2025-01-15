@@ -200,17 +200,16 @@ const Home = () => {
               [ 프론트엔드 개발 ]
             </h3>
             <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
-              비전공자로 웹 개발 공부를 시작한 후, 현재는 취직한 회사에서
-              프론트엔드 개발을 담당하고 있습니다. 처음에는 Python을 활용해
-              반복적인 업무를 자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드
-              분야로 관심을 확장하게 되었습니다. 사용자 경험을 최우선으로
-              고려하며, 직관적이고 효율적인 웹 인터페이스를 구현하는 것에 큰
-              보람을 느끼고 있습니다.
+              비전공자로 웹 개발 공부를 시작한 후, 현재는 프론트엔드 개발을
+              담당하고 있습니다. 처음에는 Python을 활용해 반복적인 업무를
+              자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드 분야로 관심을
+              확장하게 되었습니다. 사용자 경험을 최우선으로 고려하며, 직관적이고
+              효율적인 웹 인터페이스를 구현하는 것에 큰 보람을 느끼고 있습니다.
             </p>
-            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold leading-6 text-deep md:text-[20px] xl:text-[24px]'>
+            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
               [ 성장에 대한 즐거움 ]
             </h3>
-            <p className='mb-6 font-light md:mb-12 xl:text-[18px]'>
+            <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
               새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을
               활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고
               새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.
