@@ -2,59 +2,35 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
 
+// 유틸 함수 분리
+import { scrollToSection } from '@/shared/utils/scroll';
+
+// 데이터 분할 관리
+import { sectionList } from '@/data/section';
+import { textParts } from '@/data/textParts';
+
+// 컴포넌트
+import SkillSection from '@/components/main/skillSection';
+
 const Home = () => {
   const [visibleChars, setVisibleChars] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
-  const sections = [
-    { name: 'About', bg: '#0f172a' },
-    { name: 'Skills', bg: '#200340' },
-    { name: 'Experience', bg: '#1a191d' },
-    { name: 'Projects', bg: '#0a3629' },
-  ];
-
-  const textParts = [
-    { content: ' ' },
-    { content: 'o', color: 'text-[#6de58b]' },
-    { content: 'n', color: 'text-[#6de58b]' },
-    { content: 'C', color: 'text-[#6de58b]' },
-    { content: 'l', color: 'text-[#6de58b]' },
-    { content: 'i', color: 'text-[#6de58b]' },
-    { content: 'c', color: 'text-[#6de58b]' },
-    { content: 'k', color: 'text-[#6de58b]' },
-    { content: '=', color: 'text-[#6de58b]' },
-    { content: '{', color: 'text-[#6de58b]' },
-    { content: 'i', color: 'text-[#6de58b]' },
-    { content: 'n', color: 'text-[#6de58b]' },
-    { content: 't', color: 'text-[#6de58b]' },
-    { content: 'r', color: 'text-[#6de58b]' },
-    { content: 'o', color: 'text-[#6de58b]' },
-    { content: '}', color: 'text-[#6de58b]' },
-    { content: ' ' },
-  ];
-
-  const scrollToSection = (id: string) => {
-    const section = document.getElementById(id); // 이동할 섹션의 ID
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' }); // 부드럽게 스크롤
-    }
-  };
-
-  const setConsoleLog = () => {
+  useEffect(() => {
     const cssRule = 'font-size:16px; font-family:Nanum Gothic';
     const cssRule2 =
-      'font-size:24px; font-family:Nanum Gothic; font-weight: 600; color: #d9730d';
+      'font-size:24px; font-family:Nanum Gothic; font-weight: 600; color: #12372A';
     const cssRule3 =
       'font-size:18px; font-family:Nanum Gothic; font-weight: 600;';
     const cssLogo1 =
-      'color:#39549a;' +
+      'color:#12372A;' +
       'font-size: 60px;' +
       'font-weight: bold;' +
       'letter-space:-1px;' +
       'font-family:Tahoma,Arial,sans-serif';
     const cssLogo2 =
-      'color:#231916;' +
+      'color:#436850;' +
       'font-size: 60px;' +
       'font-weight: bold;' +
       'letter-space:-1px;' +
@@ -68,7 +44,7 @@ const Home = () => {
         console.log.bind(
           console,
           `%c안녕하세요. 주니어 프론트 엔드 개발자 강현우입니다
-          \n\n%cContact\n\n%cPhone : 010-2825-0481\nEmail : gusdn0481@gmail.com
+          \n\n%cContact\n\n%cEmail : gusdn0481@gmail.com
           \n\n%cChannel\n\n%cGithub : https://github.com/hyunwooz\n`,
           cssRule3,
           cssRule2,
@@ -79,10 +55,6 @@ const Home = () => {
         50,
       );
     }
-  };
-
-  useEffect(() => {
-    setConsoleLog();
   }, []);
 
   useEffect(() => {
@@ -134,100 +106,70 @@ const Home = () => {
   }, []);
 
   return (
-    <>
-      <section
-        id='About'
-        className='relative min-h-[100vh] w-full pb-[80px] pt-[50px]'
+    <div>
+      <div
+        className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:fixed md:top-0 md:w-6/12 md:pl-[60px] md:pt-0 lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
+          isClicked
+            ? 'translate-y-0 opacity-100 md:translate-y-[64px] lg:translate-y-[78px] xl:translate-y-[94px]'
+            : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
+        }`}
       >
-        <div
-          onClick={() => {
-            scrollToSection('Skills');
-            setIsClicked(true);
-          }}
-          className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='48'
-            height='48'
-            viewBox='0 0 48 32'
-            className='animate-bounce-updown'
-          >
-            <path
-              fill='none'
-              stroke='#fff'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='3'
-              d='M36 18L24 30L12 18'
-            />
-          </svg>
-          <p>Scroll</p>
-        </div>
-        <div
-          className={`z-10 mb-[40px] items-center justify-center px-4 text-start transition-all duration-1000 md:fixed md:top-0 md:w-6/12 md:pl-[60px] lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
-            isClicked
-              ? 'translate-y-0 opacity-100 md:translate-y-[64px] lg:translate-y-[78px] xl:translate-y-[100px]'
-              : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
-          }`}
-        >
-          <p className='mb-3 text-lg font-semibold text-[#6de58b] md:text-[24px] xl:text-[36px]'>
-            안녕하세요. 저는 웹 개발자
-          </p>
-          <p className='mb-3 text-5xl font-bold md:text-[60px] xl:mb-6 xl:text-[88px]'>
-            강현우 입니다.
-          </p>
-          {/* <p className='mb-4 text-lg font-semibold xl:text-[36px]'>
+        <p className='mb-3 text-5xl font-bold md:text-[60px] xl:mb-6 xl:text-[88px]'>
+          강현우
+        </p>
+        {/* <p className='mb-4 text-lg font-semibold xl:text-[36px]'>
             FRONT-END DEVELOPER
           </p> */}
-          <p className='text-sm font-medium md:mb-2 xl:text-[18px]'>
-            저는 끊임없는 도전을 즐기며, 웹 개발의 매력에 빠져 있습니다.
-          </p>
-          <p className='text-sm font-medium md:mb-2 xl:text-[18px]'>
-            사용자에게 먼저 다가갈 수 있는 웹사이트의 프론트엔드 부분을 담당하고
-            있습니다.
-          </p>
-          <p className='mb-10 text-sm font-medium md:mb-12 xl:text-[18px]'>
-            제 웹 포트폴리오를 방문해 주셔서 진심으로 감사드립니다.
-          </p>
-          {sections.map((section, index) => (
+        <p className='text-sm font-medium md:mb-2 xl:text-[18px]'>
+          저는 끊임없는 도전을 즐기며, 웹 개발의 매력에 빠져 있습니다.
+        </p>
+        <p className='mb-10 text-sm font-medium md:mb-8 xl:text-[18px]'>
+          사용자에게 먼저 다가갈 수 있는 웹사이트의 프론트엔드 부분을 담당하고
+          있습니다.
+        </p>
+        <p className='mb-10 text-sm font-medium md:mb-12 xl:text-[18px]'>
+          제 웹 포트폴리오를 방문해 주셔서 진심으로 감사드립니다.
+        </p>
+        {sectionList.map((section, index) => (
+          <div
+            key={index}
+            className={`mb-4 hidden w-[200px] cursor-pointer items-center gap-4 hover:opacity-100 md:flex ${
+              activeSection === section.name ? 'opacity-100' : 'opacity-50'
+            }`}
+            onClick={() => scrollToSection(section.name)}
+          >
             <div
-              key={index}
-              className={`mb-4 hidden cursor-pointer items-center gap-4 hover:opacity-100 md:flex ${
-                activeSection === section.name ? 'opacity-100' : 'opacity-50'
-              }`}
-              onClick={() => scrollToSection(section.name)}
-            >
-              <div
-                className={`h-[2px] transition-all duration-300 ease-in-out ${activeSection === section.name ? 'w-[80px]' : 'w-[40px]'} bg-white`}
-              ></div>
-              <p className='text-sm font-medium xl:text-[18px]'>
-                {section.name}
-              </p>
-            </div>
-          ))}
-          <div className='mt-0 flex gap-2 md:mt-60'>
-            <Link href={'https://github.com/hyunwooz'}>
-              <Icon icon='akar-icons:github-fill' width={26} height={26} />
-            </Link>
-            <Link href={'https://www.instagram.com/wooh.dev/'}>
-              <Icon icon='ri:instagram-fill' width={26} height={26} />
-            </Link>
-            <Link href={'https://www.linkedin.com/in/woohyundev/'}>
-              <Icon icon='pajamas:linkedin' width={26} height={26} />
-            </Link>
+              className={`h-[2px] transition-all duration-300 ease-in-out ${activeSection === section.name ? 'w-[80px]' : 'w-[40px]'} bg-light`}
+            ></div>
+            <p className='text-sm font-medium xl:text-[18px]'>{section.name}</p>
           </div>
+        ))}
+        <div className='mt-0 flex gap-2 md:mt-60'>
+          <Link href={'https://github.com/hyunwooz'}>
+            <Icon icon='akar-icons:github-fill' width={26} height={26} />
+          </Link>
+          <Link href={'https://www.instagram.com/wooh.dev/'}>
+            <Icon icon='ri:instagram-fill' width={26} height={26} />
+          </Link>
+          <Link href={'https://www.linkedin.com/in/woohyundev/'}>
+            <Icon icon='pajamas:linkedin' width={26} height={26} />
+          </Link>
         </div>
+      </div>
+      <section
+        id='About'
+        className='relative min-h-[80vh] w-full pb-10 pt-8 md:min-h-[100vh] md:pb-[80px] md:pt-[50px]'
+      >
         <div
           className={`flex items-center justify-end px-4 text-start text-sm transition-all duration-1000 ${
             isClicked
-              ? 'mb-[60px] opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
+              ? 'mb-[30px] opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
           <div className='md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-[#0f172a] py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               About
             </h2>
@@ -287,102 +229,41 @@ const Home = () => {
           <p>{'>'}</p>
         </div>
       </section>
-      <section id='Skills' className='relative h-[100vh] w-full'>
-        <div
-          onClick={() => {
-            scrollToSection('Experience');
-            setIsClicked(true);
-          }}
-          className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='48'
-            height='48'
-            viewBox='0 0 48 32'
-            className='animate-bounce-updown'
-          >
-            <path
-              fill='none'
-              stroke='#fff'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='3'
-              d='M36 18L24 30L12 18'
-            />
-          </svg>
-          <p>Scroll</p>
-        </div>
+      <section
+        id='Skills'
+        className='relative min-h-[80vh] w-full md:h-[100vh]'
+      >
         <div
           className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
             isClicked
-              ? 'mb-[60px] opacity-100 sm:translate-y-[90px]'
+              ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
           <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-[#0f172a] py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Skills
             </h2>
-            <p className='mb-6 md:mb-4 xl:text-[18px]'>
-              {`I’m a developer passionate about crafting accessible, pixel-perfect
-            user interfaces that blend thoughtful design with robust
-            engineering. My favorite work lies at the intersection of design and
-            development, creating experiences that not only look great but are
-            meticulously built for performance and usability.`}
-            </p>
-            <p className='mb-6 md:mb-4 xl:text-[18px]'>
-              {`Currently, I'm a
-            Senior Front-End Engineer at Klaviyo, specializing in accessibility.
-            I contribute to the creation and maintenance of UI components that
-            power Klaviyo’s frontend, ensuring our platform meets web
-            accessibility standards and best practices to deliver an inclusive
-            user experience. `}
-            </p>
+            <SkillSection />
           </div>
         </div>
       </section>
       <section
         id='Experience'
-        className='relative h-[100vh] w-full bg-[#274366]'
+        className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
       >
-        <div
-          onClick={() => {
-            scrollToSection('Projects');
-            setIsClicked(true);
-          }}
-          className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='48'
-            height='48'
-            viewBox='0 0 48 32'
-            className='animate-bounce-updown'
-          >
-            <path
-              fill='none'
-              stroke='#fff'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='3'
-              d='M36 18L24 30L12 18'
-            />
-          </svg>
-          <p>Scroll</p>
-        </div>
         <div
           className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
             isClicked
-              ? 'mb-[60px] opacity-100 sm:translate-y-[90px]'
+              ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
           <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-[#274366] py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Experience
             </h2>
@@ -404,42 +285,20 @@ const Home = () => {
           </div>
         </div>
       </section>
-      <section id='Projects' className='relative h-[100vh] w-full bg-[#0a3629]'>
-        <div
-          onClick={() => {
-            scrollToSection('About');
-            setIsClicked(true);
-          }}
-          className='absolute bottom-0 mb-3 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
-        >
-          <svg
-            xmlns='http://www.w3.org/2000/svg'
-            width='48'
-            height='48'
-            viewBox='0 0 48 32'
-            className='animate-bounce-updown'
-          >
-            <path
-              fill='none'
-              stroke='#fff'
-              strokeLinecap='round'
-              strokeLinejoin='round'
-              strokeWidth='3'
-              d='M13 30L25 18L37 30'
-            />
-          </svg>
-          <p>Scroll</p>
-        </div>
+      <section
+        id='Projects'
+        className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
+      >
         <div
           className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
             isClicked
-              ? 'mb-[60px] opacity-100 sm:translate-y-[90px]'
+              ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
           <div className='pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-[#0a3629] py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Projects
             </h2>
@@ -459,7 +318,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
