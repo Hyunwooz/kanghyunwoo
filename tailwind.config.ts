@@ -4,7 +4,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        main: '#26B7BC',
+        light: '#FBFADA',
+        normal: '#ADBC9F',
+        medium: '#436850',
+        deep: '#12372A',
       },
       animation: {
         'bounce-updown': 'bounce-updown 1s infinite ease-in-out',

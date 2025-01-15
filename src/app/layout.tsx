@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-[#0f172a] text-[#e2e8f0]`}>
+      <body className={`${pretendard.className} bg-deep text-white`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
     </html>
