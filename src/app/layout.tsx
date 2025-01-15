@@ -52,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-deep text-[#fffff4]`}>
+      <body className={`${pretendard.className} bg-deep text-[#ffffff]`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
     </html>

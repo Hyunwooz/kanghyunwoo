@@ -167,14 +167,23 @@ const Home = () => {
             <p className='text-sm font-medium xl:text-[18px]'>{section.name}</p>
           </div>
         ))}
-        <div className='mt-0 flex gap-2 md:mt-60'>
-          <Link href={'https://github.com/hyunwooz'}>
+        <div className='mt-0 flex gap-3 md:mt-60'>
+          <Link
+            href={'https://github.com/hyunwooz'}
+            className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
             <Icon icon='akar-icons:github-fill' width={26} height={26} />
           </Link>
-          <Link href={'https://www.instagram.com/wooh.dev/'}>
+          <Link
+            href={'https://www.instagram.com/wooh.dev/'}
+            className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
             <Icon icon='ri:instagram-fill' width={26} height={26} />
           </Link>
-          <Link href={'https://www.linkedin.com/in/woohyundev/'}>
+          <Link
+            href={'https://www.linkedin.com/in/woohyundev/'}
+            className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
             <Icon icon='pajamas:linkedin' width={26} height={26} />
           </Link>
         </div>
@@ -184,18 +193,18 @@ const Home = () => {
         className='relative min-h-[80vh] w-full pb-10 pt-8 md:min-h-screen md:pb-[80px] md:pt-[50px]'
       >
         <div
-          className={`flex items-center justify-end px-4 text-start text-sm transition-all duration-1000 ${
+          className={`flex flex-col items-start justify-center text-start text-sm transition-all duration-1000 md:items-end ${
             isClicked
               ? 'mb-[30px] opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <div className='md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
-            >
-              About
-            </h2>
+          <h2
+            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+          >
+            About
+          </h2>
+          <div className='px-4 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h3 className='mb-4 bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
               [ 프론트엔드 개발 ]
             </h3>
@@ -235,18 +244,18 @@ const Home = () => {
         className='relative min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
+          className={`flex flex-col items-start justify-center text-start text-sm font-medium transition-all duration-1000 md:items-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
-            >
-              Skills
-            </h2>
+          <h2
+            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+          >
+            Skills
+          </h2>
+          <div className='px-4 pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <SkillSection />
           </div>
         </div>
@@ -256,18 +265,18 @@ const Home = () => {
         className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
+          className={`flex flex-col items-start justify-center text-start text-sm font-medium transition-all duration-1000 md:items-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
-            >
-              Experience
-            </h2>
+          <h2
+            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+          >
+            Experience
+          </h2>
+          <div className='px-4 pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <p className='mb-6 md:mb-4 xl:text-[18px]'>
               {`I’m a developer passionate about crafting accessible, pixel-perfect
             user interfaces that blend thoughtful design with robust
@@ -291,18 +300,18 @@ const Home = () => {
         className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
+          className={`flex flex-col items-start justify-center text-start text-sm font-medium transition-all duration-1000 md:items-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <div className='pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h2
-              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
-            >
-              Projects
-            </h2>
+          <h2
+            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+          >
+            Projects
+          </h2>
+          <div className='px-4 pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <p className='mb-10 md:mb-4 xl:text-[18px]'>
               {`In the past, I've had the opportunity to develop
             software across a variety of settings — from advertising agencies

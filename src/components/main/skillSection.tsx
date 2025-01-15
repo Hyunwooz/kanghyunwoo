@@ -13,8 +13,10 @@ interface SkillBoxProps {
 const SkillBox: React.FC<SkillBoxProps> = ({ title, skills }) => {
   return (
     <div className='mb-8'>
-      <h3 className='mb-6 text-lg md:mb-4 xl:text-3xl'>{title}</h3>
-      <div className='flex gap-2'>
+      <h3 className='mb-6 text-xl font-semibold md:mb-4 xl:text-3xl'>
+        {title}
+      </h3>
+      <div className='flex gap-3'>
         {skills.map((skill, index) => (
           <Image
             key={index}
@@ -54,7 +56,7 @@ export default function SkillSection() {
       <SkillBox
         title='DataBase'
         skills={[
-          { src: '/svgs/Postgresql-Light.svg', alt: 'postgresql' },
+          { src: '/svgs/PostgreSQL-Light.svg', alt: 'postgresql' },
           { src: '/svgs/SQLite.svg', alt: 'sqlite' },
         ]}
       />
