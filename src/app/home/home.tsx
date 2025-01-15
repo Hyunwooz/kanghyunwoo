@@ -57,19 +57,19 @@ const Home = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (!isClicked) {
-        setIsClicked(true);
-      }
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     if (!isClicked) {
+  //       setIsClicked(true);
+  //     }
+  //   };
 
-    window.addEventListener('scroll', handleScroll);
+  //   window.addEventListener('scroll', handleScroll);
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isClicked]);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [isClicked]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -106,9 +106,31 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <div
-        className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:fixed md:top-0 md:w-6/12 md:pl-[60px] md:pt-0 lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
+        className={`fixed top-0 z-20 flex h-screen w-full items-center justify-center pb-36 font-bold transition-all duration-1000 ${
+          isClicked
+            ? 'text-md cursor-normal translate-y-[-100%] opacity-0 md:text-2xl'
+            : 'translate-y-0 cursor-pointer text-xl opacity-100 sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
+        }`}
+        onClick={() => setIsClicked(true)}
+      >
+        {textParts.map((part, index) => (
+          <span
+            key={index}
+            className={`inline-block ${
+              index < visibleChars
+                ? 'max-w-full opacity-100'
+                : 'max-w-0 opacity-0'
+            } ${part.color}`}
+          >
+            {part.content === ' ' ? '\u00A0' : part.content}
+          </span>
+        ))}
+        <p className='animate-blink ml-1'>{'|'}</p>
+      </div>
+      <div
+        className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:fixed md:top-0 md:w-[44%] md:pl-[60px] md:pt-0 lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
           isClicked
             ? 'translate-y-0 opacity-100 md:translate-y-[64px] lg:translate-y-[78px] xl:translate-y-[94px]'
             : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
@@ -120,15 +142,16 @@ const Home = () => {
         {/* <p className='mb-4 text-lg font-semibold xl:text-[36px]'>
             FRONT-END DEVELOPER
           </p> */}
-        <p className='text-sm font-medium md:mb-2 xl:text-[18px]'>
-          저는 끊임없는 도전을 즐기며, 웹 개발의 매력에 빠져 있습니다.
+        <p className='text-md mb-1 font-medium leading-6 md:mb-2 xl:text-[18px]'>
+          사용자 경험을 중심으로 직관적이고 창의적인 웹 서비스를 만드는
+          프론트엔드의 매력에 빠져있습니다.
         </p>
-        <p className='mb-10 text-sm font-medium md:mb-8 xl:text-[18px]'>
-          사용자에게 먼저 다가갈 수 있는 웹사이트의 프론트엔드 부분을 담당하고
-          있습니다.
+        <p className='text-md mb-8 font-medium leading-6 md:mb-6 xl:text-[18px]'>
+          사용자의 피드백을 즉각적으로 반영하여여 웹 애플리케이션에 가치를
+          더하는 과정에서 큰 보람을 느낍니다.
         </p>
-        <p className='mb-10 text-sm font-medium md:mb-12 xl:text-[18px]'>
-          제 웹 포트폴리오를 방문해 주셔서 진심으로 감사드립니다.
+        <p className='text-md mb-10 font-medium md:mb-12 xl:text-[18px]'>
+          이 사이트를 방문해 주셔서 진심으로 감사드립니다.
         </p>
         {sectionList.map((section, index) => (
           <div
@@ -158,7 +181,7 @@ const Home = () => {
       </div>
       <section
         id='About'
-        className='relative min-h-[80vh] w-full pb-10 pt-8 md:min-h-[100vh] md:pb-[80px] md:pt-[50px]'
+        className='relative min-h-[80vh] w-full pb-10 pt-8 md:min-h-screen md:pb-[80px] md:pt-[50px]'
       >
         <div
           className={`flex items-center justify-end px-4 text-start text-sm transition-all duration-1000 ${
@@ -169,64 +192,43 @@ const Home = () => {
         >
           <div className='md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               About
             </h2>
-            <h3 className='mb-4 text-[18px] font-semibold md:text-[20px] xl:text-[24px]'>
-              [ 첫인상을 주는 프론트엔드 ]
+            <h3 className='mb-4 bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
+              [ 프론트엔드 개발 ]
             </h3>
-            <p className='mb-6 font-light md:mb-12 xl:text-[18px]'>
-              학부생 시절 PHP, JSP, Express, React를 활용한 웹 개발 경험이
-              있으며, 사용자에게 먼저 보여지는 프론트엔드에 흥미를 느껴
-              프론트엔드에 집중하고 있습니다.
+            <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
+              비전공자로 웹 개발 공부를 시작한 후, 현재는 취직한 회사에서
+              프론트엔드 개발을 담당하고 있습니다. 처음에는 Python을 활용해
+              반복적인 업무를 자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드
+              분야로 관심을 확장하게 되었습니다. 사용자 경험을 최우선으로
+              고려하며, 직관적이고 효율적인 웹 인터페이스를 구현하는 것에 큰
+              보람을 느끼고 있습니다.
             </p>
-            <h3 className='mb-4 text-[18px] font-semibold md:text-[20px] xl:text-[24px]'>
+            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold leading-6 text-deep md:text-[20px] xl:text-[24px]'>
               [ 성장에 대한 즐거움 ]
             </h3>
             <p className='mb-6 font-light md:mb-12 xl:text-[18px]'>
-              새로운 프로젝트를 시작할 때마다, 단순히 이전에 사용하던 기술을
+              새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을
               활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고
               새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.
-              이는 개발에 있어서의 성장을 위한 동력이 되어주고 있습니다.
+              이는 개발에 있어서 성장을 위한 동기가 되어주고 있으며, 점점 더
+              나은 개발자로 나아가는 과정에서 큰 성취감을 얻고 있습니다.
             </p>
-            <h3 className='mb-4 text-[18px] font-semibold md:text-[20px] xl:text-[24px]'>
-              [ 꺾이지 않는 마음 ]
+            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
+              [ 안되면 될 때까지 ]
             </h3>
-            <p className='font-light xl:text-[18px]'>
-              프론트엔드 개발은 대부분 혼자 진행했습니다. 이 과정에서 모든 것을
+            <p className='font-light leading-6 xl:text-[18px]'>
+              프론트엔드 개발을 혼자 진행하고 있습니다. 이 과정에서 모든 것을
               스스로 찾아내고 해결해야 했기 때문에, 때론 기능 구현에 며칠이
               걸리기도 했습니다. 하지만 이런 과정을 통해 개발에 있어서{' '}
               {`"해결할 수 없는 문제는 없다"`}는 확신을 가지게 되었습니다.
-              이로써, 꺾이지 않는 마음으로 어떤 문제든 극복할 수 있다는 자신감을
-              얻게 되었습니다.
+              이로써, 자신에게 부여된 책임을 끝까지 완수할 수 있는 끈기를 얻게
+              되었습니다.
             </p>
           </div>
-        </div>
-        <div
-          className={`absolute top-[10px] z-20 flex w-full items-center justify-center font-bold transition-all duration-1000 md:top-[38%] ${
-            isClicked
-              ? 'text-md cursor-normal opacity-0 md:translate-y-[-1020%] md:text-2xl lg:translate-y-[-840%] xl:translate-y-[-920%]'
-              : 'translate-y-[830%] cursor-pointer text-xl opacity-100 sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
-          }`}
-          onClick={() => setIsClicked(true)}
-        >
-          <p>{'<'}</p>
-          <p className='text-[#66d9ed]'>KangHyunWoo</p>
-          {textParts.map((part, index) => (
-            <span
-              key={index}
-              className={`inline-block overflow-hidden ${
-                index < visibleChars
-                  ? 'max-w-full opacity-100'
-                  : 'max-w-0 opacity-0'
-              } ${part.color}`}
-            >
-              {part.content === ' ' ? '\u00A0' : part.content}
-            </span>
-          ))}
-          <p className='text-[#BB77FF]'>{'/'}</p>
-          <p>{'>'}</p>
         </div>
       </section>
       <section
@@ -234,7 +236,7 @@ const Home = () => {
         className='relative min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
+          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
@@ -242,7 +244,7 @@ const Home = () => {
         >
           <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Skills
             </h2>
@@ -255,7 +257,7 @@ const Home = () => {
         className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
+          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
@@ -263,7 +265,7 @@ const Home = () => {
         >
           <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Experience
             </h2>
@@ -290,7 +292,7 @@ const Home = () => {
         className='relative h-[100vh] min-h-[80vh] w-full md:h-[100vh]'
       >
         <div
-          className={`flex items-center justify-end px-4 text-start text-sm font-medium transition-all duration-1000 ${
+          className={`flex items-center justify-start px-4 text-start text-sm font-medium transition-all duration-1000 md:justify-end ${
             isClicked
               ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
               : 'translate-y-[30%] opacity-0'
@@ -298,7 +300,7 @@ const Home = () => {
         >
           <div className='pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
             <h2
-              className={`bg-deep sticky left-0 top-0 mb-[30px] w-full py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
+              className={`sticky left-0 top-0 mb-[30px] w-full bg-deep py-3 text-[24px] font-bold sm:static sm:p-0 md:mb-14 xl:text-[40px]`}
             >
               Projects
             </h2>
@@ -318,7 +320,7 @@ const Home = () => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 
