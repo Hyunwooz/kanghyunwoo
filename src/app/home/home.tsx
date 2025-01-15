@@ -127,7 +127,7 @@ const Home = () => {
             {part.content === ' ' ? '\u00A0' : part.content}
           </span>
         ))}
-        <p className='animate-blink ml-1'>{'|'}</p>
+        <p className='ml-1 animate-blink'>{'|'}</p>
       </div>
       <div
         className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:fixed md:top-0 md:w-[44%] md:pl-[60px] md:pt-0 lg:pl-[100px] xl:pl-[160px] 2xl:pl-[270px] ${
@@ -199,43 +199,47 @@ const Home = () => {
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2
-            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
-          >
-            About
-          </h2>
-          <div className='px-4 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h3 className='mb-4 bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
-              [ 프론트엔드 개발 ]
-            </h3>
-            <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
-              비전공자로 웹 개발 공부를 시작한 후, 현재는 프론트엔드 개발을
-              담당하고 있습니다. 처음에는 Python을 활용해 반복적인 업무를
-              자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드 분야로 관심을
-              확장하게 되었습니다. 사용자 경험을 최우선으로 고려하며, 직관적이고
-              효율적인 웹 인터페이스를 구현하는 것에 큰 보람을 느끼고 있습니다.
-            </p>
-            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
-              [ 성장에 대한 즐거움 ]
-            </h3>
-            <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
-              새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을
-              활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고
-              새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.
-              이는 개발에 있어서 성장을 위한 동기가 되어주고 있으며, 점점 더
-              나은 개발자로 나아가는 과정에서 큰 성취감을 얻고 있습니다.
-            </p>
-            <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
-              [ 안되면 될 때까지 ]
-            </h3>
-            <p className='font-light leading-6 xl:text-[18px]'>
-              프론트엔드 개발을 혼자 진행하고 있습니다. 이 과정에서 모든 것을
-              스스로 찾아내고 해결해야 했기 때문에, 때론 기능 구현에 며칠이
-              걸리기도 했습니다. 하지만 이런 과정을 통해 개발에 있어서{' '}
-              {`"해결할 수 없는 문제는 없다"`}는 확신을 가지게 되었습니다.
-              이로써, 자신에게 부여된 책임을 끝까지 완수할 수 있는 끈기를 얻게
-              되었습니다.
-            </p>
+          <div className='px-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
+            <h2
+              className={`sticky top-0 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+            >
+              About
+            </h2>
+            <div className='px-4 sm:p-0'>
+              <h3 className='mb-4 bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
+                [ 프론트엔드 개발 ]
+              </h3>
+              <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
+                비전공자로 웹 개발 공부를 시작한 후, 현재는 프론트엔드 개발을
+                담당하고 있습니다. 처음에는 Python을 활용해 반복적인 업무를
+                자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드 분야로 관심을
+                확장하게 되었습니다. 사용자 경험을 최우선으로 고려하며,
+                직관적이고 효율적인 웹 인터페이스를 구현하는 것에 큰 보람을
+                느끼고 있습니다.
+              </p>
+              <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
+                [ 성장에 대한 즐거움 ]
+              </h3>
+              <p className='mb-6 font-light leading-6 md:mb-12 xl:text-[18px]'>
+                새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을
+                활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고
+                새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을
+                느낍니다. 이는 개발에 있어서 성장을 위한 동기가 되어주고 있으며,
+                점점 더 나은 개발자로 나아가는 과정에서 큰 성취감을 얻고
+                있습니다.
+              </p>
+              <h3 className='mb-4 rounded bg-light px-2 py-2 text-[18px] font-semibold text-deep md:text-[20px] xl:text-[24px]'>
+                [ 안되면 될 때까지 ]
+              </h3>
+              <p className='font-light leading-6 xl:text-[18px]'>
+                프론트엔드 개발을 혼자 진행하고 있습니다. 이 과정에서 모든 것을
+                스스로 찾아내고 해결해야 했기 때문에, 때론 기능 구현에 며칠이
+                걸리기도 했습니다. 하지만 이런 과정을 통해 개발에 있어서{' '}
+                {`"해결할 수 없는 문제는 없다"`}는 확신을 가지게 되었습니다.
+                이로써, 자신에게 부여된 책임을 끝까지 완수할 수 있는 끈기를 얻게
+                되었습니다.
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -250,13 +254,15 @@ const Home = () => {
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2
-            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
-          >
-            Skills
-          </h2>
-          <div className='px-4 pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <SkillSection />
+          <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
+            <h2
+              className={`sticky top-0 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+            >
+              Skills
+            </h2>
+            <div className='px-4 sm:p-0'>
+              <SkillSection />
+            </div>
           </div>
         </div>
       </section>
@@ -271,27 +277,29 @@ const Home = () => {
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2
-            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
-          >
-            Experience
-          </h2>
-          <div className='px-4 pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <p className='mb-6 md:mb-4 xl:text-[18px]'>
-              {`I’m a developer passionate about crafting accessible, pixel-perfect
+          <div className='pt-10 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
+            <h2
+              className={`sticky top-0 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+            >
+              Experience
+            </h2>
+            <div className='px-4 sm:p-0'>
+              <p className='mb-6 md:mb-4 xl:text-[18px]'>
+                {`I’m a developer passionate about crafting accessible, pixel-perfect
             user interfaces that blend thoughtful design with robust
             engineering. My favorite work lies at the intersection of design and
             development, creating experiences that not only look great but are
             meticulously built for performance and usability.`}
-            </p>
-            <p className='mb-6 md:mb-4 xl:text-[18px]'>
-              {`Currently, I'm a
+              </p>
+              <p className='mb-6 md:mb-4 xl:text-[18px]'>
+                {`Currently, I'm a
             Senior Front-End Engineer at Klaviyo, specializing in accessibility.
             I contribute to the creation and maintenance of UI components that
             power Klaviyo’s frontend, ensuring our platform meets web
             accessibility standards and best practices to deliver an inclusive
             user experience. `}
-            </p>
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -306,25 +314,27 @@ const Home = () => {
               : 'translate-y-[30%] opacity-0'
           }`}
         >
-          <h2
-            className={`sticky top-0 mb-[30px] w-full bg-deep px-4 py-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
-          >
-            Projects
-          </h2>
-          <div className='px-4 pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <p className='mb-10 md:mb-4 xl:text-[18px]'>
-              {`In the past, I've had the opportunity to develop
-            software across a variety of settings — from advertising agencies
-            and large corporations to start-ups and small digital product
-            studios. Additionally, I also released a comprehensive video course
-            a few years ago, guiding learners through building a web app with
-            the Spotify API.`}
-            </p>
-            <p className='xl:text-[18px]'>
-              {`In my spare time, I’m usually climbing, reading,
-            hanging out with my wife and two cats, or running around Hyrule
-            searching for Korok seeds K o r o k s e e d s .`}
-            </p>
+          <div className='pt-10 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
+            <h2
+              className={`sticky top-0 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+            >
+              Projects
+            </h2>
+            <div className='px-4 sm:p-0'>
+              <p className='mb-10 md:mb-4 xl:text-[18px]'>
+                {`In the past, I've had the opportunity to develop
+                software across a variety of settings — from advertising agencies
+                and large corporations to start-ups and small digital product
+                studios. Additionally, I also released a comprehensive video course
+                a few years ago, guiding learners through building a web app with
+                the Spotify API.`}
+              </p>
+              <p className='xl:text-[18px]'>
+                {`In my spare time, I’m usually climbing, reading,
+                hanging out with my wife and two cats, or running around Hyrule
+                searching for Korok seeds K o r o k s e e d s .`}
+              </p>
+            </div>
           </div>
         </div>
       </section>
