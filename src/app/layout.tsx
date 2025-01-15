@@ -13,9 +13,36 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'WoohDev | 웹 개발자',
+  title: 'WoohDev | 웹 개발자 포트폴리오',
   description:
-    "This is a page where you'll find my portfolio and an introduction about me.",
+    'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+  keywords:
+    '웹 개발자, 포트폴리오, 프론트엔드, 백엔드, Next.js, React, TailwindCSS, TypeScript, 강현우, 강현우 포트폴리오',
+  authors: { name: 'WoohDev' },
+  openGraph: {
+    title: 'WoohDev | 웹 개발자 포트폴리오',
+    description:
+      'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+    url: 'https://kanghyunwoo.com/',
+    siteName: 'WoohDev',
+    type: 'website',
+    locale: 'ko_KR',
+    images: [
+      {
+        url: 'https://kanghyunwoo.com/images/og.png',
+        width: 1200,
+        height: 630,
+        alt: 'WoohDev 포트폴리오',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'WoohDev | 웹 개발자 포트폴리오',
+    description:
+      'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+    images: ['https://kanghyunwoo.com/images/og.png'],
+  },
 };
 
 export default function RootLayout({
@@ -25,7 +52,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-deep text-white`}>
+      <body className={`${pretendard.className} bg-deep text-[#fffff4]`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
     </html>
