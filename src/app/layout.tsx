@@ -1,6 +1,7 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import Head from 'next/head';
 
 // 스타일링
 import './globals.css';
@@ -52,6 +53,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
+      <Head>
+        <meta
+          name='naver-site-verification'
+          content='71ba3d219d56f829ae5ac23a0864405712c8b9ad'
+        />
+      </Head>
       <body className={`${pretendard.className} bg-deep text-[#ffffff]`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
