@@ -136,9 +136,9 @@ const Home = () => {
             : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
         }`}
       >
-        <p className='mb-3 text-5xl font-bold md:text-[60px] xl:mb-6 xl:text-[88px]'>
+        <h1 className='mb-3 text-5xl font-bold md:text-[60px] xl:mb-6 xl:text-[88px]'>
           강현우
-        </p>
+        </h1>
         {/* <p className='mb-4 text-lg font-semibold xl:text-[36px]'>
             FRONT-END DEVELOPER
           </p> */}

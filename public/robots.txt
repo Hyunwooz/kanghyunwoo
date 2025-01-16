@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.kanghyunwoo.com/
+
+# Sitemaps
+Sitemap: https://www.kanghyunwoo.com/sitemap.xml

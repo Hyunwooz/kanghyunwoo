@@ -6,12 +6,14 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postbuild": "next-sitemap"
   },
   "dependencies": {
     "@iconify/react": "^5.1.0",
     "autoprefixer": "^10.4.20",
     "next": "15.1.2",
+    "next-sitemap": "^4.2.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
