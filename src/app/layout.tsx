@@ -1,7 +1,6 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import Head from 'next/head';
 
 // 스타일링
 import './globals.css';
@@ -44,6 +43,9 @@ export const metadata: Metadata = {
       'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
     images: ['https://kanghyunwoo.com/images/og.png'],
   },
+  other: {
+    'naver-site-verification': '71ba3d219d56f829ae5ac23a0864405712c8b9ad',
+  },
 };
 
 export default function RootLayout({
@@ -53,12 +55,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <Head>
-        <meta
-          name='naver-site-verification'
-          content='71ba3d219d56f829ae5ac23a0864405712c8b9ad'
-        />
-      </Head>
       <body className={`${pretendard.className} bg-deep text-[#ffffff]`}>
         <main className='min-h-[86vh]'>{children}</main>
       </body>
