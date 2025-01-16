@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 
 interface Skill {
@@ -18,14 +20,18 @@ const SkillBox: React.FC<SkillBoxProps> = ({ title, skills }) => {
       </h3>
       <div className='flex gap-3'>
         {skills.map((skill, index) => (
-          <Image
-            key={index}
-            src={skill.src}
-            alt={skill.alt}
-            className='rounded-full border-2 border-normal'
-            width={50}
-            height={50}
-          />
+          <div key={index} className='group relative cursor-pointer'>
+            <Image
+              src={skill.src}
+              alt={skill.alt}
+              className='rounded-full border-2 border-normal'
+              width={50}
+              height={50}
+            />
+            <p className='absolute left-1/2 top-0 hidden -translate-x-1/2 -translate-y-full rounded bg-light p-2 text-sm text-deep shadow-lg group-hover:flex'>
+              {skill.alt}
+            </p>
+          </div>
         ))}
       </div>
     </div>
@@ -38,34 +44,34 @@ export default function SkillSection() {
       <SkillBox
         title='Front-End'
         skills={[
-          { src: '/svgs/HTML.svg', alt: 'html' },
-          { src: '/svgs/CSS.svg', alt: 'css' },
-          { src: '/svgs/JavaScript.svg', alt: 'javascript' },
-          { src: '/svgs/TypeScript.svg', alt: 'typescript' },
-          { src: '/svgs/NextJS-Light.svg', alt: 'nextjs' },
-          { src: '/svgs/React-Light.svg', alt: 'react' },
+          { src: '/svgs/HTML.svg', alt: 'HTML' },
+          { src: '/svgs/CSS.svg', alt: 'CSS' },
+          { src: '/svgs/JavaScript.svg', alt: 'JavaScript' },
+          { src: '/svgs/TypeScript.svg', alt: 'TypeScript' },
+          { src: '/svgs/NextJS-Light.svg', alt: 'NextJS' },
+          { src: '/svgs/React-Light.svg', alt: 'React' },
         ]}
       />
       <SkillBox
         title='Back-End'
         skills={[
-          { src: '/svgs/Python-Light.svg', alt: 'python' },
-          { src: '/svgs/Django.svg', alt: 'django' },
+          { src: '/svgs/Python-Light.svg', alt: 'Python' },
+          { src: '/svgs/Django.svg', alt: 'Django' },
         ]}
       />
       <SkillBox
         title='DataBase'
         skills={[
-          { src: '/svgs/PostgreSQL-Light.svg', alt: 'postgresql' },
-          { src: '/svgs/SQLite.svg', alt: 'sqlite' },
+          { src: '/svgs/PostgreSQL-Light.svg', alt: 'PostgreSQL' },
+          { src: '/svgs/SQLite.svg', alt: 'SQLite' },
         ]}
       />
       <SkillBox
         title='ETC'
         skills={[
-          { src: '/svgs/aws-ec2.svg', alt: 'ec2' },
-          { src: '/svgs/aws-s3.svg', alt: 's3' },
-          { src: '/svgs/Vercel-Light.svg', alt: 'vercel' },
+          { src: '/svgs/aws-ec2.svg', alt: 'EC2' },
+          { src: '/svgs/aws-s3.svg', alt: 'S3' },
+          { src: '/svgs/Vercel-Light.svg', alt: 'Vercel' },
         ]}
       />
     </div>
