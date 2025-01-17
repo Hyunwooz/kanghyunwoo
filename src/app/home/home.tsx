@@ -10,7 +10,7 @@ import { sectionList } from '@/data/section';
 import { textParts } from '@/data/textParts';
 
 // 컴포넌트
-import SkillSection from '@/components/main/skillSection';
+import SkillSection from '@/components/skill/skillSection';
 
 const Home = () => {
   const [visibleChars, setVisibleChars] = useState(0);
@@ -273,7 +273,7 @@ const Home = () => {
               Experience
             </h2>
             <div className='px-4 sm:p-0'>
-              <div>
+              <div className='mb-12'>
                 <Link
                   href={'https://s-g.kr'}
                   className='mb-1 block border-b pb-2 text-2xl font-semibold hover:bg-light hover:bg-opacity-10 md:text-3xl'
@@ -303,26 +303,36 @@ const Home = () => {
                     </ul>
                   </div>
                 </div>
+                <div className='mt-4 flex flex-wrap gap-x-1 gap-y-2'>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    TypeScript
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    JavaScript
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    Tailwind
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    Bootstrap
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    NextJS
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    React
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    Python
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    AWS EC2
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    AWS S3
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id='Education' className='relative w-full pb-2 md:pb-[40px]'>
-        <div
-          className={`flex flex-col items-start justify-center text-start text-sm font-medium transition-all duration-1000 md:items-end ${
-            isClicked
-              ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
-              : 'translate-y-[30%] opacity-0'
-          }`}
-        >
-          <div className='w-full pt-6 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
-            <h2
-              className={`sticky top-0 z-10 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
-            >
-              Education
-            </h2>
-            <div className='px-4 sm:p-0'>
               <div>
                 <Link
                   href={'https://estfamily.career.greetinghr.com/kdt'}
@@ -350,11 +360,46 @@ const Home = () => {
                     </ul>
                   </div>
                 </div>
+                <div className='mt-4 flex flex-wrap gap-x-1 gap-y-2'>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    Python
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    Django
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    PostgreSQL
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    AWS EC2
+                  </div>
+                  <div className='rounded-lg bg-light px-2 font-bold text-deep'>
+                    AWS S3
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
+      {/* <section id='Education' className='relative w-full pb-2 md:pb-[40px]'>
+        <div
+          className={`flex flex-col items-start justify-center text-start text-sm font-medium transition-all duration-1000 md:items-end ${
+            isClicked
+              ? 'mb-[60px] opacity-100 sm:translate-y-[96px]'
+              : 'translate-y-[30%] opacity-0'
+          }`}
+        >
+          <div className='w-full pt-6 sm:pt-0 md:mt-0 md:w-5/12 md:pr-[60px] lg:pr-[100px] xl:pr-[160px] 2xl:pr-[270px]'>
+            <h2
+              className={`sticky top-0 z-10 mb-[30px] w-full bg-deep p-4 text-[32px] font-bold sm:static sm:p-0 md:mb-16 xl:text-[48px]`}
+            >
+              Education
+            </h2>
+            <div className='px-4 sm:p-0'></div>
+          </div>
+        </div>
+      </section> */}
       <section
         id='Projects'
         className='relative min-h-[60vh] w-full pb-2 md:pb-[40px]'
@@ -373,34 +418,7 @@ const Home = () => {
               Projects
             </h2>
             <div className='px-4 sm:p-0'>
-              <div>
-                <Link
-                  href={'https://estfamily.career.greetinghr.com/kdt'}
-                  className='mb-1 block border-b pb-2 text-2xl font-semibold hover:bg-light hover:bg-opacity-10 md:text-3xl'
-                >
-                  [ESTsoft] 백엔드 개발 오르미 1기
-                </Link>
-                <p className='mb-2 text-base font-light md:mb-4 md:text-lg'>
-                  ESTsoft 주관 백엔드 개발자 과정 1기 부트캠프
-                </p>
-                <div className='flex flex-col gap-4 md:flex-row md:gap-0'>
-                  <div className='flex w-full items-center gap-4 md:block md:w-2/6'>
-                    <p className='text-sm font-normal md:text-base'>
-                      2023.04 ~ 2023.09
-                    </p>
-                  </div>
-                  <div className='w-full md:w-4/6 md:px-2'>
-                    <ul className='flex list-inside list-disc flex-col gap-1'>
-                      <li>GitHub, Python, Django, Django Restframe Work</li>
-                      <li>ERD, PostgreSQL, HTML, CSS, JaveScripts</li>
-                      <li>Django 웹 프레임워크 기반 프로젝트 3건 제작</li>
-                      <li>Django 개인 프로젝트 최우수상 수상</li>
-                      <li>Django 팀 프로젝트 최우수상 수상</li>
-                      <li>23년 7월 이달의 오르미 선정</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+              <div className='bg-[#ffffff]'></div>
             </div>
           </div>
         </div>
