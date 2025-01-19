@@ -20,6 +20,16 @@ export const frontend = [
     desc: '타입을 활용하여 명확한 코드를 작성할 수 있으며, 제네릭, 인덱싱, 유틸리티 타입을 사용할 수 있습니다.',
   },
   {
+    src: '/svgs/TailwindCSS-Light.svg',
+    alt: 'TailwindCSS',
+    desc: '최근 즐겨 사용하고 있습니다. 프로젝트에 적용한 경험이 있습니다.',
+  },
+  {
+    src: '/svgs/Bootstrap.svg',
+    alt: 'Bootstrap',
+    desc: '프로젝트에 적용한 경험이 있습니다.',
+  },
+  {
     src: '/svgs/NextJS-Light.svg',
     alt: 'NextJS',
     desc: '상황별로 SSG, SSR, CSR 활용과 middleware와 API를 작성할 수 있습니다.',
@@ -27,7 +37,7 @@ export const frontend = [
   {
     src: '/svgs/React-Light.svg',
     alt: 'React',
-    desc: '리액트로 여러 프로젝트를 해봤으며, ContextAPI, useReducer, useState, useCallBack, useMemo, Suspense를 활용 할 수 있습니다',
+    desc: '리액트로 여러 프로젝트를 해봤으며, ContextAPI, useState, useCallBack, useMemo, Suspense를 활용 할 수 있습니다',
   },
 ];
 export const backend = [
@@ -69,5 +79,10 @@ export const etc = [
     src: '/svgs/Vercel-Light.svg',
     alt: 'Vercel',
     desc: 'NextJS 프로젝트를 배포해 본 경험이 있습니다.',
+  },
+  {
+    src: '/svgs/Git.svg',
+    alt: 'Git',
+    desc: '코드 저장과 버전 기록을 위해 사용했습니다.',
   },
 ];
