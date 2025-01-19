@@ -55,8 +55,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-deep text-[#ffffff]`}>
-        <main className='min-h-[86vh]'>{children}</main>
+      <body className={`${pretendard.className} bg-background text-main`}>
+        {children}
       </body>
     </html>
   );
