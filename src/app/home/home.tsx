@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
+import Image from 'next/image';
 
 // 유틸 함수 분리
 import { scrollToSection } from '@/shared/utils/scroll';
@@ -25,7 +26,7 @@ const experienceSkillList = {
     'Python',
     'AWS EC2',
   ],
-  est: ['Python', 'Django', 'AWS EC2', 'AWS S3'],
+  est: ['Python', 'Django', 'AWS EC2', 'AWS S3', 'PostgreSQL'],
 };
 
 const introData = [
@@ -157,10 +158,10 @@ const Home = () => {
               : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
           }`}
         >
-          <h1 className='mb-2 text-5xl font-bold md:text-[60px] xl:mb-8 xl:text-[88px]'>
+          <h1 className='mb-6 text-5xl font-bold md:text-[60px] xl:mb-8 xl:text-[88px]'>
             강현우
           </h1>
-          <p className='mb-2 text-lg font-medium leading-6 text-main md:mb-4 xl:text-[22px]'>
+          <p className='mb-2 text-lg font-medium leading-6 text-main md:mb-4 md:text-xl xl:text-[22px]'>
             웹 애플리케이션에 가치를 더하는 과정에서 큰 보람을 느낍니다.
           </p>
           <p className='text-md mb-12 font-medium leading-6 text-[#fffff56e] lg:mb-28 xl:text-[18px]'>
@@ -360,7 +361,128 @@ const Home = () => {
                 Projects
               </h2>
               <div className='w-full px-4 md:px-12 lg:p-0'>
-                <div className='mb-12 min-h-[400px]'>1</div>
+                <div className='relative mb-4 flex h-[400px] flex-col-reverse lg:flex-row'>
+                  <div className='z-10 h-2/5 w-full rounded-md lg:h-auto lg:w-7/12'>
+                    <div className='mb-1 flex items-center gap-1'>
+                      <h3 className='block text-2xl font-semibold md:text-3xl'>
+                        마셔볼래 vol_4
+                      </h3>
+                      <Link
+                        href={'#'}
+                        className='flex h-6 w-6 items-center justify-center opacity-80 transition-all duration-300 hover:scale-125 hover:opacity-100'
+                        target='_blank'
+                      >
+                        <svg
+                          stroke='currentColor'
+                          fill='currentColor'
+                          strokeWidth='1'
+                          viewBox='0 0 24 24'
+                          height='20'
+                          width='20'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <g id='Share_1'>
+                            <g>
+                              <path d='M12.223,11.075a.5.5,0,0,0,.7.71l7-7v3.58a.508.508,0,0,0,.5.5.5.5,0,0,0,.5-.5V3.575a.5.5,0,0,0-.5-.5h-4.79a.5.5,0,0,0,0,1h3.58Z'></path>
+                              <path d='M17.876,20.926H6.124a3.053,3.053,0,0,1-3.05-3.05V6.124a3.053,3.053,0,0,1,3.05-3.05h6.028a.5.5,0,0,1,0,1H6.124a2.053,2.053,0,0,0-2.05,2.05V17.876a2.053,2.053,0,0,0,2.05,2.05H17.876a2.053,2.053,0,0,0,2.05-2.05V11.849a.5.5,0,0,1,1,0v6.027A3.053,3.053,0,0,1,17.876,20.926Z'></path>
+                            </g>
+                          </g>
+                        </svg>
+                      </Link>
+                    </div>
+                    <h4 className='mb-4 text-sm font-semibold xl:text-base'>
+                      2024.11 ~ 2025.01
+                    </h4>
+                    <div className='z-10 mb-4 rounded border border-light bg-[#092509] bg-opacity-85 p-4 font-medium text-light'>
+                      <p>
+                        이 프로젝트는 사용자가 하루를 어떻게 활용했는지
+                        시각적으로 추적할 수 있는 타이머 서비스입니다. Next.js로
+                        개발되었으며, PWA(Progressive Web App) 기술을 활용해
+                        마치 네이티브 앱처럼 직관적인 사용자 경험을 제공합니다.
+                        또한, EC2 서버를 이용해 안정적으로 배포되었습니다.
+                      </p>
+                    </div>
+                    <div className='flex flex-wrap gap-2'>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                    </div>
+                  </div>
+                  <Image
+                    className='static right-0 h-3/5 w-full rounded-md border object-cover transition-all duration-300 hover:scale-110 lg:absolute lg:h-[270px] lg:w-7/12'
+                    src='/images/pj_01.png'
+                    alt='test'
+                    width={400}
+                    height={270}
+                  ></Image>
+                </div>
+                <div className='relative mb-4 flex h-[400px] flex-col-reverse lg:flex-row-reverse'>
+                  <div className='z-10 flex h-2/5 w-full flex-col items-end rounded-md lg:h-auto lg:w-7/12'>
+                    <div className='mb-1 flex items-center gap-1'>
+                      <h3 className='block text-2xl font-semibold md:text-3xl'>
+                        들어볼래 vol_4
+                      </h3>
+                      <Link
+                        href={'#'}
+                        className='flex h-6 w-6 items-center justify-center opacity-80 transition-all duration-300 hover:scale-125 hover:opacity-100'
+                        target='_blank'
+                      >
+                        <svg
+                          stroke='currentColor'
+                          fill='currentColor'
+                          strokeWidth='1'
+                          viewBox='0 0 24 24'
+                          height='20'
+                          width='20'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <g id='Share_1'>
+                            <g>
+                              <path d='M12.223,11.075a.5.5,0,0,0,.7.71l7-7v3.58a.508.508,0,0,0,.5.5.5.5,0,0,0,.5-.5V3.575a.5.5,0,0,0-.5-.5h-4.79a.5.5,0,0,0,0,1h3.58Z'></path>
+                              <path d='M17.876,20.926H6.124a3.053,3.053,0,0,1-3.05-3.05V6.124a3.053,3.053,0,0,1,3.05-3.05h6.028a.5.5,0,0,1,0,1H6.124a2.053,2.053,0,0,0-2.05,2.05V17.876a2.053,2.053,0,0,0,2.05,2.05H17.876a2.053,2.053,0,0,0,2.05-2.05V11.849a.5.5,0,0,1,1,0v6.027A3.053,3.053,0,0,1,17.876,20.926Z'></path>
+                            </g>
+                          </g>
+                        </svg>
+                      </Link>
+                    </div>
+                    <h4 className='mb-4 text-sm font-semibold xl:text-base'>
+                      2024.11 ~ 2025.01
+                    </h4>
+                    <div className='z-10 mb-4 rounded border border-light bg-[#092509] bg-opacity-85 p-4 text-end font-medium text-light'>
+                      <p>
+                        이 프로젝트는 사용자가 하루를 어떻게 활용했는지
+                        시각적으로 추적할 수 있는 타이머 서비스입니다. Next.js로
+                        개발되었으며, PWA(Progressive Web App) 기술을 활용해
+                        마치 네이티브 앱처럼 직관적인 사용자 경험을 제공합니다.
+                        또한, EC2 서버를 이용해 안정적으로 배포되었습니다.
+                      </p>
+                    </div>
+                    <div className='flex flex-wrap gap-2'>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
+                        Skill
+                      </div>
+                    </div>
+                  </div>
+                  <Image
+                    className='static left-0 h-3/5 w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-110 lg:absolute lg:h-[270px] lg:w-7/12'
+                    src='/images/pj_02.png'
+                    alt='test'
+                    width={400}
+                    height={270}
+                  ></Image>
+                </div>
               </div>
             </div>
           </div>
