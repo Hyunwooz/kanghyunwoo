@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Icon } from '@iconify/react';
-import Image from 'next/image';
 
 // 유틸 함수 분리
 import { scrollToSection } from '@/shared/utils/scroll';
@@ -9,25 +8,14 @@ import { scrollToSection } from '@/shared/utils/scroll';
 // 데이터 분할 관리
 import { sectionList } from '@/data/section';
 import { textParts } from '@/data/textParts';
+import { experienceList } from '@/data/experience';
+import { projectList } from '@/data/project';
 
 // 컴포넌트
 import SkillSection from '@/components/skill/skillSection';
-import { ExperienceSkillBadge } from '@/components/badge/skillBadge';
 import IntroCard from '@/components/card/introCard';
-
-const experienceSkillList = {
-  sng: [
-    'TypeScript',
-    'JavaScript',
-    'Tailwind',
-    'Bootstrap',
-    'NextJS',
-    'React',
-    'Python',
-    'AWS EC2',
-  ],
-  est: ['Python', 'Django', 'AWS EC2', 'AWS S3', 'PostgreSQL'],
-};
+import ExperienceCard from '@/components/card/experienceCard';
+import ProjectCard from '@/components/card/projectCard';
 
 const introData = [
   {
@@ -150,7 +138,7 @@ const Home = () => {
         ))}
         <p className='ml-1 animate-blink'>{'|'}</p>
       </div>
-      <main className='lg:px-[60px] xl:px-[160px] 2xl:px-[240px]'>
+      <main className='lg:px-[40px] xl:px-[160px] 2xl:px-[240px]'>
         <nav
           className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:px-12 md:pt-0 lg:fixed lg:top-0 lg:w-[42%] lg:px-0 xl:w-[32%] ${
             isClicked
@@ -218,7 +206,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0 lg:w-1/2'>
               <h2
-                className={`bg-background sticky top-0 z-10 mb-[30px] w-full border-0 border-main p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 About
               </h2>
@@ -248,7 +236,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0 lg:w-1/2'>
               <h2
-                className={`bg-background sticky top-0 z-10 mb-[30px] w-full border-0 border-main p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Skills
               </h2>
@@ -271,74 +259,23 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0 lg:w-1/2'>
               <h2
-                className={`bg-background sticky top-0 z-10 mb-[30px] w-full border-0 border-main p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Experience
               </h2>
               <div className='w-full px-4 md:px-12 lg:p-0'>
-                <div className='mb-12'>
-                  <h3 className='mb-1 block border-b border-light pb-2 text-2xl font-semibold md:text-3xl'>
-                    S&G Company
-                  </h3>
-                  <p className='mb-2 text-base font-normal md:mb-4 md:text-lg'>
-                    테크기반 마케팅 및 프롭테크 서비스 스타트업
-                  </p>
-                  <div className='flex flex-col gap-4 md:flex-row md:gap-0'>
-                    <div className='flex w-full items-center gap-4 md:block md:w-3/12 xl:w-1/3'>
-                      <h4 className='text-sm font-bold md:mb-2 xl:text-lg'>
-                        프론트엔드 개발자
-                      </h4>
-                      <p className='text-xs font-semibold xl:text-base'>
-                        2023.11 ~ 현재
-                      </p>
-                    </div>
-                    <div className='w-full md:w-9/12 md:px-2 xl:w-2/3'>
-                      <ul className='flex list-inside list-disc flex-col gap-1'>
-                        <li>개발 업무 프로세스 구축 및 프로젝트 문서화 진행</li>
-                        <li>CI/CD 및 Git Flow 적용 등 개발 환경 개선</li>
-                        <li>노션을 활용한 업무 프로세스 ( 칸반보드 ) 도입</li>
-                        <li>파이썬을 활용한 다양한 업무 자동화</li>
-                        <li>계약서 자동 관리 시스템 구축</li>
-                        <li>자사 서비스 통합 관리 서비스 구축 및 유지보수</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className='mt-4 flex flex-wrap gap-x-1 gap-y-2'>
-                    {experienceSkillList['sng'].map((value, index) => (
-                      <ExperienceSkillBadge key={index} title={value} />
-                    ))}
-                  </div>
-                </div>
-                <div>
-                  <h3 className='mb-1 block border-b border-light pb-2 text-2xl font-semibold md:text-3xl'>
-                    [ESTsoft] 백엔드 개발 오르미 1기
-                  </h3>
-                  <p className='mb-2 text-base font-normal md:mb-4 md:text-lg'>
-                    ESTsoft 주관 백엔드 개발자 과정 1기 부트캠프
-                  </p>
-                  <div className='flex flex-col gap-4 md:flex-row md:gap-0'>
-                    <div className='flex w-full items-center gap-4 md:block md:w-3/12 xl:w-1/3'>
-                      <p className='text-sm font-semibold xl:text-base'>
-                        2023.04 ~ 2023.09
-                      </p>
-                    </div>
-                    <div className='w-full md:w-9/12 md:px-2 xl:w-2/3'>
-                      <ul className='flex list-inside list-disc flex-col gap-1'>
-                        <li>GitHub, Python, Django, Django Restframe Work</li>
-                        <li>ERD, PostgreSQL, HTML, CSS, JaveScripts</li>
-                        <li>Django 웹 프레임워크 기반 프로젝트 3건 제작</li>
-                        <li>Django 개인 프로젝트 최우수상 수상</li>
-                        <li>Django 팀 프로젝트 최우수상 수상</li>
-                        <li>23년 7월 이달의 오르미 선정</li>
-                      </ul>
-                    </div>
-                  </div>
-                  <div className='mt-4 flex flex-wrap gap-x-1 gap-y-2'>
-                    {experienceSkillList['est'].map((value, index) => (
-                      <ExperienceSkillBadge key={index} title={value} />
-                    ))}
-                  </div>
-                </div>
+                {experienceList.map((exp, index) => (
+                  <ExperienceCard
+                    key={index}
+                    role={exp.role}
+                    name={exp.name}
+                    decs={exp.decs}
+                    period={exp.period}
+                    skillStacks={exp.skillStacks}
+                    works={exp.works}
+                    styleClasses='mb-10'
+                  />
+                ))}
               </div>
             </div>
           </div>
@@ -356,133 +293,25 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0 lg:w-1/2'>
               <h2
-                className={`bg-background sticky top-0 z-10 mb-[30px] w-full border-0 border-main p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Projects
               </h2>
-              <div className='w-full px-4 md:px-12 lg:p-0'>
-                <div className='relative mb-4 flex h-[400px] flex-col-reverse lg:flex-row'>
-                  <div className='z-10 h-2/5 w-full rounded-md lg:h-auto lg:w-7/12'>
-                    <div className='mb-1 flex items-center gap-1'>
-                      <h3 className='block text-2xl font-semibold md:text-3xl'>
-                        마셔볼래 vol_4
-                      </h3>
-                      <Link
-                        href={'#'}
-                        className='flex h-6 w-6 items-center justify-center opacity-80 transition-all duration-300 hover:scale-125 hover:opacity-100'
-                        target='_blank'
-                      >
-                        <svg
-                          stroke='currentColor'
-                          fill='currentColor'
-                          strokeWidth='1'
-                          viewBox='0 0 24 24'
-                          height='20'
-                          width='20'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <g id='Share_1'>
-                            <g>
-                              <path d='M12.223,11.075a.5.5,0,0,0,.7.71l7-7v3.58a.508.508,0,0,0,.5.5.5.5,0,0,0,.5-.5V3.575a.5.5,0,0,0-.5-.5h-4.79a.5.5,0,0,0,0,1h3.58Z'></path>
-                              <path d='M17.876,20.926H6.124a3.053,3.053,0,0,1-3.05-3.05V6.124a3.053,3.053,0,0,1,3.05-3.05h6.028a.5.5,0,0,1,0,1H6.124a2.053,2.053,0,0,0-2.05,2.05V17.876a2.053,2.053,0,0,0,2.05,2.05H17.876a2.053,2.053,0,0,0,2.05-2.05V11.849a.5.5,0,0,1,1,0v6.027A3.053,3.053,0,0,1,17.876,20.926Z'></path>
-                            </g>
-                          </g>
-                        </svg>
-                      </Link>
-                    </div>
-                    <h4 className='mb-4 text-sm font-semibold xl:text-base'>
-                      2024.11 ~ 2025.01
-                    </h4>
-                    <div className='z-10 mb-4 rounded border border-light bg-[#092509] bg-opacity-85 p-4 font-medium text-light'>
-                      <p>
-                        이 프로젝트는 사용자가 하루를 어떻게 활용했는지
-                        시각적으로 추적할 수 있는 타이머 서비스입니다. Next.js로
-                        개발되었으며, PWA(Progressive Web App) 기술을 활용해
-                        마치 네이티브 앱처럼 직관적인 사용자 경험을 제공합니다.
-                        또한, EC2 서버를 이용해 안정적으로 배포되었습니다.
-                      </p>
-                    </div>
-                    <div className='flex flex-wrap gap-2'>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                    </div>
-                  </div>
-                  <Image
-                    className='static right-0 h-3/5 w-full rounded-md border object-cover transition-all duration-300 hover:scale-110 lg:absolute lg:h-[270px] lg:w-7/12'
-                    src='/images/pj_01.png'
-                    alt='test'
-                    width={400}
-                    height={270}
-                  ></Image>
-                </div>
-                <div className='relative mb-4 flex h-[400px] flex-col-reverse lg:flex-row-reverse'>
-                  <div className='z-10 flex h-2/5 w-full flex-col items-end rounded-md lg:h-auto lg:w-7/12'>
-                    <div className='mb-1 flex items-center gap-1'>
-                      <h3 className='block text-2xl font-semibold md:text-3xl'>
-                        들어볼래 vol_4
-                      </h3>
-                      <Link
-                        href={'#'}
-                        className='flex h-6 w-6 items-center justify-center opacity-80 transition-all duration-300 hover:scale-125 hover:opacity-100'
-                        target='_blank'
-                      >
-                        <svg
-                          stroke='currentColor'
-                          fill='currentColor'
-                          strokeWidth='1'
-                          viewBox='0 0 24 24'
-                          height='20'
-                          width='20'
-                          xmlns='http://www.w3.org/2000/svg'
-                        >
-                          <g id='Share_1'>
-                            <g>
-                              <path d='M12.223,11.075a.5.5,0,0,0,.7.71l7-7v3.58a.508.508,0,0,0,.5.5.5.5,0,0,0,.5-.5V3.575a.5.5,0,0,0-.5-.5h-4.79a.5.5,0,0,0,0,1h3.58Z'></path>
-                              <path d='M17.876,20.926H6.124a3.053,3.053,0,0,1-3.05-3.05V6.124a3.053,3.053,0,0,1,3.05-3.05h6.028a.5.5,0,0,1,0,1H6.124a2.053,2.053,0,0,0-2.05,2.05V17.876a2.053,2.053,0,0,0,2.05,2.05H17.876a2.053,2.053,0,0,0,2.05-2.05V11.849a.5.5,0,0,1,1,0v6.027A3.053,3.053,0,0,1,17.876,20.926Z'></path>
-                            </g>
-                          </g>
-                        </svg>
-                      </Link>
-                    </div>
-                    <h4 className='mb-4 text-sm font-semibold xl:text-base'>
-                      2024.11 ~ 2025.01
-                    </h4>
-                    <div className='z-10 mb-4 rounded border border-light bg-[#092509] bg-opacity-85 p-4 text-end font-medium text-light'>
-                      <p>
-                        이 프로젝트는 사용자가 하루를 어떻게 활용했는지
-                        시각적으로 추적할 수 있는 타이머 서비스입니다. Next.js로
-                        개발되었으며, PWA(Progressive Web App) 기술을 활용해
-                        마치 네이티브 앱처럼 직관적인 사용자 경험을 제공합니다.
-                        또한, EC2 서버를 이용해 안정적으로 배포되었습니다.
-                      </p>
-                    </div>
-                    <div className='flex flex-wrap gap-2'>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                      <div className='text-background rounded-md bg-main px-1 font-semibold'>
-                        Skill
-                      </div>
-                    </div>
-                  </div>
-                  <Image
-                    className='static left-0 h-3/5 w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-110 lg:absolute lg:h-[270px] lg:w-7/12'
-                    src='/images/pj_02.png'
-                    alt='test'
-                    width={400}
-                    height={270}
-                  ></Image>
-                </div>
+              <div className='mb-4 w-full px-4 md:px-12 lg:p-0'>
+                {projectList.map((project, index) => (
+                  <ProjectCard
+                    key={index}
+                    name={project.name}
+                    githubUrl={project.githubUrl}
+                    siteUrl={project.siteUrl}
+                    thumbnail={project.thumbnail}
+                    role={project.role}
+                    period={project.period}
+                    decs={project.decs}
+                    skillStacks={project.skillStacks}
+                    align={index % 2 == 0 ? 'left' : 'right'}
+                  />
+                ))}
               </div>
             </div>
           </div>
