@@ -17,7 +17,7 @@ export const frontend = [
   {
     src: '/svgs/TypeScript.svg',
     alt: 'TypeScript',
-    desc: '타입을 활용하여 명확한 코드를 작성할 수 있으며, 제네릭, 인덱싱, 유틸리티 타입을 사용할 수 있습니다.',
+    desc: '타입을 활용하여 명확한 코드를 작성하여 프로젝트의 안정성을 높일 수 있습니다.',
   },
   {
     src: '/svgs/TailwindCSS-Light.svg',
@@ -32,24 +32,24 @@ export const frontend = [
   {
     src: '/svgs/NextJS-Light.svg',
     alt: 'NextJS',
-    desc: '상황별로 SSG, SSR, CSR 활용과 middleware와 API를 작성할 수 있습니다.',
+    desc: '상황별 SSR, CSR 활용이 가능합니다.',
   },
   {
     src: '/svgs/React-Light.svg',
     alt: 'React',
-    desc: '리액트로 여러 프로젝트를 해봤으며, ContextAPI, useState, useCallBack, useMemo, Suspense를 활용 할 수 있습니다',
+    desc: '리액트로 여러 프로젝트를 진행한 경험이 있으며, 상태 관리를 위해 useState (리액트 기본 훅) 외에도 zustand, react-query와 같은 라이브러리를 활용할 수 있습니다.',
   },
 ];
 export const backend = [
   {
     src: '/svgs/Python-Light.svg',
     alt: 'Python',
-    desc: '예외 처리를 사용한 안정적인 코드 구축, 라이브러리를 활용한 업무 자동화',
+    desc: '예외 처리를 사용한 안정적인 코드 구축, 라이브러리를 활용한 업무 자동화 경험이 있습니다.',
   },
   {
     src: '/svgs/Django.svg',
     alt: 'Django',
-    desc: 'Django Rest FrameWork를 이용한 백엔드 API 서버 구축',
+    desc: 'Django Rest FrameWork를 이용한 백엔드 API 서버 구축한 경험이 있습니다.',
   },
 ];
 export const database = [
@@ -68,12 +68,12 @@ export const etc = [
   {
     src: '/svgs/aws-ec2.svg',
     alt: 'EC2',
-    desc: 'Django[gunicorn + nginx]와 NextJS[pm2 + nginx]를 EC2에 배포해 본 경험이 있습니다.',
+    desc: 'Django (Gunicorn + Nginx)와 Next.js (PM2 + Nginx)를 EC2에 배포한 경험이 있으며, Gunicorn은 Python 애플리케이션을 위한 WSGI 서버로, PM2는 Node.js 애플리케이션을 위한 프로세스 매니저로 사용하였습니다.',
   },
   {
     src: '/svgs/aws-s3.svg',
     alt: 'S3',
-    desc: 'S3를 정적파일 저장소로 사용해 본 경험이 있습니다.',
+    desc: 'AWS S3를 정적 파일 저장소로 활용하여 이미지 저장 및 관리 등 다양한 파일 처리 작업한 경험이 있습니다.',
   },
   {
     src: '/svgs/Vercel-Light.svg',
