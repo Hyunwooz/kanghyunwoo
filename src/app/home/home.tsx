@@ -92,7 +92,7 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const sections = document.querySelectorAll('section'); // 모든 섹션 가져오기
+    const allSections = document.querySelectorAll('section'); // 모든 섹션 가져오기
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -102,10 +102,10 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.7 }, // 90% 이상 보이면 트리거
+      { threshold: 0.2, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
     );
 
-    sections.forEach((section) => {
+    allSections.forEach((section) => {
       observer.observe(section);
     });
 
@@ -224,29 +224,6 @@ const Home = () => {
           </div>
         </section>
         <section
-          id='Skills'
-          className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
-        >
-          <div
-            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
-              isClicked
-                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
-                : 'translate-y-[30%] opacity-0'
-            }`}
-          >
-            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
-              <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
-              >
-                Skills
-              </h2>
-              <div className='w-full px-4 md:px-12 lg:p-0'>
-                <SkillSection />
-              </div>
-            </div>
-          </div>
-        </section>
-        <section
           id='Experience'
           className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
@@ -281,8 +258,31 @@ const Home = () => {
           </div>
         </section>
         <section
-          id='Projects'
+          id='Skills'
           className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
+        >
+          <div
+            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
+              isClicked
+                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
+                : 'translate-y-[30%] opacity-0'
+            }`}
+          >
+            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
+              <h2
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+              >
+                Skills
+              </h2>
+              <div className='w-full px-4 md:px-12 lg:p-0'>
+                <SkillSection />
+              </div>
+            </div>
+          </div>
+        </section>
+        <section
+          id='Projects'
+          className='relative min-h-[100vh] w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
           <div
             className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
