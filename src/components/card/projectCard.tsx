@@ -40,7 +40,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
     <div className='mb-10'>
       <div className={alignStyle}>
         <div
-          className={`z-10 flex h-2/5 w-full flex-col ${align === 'right' ? 'items-end' : 'items-start'} justify-start rounded-md lg:h-[270px] lg:w-7/12`}
+          className={`z-10 flex w-full flex-col ${align === 'right' ? 'items-end' : 'items-start'} h-[300px] justify-start rounded-md lg:w-7/12`}
         >
           <div className='mb-1 flex items-center gap-1'>
             <h3 className='mr-2 block text-2xl font-semibold md:text-3xl'>
@@ -78,7 +78,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
         </div>
         <Image
-          className={`static ${align === 'right' ? 'left-0' : 'right-0'} bottom-0 mb-4 h-3/5 w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-105 lg:absolute lg:mb-0 lg:h-[270px] lg:w-7/12`}
+          className={`static ${align === 'right' ? 'left-0' : 'right-0'} bottom-0 mb-4 h-[300px] w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-105 lg:absolute lg:mb-0 lg:w-7/12`}
           src={thumbnail}
           alt={name}
           width={400}
