@@ -65,8 +65,8 @@ export const projectList = [
   },
   {
     name: 'SNS Speed',
-    siteUrl: 'https://s-g.kr',
-    thumbnail: '/images/pj_02.png',
+    siteUrl: 'https://snsspeed.com/',
+    thumbnail: '/images/pj_speed.png',
     role: '프론트 1인 개발',
     period: '2024.07 ~ 2024.08',
     decs: 'Figma를 이용하여 디자인, NextJS와 TypeScript를 사용하여 개발하였고, EC2 서버를 이용해 안정적으로 배포하였습니다. Github Action를 이용해 CI/CD 파이프라인을 구축하였습니다.',
