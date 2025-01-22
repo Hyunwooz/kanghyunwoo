@@ -37,7 +37,7 @@ export const frontend = [
   {
     src: '/svgs/React-Light.svg',
     alt: 'React',
-    desc: '리액트로 여러 프로젝트를 진행한 경험이 있으며, 상태 관리를 위해 useState (리액트 기본 훅) 외에도 zustand, react-query와 같은 라이브러리를 활용할 수 있습니다.',
+    desc: '리액트로 여러 프로젝트를 진행한 경험이 있으며, 상태 관리를 위해 zustand, react-query와 같은 라이브러리를 활용할 수 있습니다.',
   },
 ];
 export const backend = [
@@ -68,7 +68,7 @@ export const etc = [
   {
     src: '/svgs/aws-ec2.svg',
     alt: 'EC2',
-    desc: 'Django (Gunicorn + Nginx)와 Next.js (PM2 + Nginx)를 EC2에 배포한 경험이 있으며, Gunicorn은 Python 애플리케이션을 위한 WSGI 서버로, PM2는 Node.js 애플리케이션을 위한 프로세스 매니저로 사용하였습니다.',
+    desc: 'Django와 Next.js로 제작한 다수의 프로젝트들을 EC2에 배포한 경험이 있습니다.',
   },
   {
     src: '/svgs/aws-s3.svg',

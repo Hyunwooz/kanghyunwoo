@@ -10,30 +10,13 @@ import { sectionList } from '@/data/section';
 import { textParts } from '@/data/textParts';
 import { experienceList } from '@/data/experience';
 import { projectList } from '@/data/project';
+import { aboutDatas } from '@/data/about';
 
 // 컴포넌트
 import SkillSection from '@/components/skill/skillSection';
 import AboutCard from '@/components/card/aboutCard';
 import ExperienceCard from '@/components/card/experienceCard';
 import ProjectCard from '@/components/card/projectCard';
-
-const aboutDatas = [
-  {
-    title: '프론트엔드 개발',
-    contents:
-      '비전공자로 웹 개발 공부를 시작한 후, 현재는 프론트엔드 개발을 담당하고 있습니다. 처음에는 Python을 활용해 반복적인 업무를 자동화하며 개발에 흥미를 느꼈고, 그 후 프론트엔드 분야로 관심을 확장하게 되었습니다. 사용자 경험을 최우선으로 고려하며, 직관적이고 효율적인 웹 인터페이스를 구현하는 것에 큰 보람을 느끼고 있습니다.',
-  },
-  {
-    title: '성장에 대한 즐거움',
-    contents:
-      '새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다. 이는 개발에 있어서 성장을 위한 동기가 되어주고 있으며, 점점 더 나은 개발자로 나아가는 과정에서 큰 성취감을 얻고 있습니다.',
-  },
-  {
-    title: '안되면 될 때까지',
-    contents:
-      '프론트엔드 개발을 혼자 진행하고 있습니다. 이 과정에서 모든 것을 스스로 찾아내고 해결해야 했기 때문에, 때론 기능 구현에 며칠이 걸리기도 했습니다. 하지만 이런 과정을 통해 개발에 있어서 "해결할 수 없는 문제는 없다"는 확신을 가지게 되었습니다. 이로써, 자신에게 부여된 책임을 끝까지 완수할 수 있는 끈기를 얻게 되었습니다.',
-  },
-];
 
 const Home = () => {
   const [visibleChars, setVisibleChars] = useState(0);
@@ -102,7 +85,7 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.6, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
+      { threshold: 0.3, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
     );
 
     allSections.forEach((section) => {
@@ -138,121 +121,67 @@ const Home = () => {
         ))}
         <p className='ml-1 animate-blink'>{'|'}</p>
       </div>
-      <main className='3xl:px-[460px] px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px]'>
-        <nav
-          className={`fixed left-0 top-0 z-10 hidden h-screen justify-between pb-[50px] pl-4 pt-[200px] lg:flex lg:flex-col xl:pl-16 xl:pt-[260px] ${
-            isClicked ? 'opacity-100' : 'opacity-0'
-          }`}
-        >
-          <div className='flex flex-col items-start'>
-            {sectionList.map((section, index) => (
-              <div
-                key={index}
-                className={`flex origin-left cursor-pointer items-center border-l-4 py-2 pl-6 text-[16px] font-bold transition-all duration-300 hover:opacity-100 xl:text-[20px] ${
-                  activeSection === section.name ? 'opacity-100' : 'opacity-40'
-                }`}
-                onClick={() => scrollToSection(section.name)}
-              >
-                {section.name}
-              </div>
-            ))}
-          </div>
-          <div className='mt-0 flex flex-col gap-3 pl-4'>
-            <Link
-              href={'https://github.com/hyunwooz'}
-              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='akar-icons:github-fill' width={30} height={30} />
-            </Link>
-            <Link
-              href={'https://www.instagram.com/wooh.dev/'}
-              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='ri:instagram-fill' width={30} height={30} />
-            </Link>
-            <Link
-              href={'https://www.linkedin.com/in/woohyundev/'}
-              className='duration-400 w-[30px] opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='pajamas:linkedin' width={30} height={30} />
-            </Link>
-          </div>
-        </nav>
-        {/* <nav
-          className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:px-12 md:pt-0 lg:fixed lg:top-0 lg:w-[42%] lg:px-0 xl:w-[32%] ${
-            isClicked
-              ? 'translate-y-0 opacity-100 md:translate-y-[64px] lg:translate-y-[78px] xl:translate-y-[94px]'
-              : 'translate-y-[100%] opacity-0 md:translate-y-[210px]'
-          }`}
-        >
-          <h1 className='mb-6 text-5xl font-bold md:text-[60px] xl:mb-8 xl:text-[88px]'>
-            강현우
-          </h1>
-          <p className='mb-2 text-lg font-medium leading-6 text-main md:mb-4 md:text-xl xl:text-[22px]'>
-            웹 애플리케이션에 가치를 더하는 과정에서 큰 보람을 느낍니다.
-          </p>
-          <p className='text-md mb-12 font-medium leading-6 text-[#fffff56e] lg:mb-28 xl:text-[18px]'>
-            사용자 경험을 최적화하고, 인터페이스를 직관적으로 만드는{' '}
-            <strong className='font-bold text-main'>프론트엔드</strong>를
-            담당하고 있습니다. 제 포트폴리오를 방문해 주셔서 진심으로
-            감사드립니다.
-          </p>
+      <nav
+        className={`fixed left-0 top-0 z-10 hidden h-screen justify-between px-4 pb-[50px] pt-[200px] lg:flex lg:flex-col xl:px-16 xl:pt-[260px] ${
+          isClicked ? 'opacity-100' : 'opacity-0'
+        }`}
+      >
+        <div className='flex flex-col items-start'>
           {sectionList.map((section, index) => (
             <div
               key={index}
-              className={`mb-4 hidden w-[200px] cursor-pointer items-center gap-4 hover:opacity-100 lg:flex ${
-                activeSection === section.name ? 'opacity-100' : 'opacity-50'
+              className={`flex origin-left cursor-pointer items-center border-l-4 py-2 pl-6 text-[16px] font-bold transition-all duration-300 hover:opacity-100 xl:text-[20px] ${
+                activeSection === section.name ? 'opacity-100' : 'opacity-40'
               }`}
               onClick={() => scrollToSection(section.name)}
             >
-              <div
-                className={`h-[3px] transition-all duration-300 ease-in-out ${activeSection === section.name ? 'w-[80px]' : 'w-[40px]'} bg-main`}
-              ></div>
-              <p className='text-sm font-bold xl:text-[18px]'>{section.name}</p>
+              {section.name}
             </div>
           ))}
-          <div className='mt-0 flex gap-3 lg:mt-60'>
-            <Link
-              href={'https://github.com/hyunwooz'}
-              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='akar-icons:github-fill' width={30} height={30} />
-            </Link>
-            <Link
-              href={'https://www.instagram.com/wooh.dev/'}
-              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='ri:instagram-fill' width={30} height={30} />
-            </Link>
-            <Link
-              href={'https://www.linkedin.com/in/woohyundev/'}
-              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
-            >
-              <Icon icon='pajamas:linkedin' width={30} height={30} />
-            </Link>
-          </div>
-        </nav> */}
+        </div>
+        <div className='mt-0 flex flex-col items-center'>
+          <Link
+            href={'https://github.com/hyunwooz'}
+            className='duration-400 mb-3 w-[30px] origin-center opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
+            <Icon icon='akar-icons:github-fill' width={30} height={30} />
+          </Link>
+          <Link
+            href={'https://www.instagram.com/wooh.dev/'}
+            className='duration-400 mb-3 w-[30px] origin-center opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
+            <Icon icon='ri:instagram-fill' width={30} height={30} />
+          </Link>
+          <Link
+            href={'https://www.linkedin.com/in/woohyundev/'}
+            className='duration-400 w-[30px] origin-center opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+          >
+            <Icon icon='pajamas:linkedin' width={30} height={30} />
+          </Link>
+          <p className='mt-5 text-xs font-light'>Last Updated 2025/01/22</p>
+        </div>
+      </nav>
+      <main className='px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px] 3xl:px-[460px]'>
         <section
           id='Intro'
-          className={`flex min-h-screen w-full flex-col items-start justify-center transition-all duration-1000 ${isClicked ? 'opacity-100' : 'opacity-0'} pb-10 text-[#fffff56e]`}
+          className={`flex min-h-screen w-full flex-col items-start justify-center transition-all duration-1000 ${isClicked ? 'opacity-100' : 'opacity-0'} px-4 pb-10 text-[#fffff56e]`}
         >
-          <p className='mb-6 text-[20px] font-semibold md:text-[24px] xl:mb-8 xl:text-[30px]'>
-            안녕하세요. 저는 프론트엔드 개발자
+          <p className='mb-4 text-[20px] font-semibold md:text-[24px] lg:mb-8 xl:text-[30px]'>
+            안녕하세요.
           </p>
           <h1 className='mb-6 text-5xl font-bold text-main md:text-[60px] xl:mb-10 xl:text-[108px]'>
             강현우 입니다.
           </h1>
-          <p className='mb-2 text-[18px] font-semibold md:mb-10 md:text-[20px] xl:text-[36px] xl:leading-tight'>
-            저는 웹 애플리케이션에{' '}
+          <p className='mb-2 text-[20px] font-semibold md:mb-10 md:text-[20px] xl:text-[36px] xl:leading-tight'>
+            {/* 저는 웹 애플리케이션에{' '}
             <strong className='font-bold text-main'>가치를 더하는 과정</strong>
             에서 <strong className='font-bold text-main'>큰 보람</strong>을
-            느낍니다.
-          </p>
-          <p className='text-md mb-2 font-medium leading-6 text-[#fffff56e] xl:text-[22px]'>
-            사용자 경험을 최적화하고, 인터페이스를 직관적으로 만드는{' '}
+            느끼고 있습니다.  */}
+            저는 사용자 경험을 최적화하고, 인터페이스를 직관적으로만드는{' '}
             <strong className='font-bold text-main'>프론트엔드</strong>를
             담당하고 있습니다.
           </p>
+          <p className='text-md mb-2 font-medium leading-6 text-[#fffff56e] xl:text-[22px]'></p>
           <p className='text-md mb-20 font-medium leading-6 xl:text-[22px]'>
             제 포트폴리오를 방문해 주셔서 진심으로 감사드립니다.
           </p>
@@ -313,7 +242,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-4xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 xl:text-5xl`}
               >
                 About
               </h2>
@@ -341,7 +270,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-4xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 xl:text-5xl`}
               >
                 Experience
               </h2>
@@ -373,7 +302,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-4xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 xl:text-5xl`}
               >
                 Skills
               </h2>
@@ -394,7 +323,7 @@ const Home = () => {
           >
             <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-4xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 xl:text-5xl`}
               >
                 Projects
               </h2>

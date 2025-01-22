@@ -28,7 +28,7 @@ export const experienceList = [
     decs: 'ESTsoft 주관 백엔드 개발자 과정 1기 부트캠프',
     period: '2023.04 ~ 2023.09',
     works: [
-      'GitHub, Python, Django, Django Restframe Work',
+      'GitHub, Python, Django, DRF',
       'ERD, PostgreSQL, HTML, CSS, JaveScripts',
       'Django 웹 프레임워크 기반 프로젝트 3건 제작',
       'Django 개인 프로젝트 최우수상 수상',
