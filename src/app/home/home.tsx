@@ -13,11 +13,11 @@ import { projectList } from '@/data/project';
 
 // 컴포넌트
 import SkillSection from '@/components/skill/skillSection';
-import IntroCard from '@/components/card/introCard';
+import AboutCard from '@/components/card/aboutCard';
 import ExperienceCard from '@/components/card/experienceCard';
 import ProjectCard from '@/components/card/projectCard';
 
-const introData = [
+const aboutDatas = [
   {
     title: '프론트엔드 개발',
     contents:
@@ -102,7 +102,7 @@ const Home = () => {
           }
         });
       },
-      { threshold: 0.2, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
+      { threshold: 0.6, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
     );
 
     allSections.forEach((section) => {
@@ -138,8 +138,47 @@ const Home = () => {
         ))}
         <p className='ml-1 animate-blink'>{'|'}</p>
       </div>
-      <main className='lg:px-[40px] xl:px-[160px] 2xl:px-[240px]'>
+      <main className='3xl:px-[460px] px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px]'>
         <nav
+          className={`fixed left-0 top-0 z-10 hidden h-screen justify-between pb-[50px] pl-4 pt-[200px] lg:flex lg:flex-col xl:pl-16 xl:pt-[260px] ${
+            isClicked ? 'opacity-100' : 'opacity-0'
+          }`}
+        >
+          <div className='flex flex-col items-start'>
+            {sectionList.map((section, index) => (
+              <div
+                key={index}
+                className={`flex origin-left cursor-pointer items-center border-l-4 py-2 pl-6 text-[16px] font-bold transition-all duration-300 hover:opacity-100 xl:text-[20px] ${
+                  activeSection === section.name ? 'opacity-100' : 'opacity-40'
+                }`}
+                onClick={() => scrollToSection(section.name)}
+              >
+                {section.name}
+              </div>
+            ))}
+          </div>
+          <div className='mt-0 flex flex-col gap-3 pl-4'>
+            <Link
+              href={'https://github.com/hyunwooz'}
+              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='akar-icons:github-fill' width={30} height={30} />
+            </Link>
+            <Link
+              href={'https://www.instagram.com/wooh.dev/'}
+              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='ri:instagram-fill' width={30} height={30} />
+            </Link>
+            <Link
+              href={'https://www.linkedin.com/in/woohyundev/'}
+              className='duration-400 w-[30px] opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='pajamas:linkedin' width={30} height={30} />
+            </Link>
+          </div>
+        </nav>
+        {/* <nav
           className={`z-10 mb-[40px] items-center justify-center px-4 pt-12 text-start transition-all duration-1000 md:px-12 md:pt-0 lg:fixed lg:top-0 lg:w-[42%] lg:px-0 xl:w-[32%] ${
             isClicked
               ? 'translate-y-0 opacity-100 md:translate-y-[64px] lg:translate-y-[78px] xl:translate-y-[94px]'
@@ -192,27 +231,95 @@ const Home = () => {
               <Icon icon='pajamas:linkedin' width={30} height={30} />
             </Link>
           </div>
-        </nav>
+        </nav> */}
+        <section
+          id='Intro'
+          className={`flex min-h-screen w-full flex-col items-start justify-center transition-all duration-1000 ${isClicked ? 'opacity-100' : 'opacity-0'} pb-10 text-[#fffff56e]`}
+        >
+          <p className='mb-6 text-[20px] font-semibold md:text-[24px] xl:mb-8 xl:text-[30px]'>
+            안녕하세요. 저는 프론트엔드 개발자
+          </p>
+          <h1 className='mb-6 text-5xl font-bold text-main md:text-[60px] xl:mb-10 xl:text-[108px]'>
+            강현우 입니다.
+          </h1>
+          <p className='mb-2 text-[18px] font-semibold md:mb-10 md:text-[20px] xl:text-[36px] xl:leading-tight'>
+            저는 웹 애플리케이션에{' '}
+            <strong className='font-bold text-main'>가치를 더하는 과정</strong>
+            에서 <strong className='font-bold text-main'>큰 보람</strong>을
+            느낍니다.
+          </p>
+          <p className='text-md mb-2 font-medium leading-6 text-[#fffff56e] xl:text-[22px]'>
+            사용자 경험을 최적화하고, 인터페이스를 직관적으로 만드는{' '}
+            <strong className='font-bold text-main'>프론트엔드</strong>를
+            담당하고 있습니다.
+          </p>
+          <p className='text-md mb-20 font-medium leading-6 xl:text-[22px]'>
+            제 포트폴리오를 방문해 주셔서 진심으로 감사드립니다.
+          </p>
+          <div className='mt-0 flex gap-3 xl:hidden'>
+            <Link
+              href={'https://github.com/hyunwooz'}
+              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='akar-icons:github-fill' width={30} height={30} />
+            </Link>
+            <Link
+              href={'https://www.instagram.com/wooh.dev/'}
+              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='ri:instagram-fill' width={30} height={30} />
+            </Link>
+            <Link
+              href={'https://www.linkedin.com/in/woohyundev/'}
+              className='duration-400 opacity-60 transition-transform hover:scale-125 hover:opacity-100'
+            >
+              <Icon icon='pajamas:linkedin' width={30} height={30} />
+            </Link>
+          </div>
+          <div
+            onClick={() => {
+              scrollToSection('About');
+              setIsClicked(true);
+            }}
+            className='absolute bottom-6 left-0 flex w-full cursor-pointer flex-col items-center justify-center text-xs font-bold md:mb-4 md:text-xl'
+          >
+            <svg
+              xmlns='http://www.w3.org/2000/svg'
+              width='48'
+              height='48'
+              viewBox='0 0 48 32'
+              className='animate-bounce-updown'
+            >
+              <path
+                fill='none'
+                stroke='#fff'
+                strokeLinecap='round'
+                strokeLinejoin='round'
+                strokeWidth='3'
+                d='M36 18L24 30L12 18'
+              />
+            </svg>
+            <p>Scroll</p>
+          </div>
+        </section>
         <section
           id='About'
           className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
           <div
-            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
-              isClicked
-                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
-                : 'translate-y-[30%] opacity-0'
+            className={`transition-all duration-1000 ${
+              isClicked ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
+            <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 About
               </h2>
-              <div className='w-full px-4 md:px-12 lg:p-0'>
-                {introData.map((data, index) => (
-                  <IntroCard
+              <div className='w-full'>
+                {aboutDatas.map((data, index) => (
+                  <AboutCard
                     title={data.title}
                     key={index}
                     contents={data.contents}
@@ -228,19 +335,17 @@ const Home = () => {
           className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
           <div
-            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
-              isClicked
-                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
-                : 'translate-y-[30%] opacity-0'
+            className={`transition-all duration-1000 ${
+              isClicked ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
+            <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Experience
               </h2>
-              <div className='w-full px-4 md:px-12 lg:p-0'>
+              <div className='w-full'>
                 {experienceList.map((exp, index) => (
                   <ExperienceCard
                     key={index}
@@ -250,7 +355,7 @@ const Home = () => {
                     period={exp.period}
                     skillStacks={exp.skillStacks}
                     works={exp.works}
-                    styleClasses='mb-10'
+                    styleClasses='mb-20 '
                   />
                 ))}
               </div>
@@ -262,19 +367,17 @@ const Home = () => {
           className='relative w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
           <div
-            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
-              isClicked
-                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
-                : 'translate-y-[30%] opacity-0'
+            className={`transition-all duration-1000 ${
+              isClicked ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
+            <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Skills
               </h2>
-              <div className='w-full px-4 md:px-12 lg:p-0'>
+              <div className='w-full'>
                 <SkillSection />
               </div>
             </div>
@@ -285,19 +388,17 @@ const Home = () => {
           className='relative min-h-[100vh] w-full pb-2 pt-8 md:pb-[40px] md:pt-[50px]'
         >
           <div
-            className={`flex items-center justify-end text-start transition-all duration-1000 md:justify-end ${
-              isClicked
-                ? 'opacity-100 md:translate-y-[16px] lg:translate-y-[30px] xl:translate-y-[50px]'
-                : 'translate-y-[30%] opacity-0'
+            className={`transition-all duration-1000 ${
+              isClicked ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <div className='w-full px-0 md:mt-0 lg:w-1/2'>
+            <div className='w-full px-0 md:mt-0'>
               <h2
-                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background p-4 text-3xl font-bold md:top-[-16px] md:px-12 md:py-4 lg:static lg:mb-16 lg:border-l-8 lg:p-0 lg:px-4 lg:text-4xl xl:text-5xl`}
+                className={`sticky top-0 z-20 mb-[30px] w-full border-0 border-main bg-background py-4 text-3xl font-bold lg:static lg:mb-16 lg:border-l-8 lg:px-4 lg:text-4xl xl:text-5xl`}
               >
                 Projects
               </h2>
-              <div className='mb-4 w-full px-4 md:px-12 lg:p-0'>
+              <div className='mb-4 w-full'>
                 {projectList.map((project, index) => (
                   <ProjectCard
                     key={index}
@@ -309,6 +410,8 @@ const Home = () => {
                     period={project.period}
                     decs={project.decs}
                     skillStacks={project.skillStacks}
+                    contribution={project.contribution}
+                    done={project.done}
                     align={index % 2 == 0 ? 'left' : 'right'}
                   />
                 ))}

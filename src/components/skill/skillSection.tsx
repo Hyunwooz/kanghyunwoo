@@ -34,8 +34,8 @@ export default function SkillSection() {
           </button>
         ))}
       </nav>
-      <div className='mb-8'>
-        <div className='flex flex-col gap-4'>
+      <div className='mb-8 min-h-[220px] py-2'>
+        <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
           {skillSetList[skillSet].map((skill, index) => (
             <SkillCard
               key={index}
