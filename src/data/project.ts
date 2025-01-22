@@ -5,7 +5,10 @@ export const projectList = [
     siteUrl: 'https://www.mombo.site/',
     thumbnail: '/images/pj_mombo.png',
     role: '기획 & 백엔드',
-    contribution: '기획 20% & 백엔드 100%',
+    contribution: [
+      { type: '기획', percent: 20 },
+      { type: '백엔드', percent: 100 },
+    ],
     period: '2024.09 ~ 2025.01',
     decs: '임산부 전용 유해 성분 분석 서비스',
     done: [
@@ -19,7 +22,10 @@ export const projectList = [
     siteUrl: 'https://s-g.kr',
     thumbnail: '/images/pj_sng.png',
     role: '디자인 & 프론트',
-    contribution: '프론트 100% & 디자인 100%',
+    contribution: [
+      { type: '프론트', percent: 100 },
+      { type: '디자인', percent: 100 },
+    ],
     period: '2024.12 ~ 2024.12',
     decs: '회사 홈페이지 프로젝트',
     done: [
@@ -45,7 +51,7 @@ export const projectList = [
     siteUrl: 'https://bstation.kr/',
     thumbnail: '/images/pj_bstation.png',
     role: '프론트',
-    contribution: '프론트 100%',
+    contribution: [{ type: '프론트', percent: 100 }],
     period: '2024.03 ~ 현재',
     decs: '온라인 비상주 사무실 서비스',
     done: [
@@ -68,7 +74,7 @@ export const projectList = [
     name: 'Bstation Dashboard',
     thumbnail: '/images/pj_bstation_admin.png',
     role: '프론트엔드',
-    contribution: '프론트 100%',
+    contribution: [{ type: '프론트', percent: 100 }],
     period: '2024.03 ~ 현재',
     decs: '비상주 오피스 관리자 전용 백오피스 서비스',
     done: [
@@ -92,7 +98,7 @@ export const projectList = [
     siteUrl: 'https://snsspeed.com/',
     thumbnail: '/images/pj_speed.png',
     role: '프론트',
-    contribution: '프론트 100%',
+    contribution: [{ type: '프론트', percent: 100 }],
     period: '2024.07 ~ 2024.08',
     decs: 'SNS 마케팅 서비스',
     done: [
@@ -116,7 +122,7 @@ export const projectList = [
     siteUrl: 'https://geesik.com/',
     thumbnail: '/images/pj_geesikpro.png',
     role: '프론트',
-    contribution: '프론트 100%',
+    contribution: [{ type: '프론트', percent: 100 }],
     period: '2024.01 ~ 2024.03',
     decs: '지식인 마케팅 서비스',
     done: [
@@ -140,7 +146,10 @@ export const projectList = [
     githubUrl: 'https://github.com/Hyunwooz/Mudig_BE',
     thumbnail: '/images/pj_mudig.jpg',
     role: '기획 & 백엔드 총괄',
-    contribution: '기획 50% & 백엔드 25%',
+    contribution: [
+      { type: '기획', percent: 50 },
+      { type: '백엔드', percent: 25 },
+    ],
     period: '2023.11 ~ 2024.01',
     decs: '사용자들이 새로운 음악을 발견하고, 공유할 수 있는 플랫폼',
     done: [
@@ -165,7 +174,7 @@ export const projectList = [
       'https://ridibooks.com/books/2773000086?_s=search&_q=%EA%B7%B8%EB%9F%AC%EB%8B%88%EA%B9%8C&_rdt_sid=SearchBookList',
     thumbnail: '/images/pj_book.png',
     role: '책 집필 프로젝트',
-    contribution: '집필 10%',
+    contribution: [{ type: '집필', percent: 10 }],
     period: '2023.08 ~ 2023.10',
     decs: '[E-Book] 그러니까, 털린거다 : 주니어 개발자 보안 입문서',
     done: [
@@ -181,7 +190,7 @@ export const projectList = [
     githubUrl: 'https://github.com/Hyunwooz/OrGo',
     thumbnail: '/images/pj_orgo.png',
     role: '팀 리더 & 백엔드',
-    contribution: '백엔드 25%',
+    contribution: [{ type: '백엔드', percent: 25 }],
     period: '2023.08 ~ 2023.09',
     decs: '교육생들을 위한 커뮤니티 서비스',
     done: [
@@ -207,7 +216,7 @@ export const projectList = [
     githubUrl: 'https://github.com/Hyunwooz/DjangoGptProject_BE',
     thumbnail: '/images/pj_agas.png',
     role: '개인 프로젝트',
-    contribution: '전체 100%',
+    contribution: [{ type: '개인', percent: 100 }],
     period: '2023.07 ~ 2023.08',
     decs: 'ChatGPT와 DRF를 이용한 광고 카피 생성 서비스',
     done: [

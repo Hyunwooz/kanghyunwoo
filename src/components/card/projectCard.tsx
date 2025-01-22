@@ -3,13 +3,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
 
+interface ContributionType {
+  type: string;
+  percent: number;
+}
+
 interface ProjectCardProps {
   name: string;
   githubUrl?: string;
   siteUrl?: string;
   thumbnail: string;
   role: string;
-  contribution: string;
+  contribution: ContributionType[];
   period: string;
   decs: string;
   done: string[];
@@ -74,11 +79,15 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
               <></>
             )}
           </div>
-          <h4 className='mb-3 text-sm font-medium xl:text-base'>{decs}</h4>
+          <h4 className='text-sm font-medium xl:text-base'>{decs}</h4>
           <h4 className='mb-3 text-sm font-medium xl:text-base'>{period}</h4>
           <h4 className='text-base font-semibold xl:text-lg'>{role}</h4>
-          <h4 className='mb-2 text-sm font-medium xl:text-base'>
-            {contribution}
+          <h4 className='mb-2 flex gap-1 text-sm font-medium xl:text-base'>
+            {contribution.map((data, index) => (
+              <div key={index}>
+                {data.type} {data.percent}%
+              </div>
+            ))}
           </h4>
           <div
             className={`z-10 mb-4 list-inside rounded border border-light bg-[#092509] bg-opacity-85 p-4 font-medium text-light`}
