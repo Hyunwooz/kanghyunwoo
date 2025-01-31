@@ -92,7 +92,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
           <div
             className={`z-10 mb-4 list-inside rounded border border-light bg-[#092509] bg-opacity-85 p-4 font-medium text-light`}
           >
-            <p>내 역할</p>
             {done.map((work, index) => (
               <li key={index}>{work}</li>
             ))}

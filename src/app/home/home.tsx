@@ -158,7 +158,7 @@ const Home = () => {
           >
             <Icon icon='pajamas:linkedin' width={30} height={30} />
           </Link>
-          <p className='mt-5 text-xs font-light'>Last Updated 2025/01/22</p>
+          <p className='mt-5 text-xs font-light'>Last Updated 2025/01/31</p>
         </div>
       </nav>
       <main className='px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px] 3xl:px-[460px]'>
@@ -172,12 +172,14 @@ const Home = () => {
           <h1 className='mb-6 text-5xl font-bold text-main md:text-[60px] xl:mb-10 xl:text-[108px]'>
             강현우 입니다.
           </h1>
-          <p className='mb-2 text-[20px] font-semibold md:mb-10 md:text-[20px] xl:text-[36px] xl:leading-tight'>
+          <p className='text-[20px] font-semibold md:text-[20px] xl:text-[36px] xl:leading-tight'>
             {/* 저는 웹 애플리케이션에{' '}
             <strong className='font-bold text-main'>가치를 더하는 과정</strong>
             에서 <strong className='font-bold text-main'>큰 보람</strong>을
             느끼고 있습니다.  */}
-            저는 사용자 경험을 최적화하고, 인터페이스를 직관적으로만드는{' '}
+            저는 사용자 경험을 최적화하고, 인터페이스를 직관적으로만드는
+          </p>
+          <p className='mb-2 text-[20px] font-semibold md:mb-10 md:text-[20px] xl:text-[36px] xl:leading-tight'>
             <strong className='font-bold text-main'>프론트엔드</strong>를
             담당하고 있습니다.
           </p>
