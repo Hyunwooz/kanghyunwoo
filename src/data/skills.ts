@@ -68,12 +68,12 @@ export const etc = [
   {
     src: '/svgs/aws-ec2.svg',
     alt: 'EC2',
-    desc: 'Django와 Next.js로 제작한 다수의 프로젝트들을 EC2에 배포한 경험이 있습니다.',
+    desc: 'Django와 Next.js로 개발한 여러 프로젝트를 EC2에 배포한 경험이 있습니다',
   },
   {
     src: '/svgs/aws-s3.svg',
     alt: 'S3',
-    desc: 'AWS S3를 정적 파일 저장소로 활용하여 이미지 저장 및 관리 등 다양한 파일 처리 작업한 경험이 있습니다.',
+    desc: 'AWS S3를 정적 파일 저장소로 활용하여 이미지 저장 및 다양한 파일을 관리한 경험이 있습니다.',
   },
   {
     src: '/svgs/Vercel-Light.svg',
