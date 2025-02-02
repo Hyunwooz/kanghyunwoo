@@ -1,6 +1,6 @@
 'use client';
 
-import Home from './home/home';
+import Home from '../components/containers/home/home';
 
 const App = () => {
   return <Home />;
