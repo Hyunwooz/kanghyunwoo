@@ -1,9 +1,15 @@
 'use client';
 
-import Home from '../components/containers/home/home';
+import Home from '../components/containers/home';
+import Intro from '@/components/containers/Intro';
 
 const App = () => {
-  return <Home />;
+  return (
+    <>
+      <Intro />
+      <Home />
+    </>
+  );
 };
 
 export default App;
