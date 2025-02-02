@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 
 // 스타일링
-import './globals.css';
+import '../styles/globals.css';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',

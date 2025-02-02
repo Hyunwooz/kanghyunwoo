@@ -18,29 +18,17 @@ import AboutCard from '@/components/card/aboutCard';
 import ExperienceCard from '@/components/card/experienceCard';
 import ProjectCard from '@/components/card/projectCard';
 
+// 상수
+
+import { cssLogo1, cssLogo2 } from '@/constants/cssLogo';
+import { cssRule, cssRule2, cssRule3 } from '@/constants/cssRule';
+
 const Home = () => {
   const [visibleChars, setVisibleChars] = useState(0);
   const [isClicked, setIsClicked] = useState(false);
   const [activeSection, setActiveSection] = useState('');
 
   useEffect(() => {
-    const cssRule = 'font-size:16px; font-family:Nanum Gothic';
-    const cssRule2 =
-      'font-size:24px; font-family:Nanum Gothic; font-weight: 600; color: #12372A';
-    const cssRule3 =
-      'font-size:18px; font-family:Nanum Gothic; font-weight: 600;';
-    const cssLogo1 =
-      'color:#12372A;' +
-      'font-size: 60px;' +
-      'font-weight: bold;' +
-      'letter-space:-1px;' +
-      'font-family:Tahoma,Arial,sans-serif';
-    const cssLogo2 =
-      'color:#436850;' +
-      'font-size: 60px;' +
-      'font-weight: bold;' +
-      'letter-space:-1px;' +
-      'font-family:Tahoma,Arial,sans-serif';
     if (window.console != undefined) {
       setTimeout(
         console.log.bind(console, '%cWooh%cDev', cssLogo1, cssLogo2),
