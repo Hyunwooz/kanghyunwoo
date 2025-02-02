@@ -2,8 +2,9 @@
 
 import { useState } from 'react';
 import { frontend, backend, database, etc } from '@/data/skills';
-import SkillCard from './skillCard';
+import SkillCard from '../../card/skillCard';
 import { SkillCardProps } from '@/shared/types/skills';
+import SectionContainer from '../sectionContainer';
 
 type SkillSetKey = 'Front-End' | 'Back-End' | 'DataBase' | 'ETC';
 
@@ -14,12 +15,13 @@ const skillSetList: Record<SkillSetKey, SkillCardProps[]> = {
   DataBase: database,
   ETC: etc,
 };
-export default function SkillSection() {
+
+const SkillSection = () => {
   const [skillSet, setSkillSet] = useState<SkillSetKey>('Front-End');
 
   return (
-    <div>
-      <nav className='mb-8 flex gap-2 md:mb-8 md:gap-2 lg:gap-4 xl:gap-10'>
+    <SectionContainer sectionTitle='Skills'>
+      <div className='mb-8 flex gap-2 md:mb-8 md:gap-2 lg:gap-4 xl:gap-10'>
         {skillTitle.map((title, index) => (
           <button
             key={index}
@@ -33,7 +35,7 @@ export default function SkillSection() {
             {title}
           </button>
         ))}
-      </nav>
+      </div>
       <div className='mb-8 min-h-[220px] py-2'>
         <div className='grid grid-cols-1 gap-4 lg:grid-cols-2'>
           {skillSetList[skillSet].map((skill, index) => (
@@ -46,6 +48,8 @@ export default function SkillSection() {
           ))}
         </div>
       </div>
-    </div>
+    </SectionContainer>
   );
-}
+};
+
+export default SkillSection;
