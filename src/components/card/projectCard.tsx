@@ -2,6 +2,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import { SkillBadge } from '../badge/skillBadge';
 
 interface ContributionType {
   type: string;
@@ -22,7 +23,7 @@ interface ProjectCardProps {
   align: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({
+const ProjectCard = ({
   name,
   siteUrl,
   githubUrl,
@@ -34,7 +35,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   skillStacks,
   align,
   done,
-}) => {
+}: ProjectCardProps) => {
   const mergeStyle = () => {
     if (align === 'right') {
       return 'lg:flex-row-reverse';
@@ -109,12 +110,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         className={`mt-4 flex flex-wrap justify-start gap-2 ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
       >
         {skillStacks.map((stack, index) => (
-          <div
-            key={index}
-            className='rounded-md bg-main px-1 font-semibold text-background'
-          >
-            {stack}
-          </div>
+          <SkillBadge key={index} title={stack} />
         ))}
       </div>
     </div>

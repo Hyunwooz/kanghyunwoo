@@ -1,4 +1,4 @@
-import { ExperienceSkillBadge } from '../badge/skillBadge';
+import { SkillBadge } from '../badge/skillBadge';
 
 interface ExperienceCardProps {
   name: string;
@@ -10,7 +10,7 @@ interface ExperienceCardProps {
   styleClasses?: string;
 }
 
-const ExperienceCard: React.FC<ExperienceCardProps> = ({
+const ExperienceCard = ({
   name,
   decs,
   role = '',
@@ -18,7 +18,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
   works,
   skillStacks,
   styleClasses,
-}) => {
+}: ExperienceCardProps) => {
   return (
     <div className={styleClasses}>
       <h3 className='mb-1 block text-2xl font-semibold md:text-4xl lg:mb-3'>
@@ -39,7 +39,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
           </div>
           <div className='mt-6 hidden flex-wrap gap-x-1 gap-y-2 lg:flex'>
             {skillStacks.map((value, index) => (
-              <ExperienceSkillBadge key={index} title={value} />
+              <SkillBadge key={index} title={value} />
             ))}
           </div>
         </div>
@@ -53,7 +53,7 @@ const ExperienceCard: React.FC<ExperienceCardProps> = ({
       </div>
       <div className='mt-6 flex flex-wrap gap-x-1 gap-y-2 lg:hidden'>
         {skillStacks.map((value, index) => (
-          <ExperienceSkillBadge key={index} title={value} />
+          <SkillBadge key={index} title={value} />
         ))}
       </div>
     </div>

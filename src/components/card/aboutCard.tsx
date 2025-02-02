@@ -1,8 +1,9 @@
-const AboutCard: React.FC<{
+interface AboutCardProps {
   title: string;
   contents: string;
-  index: number;
-}> = ({ title, contents }) => {
+}
+
+const AboutCard = ({ title, contents }: AboutCardProps) => {
   return (
     <>
       <h3 className='mb-4 rounded bg-main px-3 py-1 text-[22px] font-semibold text-background md:text-[26px] xl:text-[32px]'>
