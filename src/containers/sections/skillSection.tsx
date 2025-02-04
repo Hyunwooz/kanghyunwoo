@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { frontend, backend, database, etc } from '@/data/skills';
-import SkillCard from '../../card/skillCard';
+import SkillCard from '@/components/card/skillCard';
 import { SkillCardProps } from '@/shared/types/skills';
 import SectionContainer from '../sectionContainer';
 

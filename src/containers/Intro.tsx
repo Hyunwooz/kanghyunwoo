@@ -18,13 +18,15 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className='fixed z-20 flex h-screen w-full items-center justify-center'>
+    <div
+      className={`fixed z-10 flex h-screen w-full items-center justify-center bg-background transition-all duration-1000 ${
+        isClicked
+          ? 'translate-y-[-100%] opacity-0'
+          : 'translate-y-0 text-xl opacity-100'
+      }`}
+    >
       <div
-        className={`flex w-full cursor-pointer items-center justify-center pb-32 font-bold transition-all duration-1000 ${
-          isClicked
-            ? 'text-md translate-y-[-100%] opacity-0 md:text-2xl'
-            : 'translate-y-0 text-xl opacity-100 sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
-        }`}
+        className={`flex w-full cursor-pointer items-center justify-center pb-32 font-bold sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl`}
         onClick={() => setIsClicked(true)}
       >
         {textParts.map((part, index) => (

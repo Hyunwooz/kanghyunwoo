@@ -1,7 +1,7 @@
 'use client';
 
-import Home from '@/components/containers/home';
-import Intro from '@/components/containers/Intro';
+import Home from '@/containers/home';
+import Intro from '@/containers/Intro';
 
 const App = () => {
   return (

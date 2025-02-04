@@ -11,7 +11,7 @@ import AboutSection from './sections/aboutSection';
 import ExperienceSection from './sections/experienceSection';
 import SkillSection from './sections/skillSection';
 import ProjectSection from './sections/projectSection';
-import LinkIconMenu from '../linkIconMenu';
+import LinkIconMenu from '@/components/linkIconMenu';
 
 import { cssLogo1, cssLogo2 } from '@/constants/cssLogo';
 import { cssRule, cssRule2, cssRule3 } from '@/constants/cssRule';
