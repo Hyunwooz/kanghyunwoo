@@ -1,6 +1,7 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import SideBar from '@/components/sideBar';
 
 // 스타일링
 import '../styles/globals.css';
@@ -56,6 +57,7 @@ const RootLayout = ({
   return (
     <html lang='ko'>
       <body className={`${pretendard.className} bg-background text-main`}>
+        <SideBar />
         {children}
       </body>
     </html>
