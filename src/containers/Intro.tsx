@@ -9,11 +9,11 @@ const Intro = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setVisibleChars((prev) => {
-        if (prev < textParts.length) return prev + 1; // 글자 하나씩 추가
-        clearInterval(interval); // 모든 글자가 표시되면 멈춤
+        if (prev < textParts.length) return prev + 1;
+        clearInterval(interval);
         return prev;
       });
-    }, 100); // 100ms 간격으로 글자 표시
+    }, 100);
     return () => clearInterval(interval);
   }, []);
 
@@ -26,7 +26,7 @@ const Intro = () => {
       }`}
     >
       <div
-        className={`flex w-full cursor-pointer items-center justify-center pb-32 font-bold sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl`}
+        className={`flex w-full translate-y-[-40%] cursor-pointer items-center justify-center font-bold sm:text-3xl md:text-4xl xl:text-6xl`}
         onClick={() => setIsClicked(true)}
       >
         {textParts.map((part, index) => (
