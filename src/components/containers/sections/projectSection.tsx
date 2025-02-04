@@ -4,7 +4,7 @@ import ProjectCard from '@/components/card/projectCard';
 
 const ProjectSection = () => {
   return (
-    <SectionContainer sectionTitle='Experience'>
+    <SectionContainer sectionTitle='Projects'>
       {projectList.map((project, index) => (
         <ProjectCard
           key={index}

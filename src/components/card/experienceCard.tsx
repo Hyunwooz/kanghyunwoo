@@ -30,10 +30,8 @@ const ExperienceCard = ({
       <div className='flex flex-col gap-4 md:flex-row md:justify-between md:gap-0'>
         <div className='flex w-full flex-col items-start justify-between gap-4 md:w-5/12 lg:pb-3 xl:w-1/2'>
           <div className='flex gap-2 lg:flex-col lg:gap-0'>
-            {role ? (
+            {role && (
               <h4 className='text-sm font-bold lg:mb-2 xl:text-lg'>{role}</h4>
-            ) : (
-              <></>
             )}
             <p className='text-sm font-semibold xl:text-base'>{period}</p>
           </div>
