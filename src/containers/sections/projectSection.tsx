@@ -18,6 +18,7 @@ const ProjectSection = () => {
           skillStacks={project.skillStacks}
           contribution={project.contribution}
           done={project.done}
+          mainUrl={project.mainUrl}
           align={index % 2 == 0 ? 'left' : 'right'}
         />
       ))}

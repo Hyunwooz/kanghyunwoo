@@ -14,6 +14,7 @@ interface ProjectCardProps {
   githubUrl?: string;
   siteUrl?: string;
   thumbnail: string;
+  mainUrl?: string;
   role: string;
   contribution: ContributionType[];
   period: string;
@@ -35,6 +36,7 @@ const ProjectCard = ({
   skillStacks,
   align,
   done,
+  mainUrl,
 }: ProjectCardProps) => {
   const mergeStyle = () => {
     if (align === 'right') {
@@ -56,8 +58,7 @@ const ProjectCard = ({
             <h3 className='mr-2 block text-2xl font-semibold md:text-3xl'>
               {name}
             </h3>
-
-            {siteUrl ? (
+            {siteUrl && (
               <Link
                 href={siteUrl}
                 target='_blank'
@@ -65,10 +66,8 @@ const ProjectCard = ({
               >
                 <Icon icon='akar-icons:link-out' width={20} height={20} />
               </Link>
-            ) : (
-              <></>
             )}
-            {githubUrl ? (
+            {githubUrl && (
               <Link
                 href={githubUrl}
                 target='_blank'
@@ -76,8 +75,6 @@ const ProjectCard = ({
               >
                 <Icon icon='akar-icons:github-fill' width={20} height={20} />
               </Link>
-            ) : (
-              <></>
             )}
           </div>
           <h4 className='text-sm font-medium xl:text-base'>{decs}</h4>
@@ -98,13 +95,25 @@ const ProjectCard = ({
             ))}
           </div>
         </div>
-        <Image
-          className={`static ${align === 'right' ? 'left-0' : 'right-0'} bottom-0 mb-4 h-[340px] w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-105 lg:absolute lg:mb-0 lg:w-3/5`}
-          src={thumbnail}
-          alt={name}
-          width={400}
-          height={270}
-        ></Image>
+        {mainUrl ? (
+          <Link href={mainUrl} target='_blank'>
+            <Image
+              className={`static ${align === 'right' ? 'left-0' : 'right-0'} bottom-0 mb-4 h-[340px] w-full cursor-pointer rounded-md border object-cover transition-all duration-300 hover:scale-105 lg:absolute lg:mb-0 lg:w-3/5`}
+              src={thumbnail}
+              alt={name}
+              width={400}
+              height={270}
+            ></Image>
+          </Link>
+        ) : (
+          <Image
+            className={`static ${align === 'right' ? 'left-0' : 'right-0'} bottom-0 mb-4 h-[340px] w-full rounded-md border object-cover transition-all duration-300 lg:absolute lg:mb-0 lg:w-3/5`}
+            src={thumbnail}
+            alt={name}
+            width={400}
+            height={270}
+          ></Image>
+        )}
       </div>
       <div
         className={`mt-4 flex flex-wrap justify-start gap-2 ${align === 'right' ? 'lg:justify-end' : 'lg:justify-start'}`}
