@@ -12,6 +12,9 @@ module.exports = {
         medium: '#436850',
         main: '#FFFFF5',
         background: '#12372A',
+        tagColor: '#66d9ed',
+        funcColor: '#6de58b',
+        closeColor: '#BB77FF',
       },
       animation: {
         'bounce-updown': 'bounce-updown 1s infinite ease-in-out',
