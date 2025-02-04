@@ -18,27 +18,29 @@ const Intro = () => {
   }, []);
 
   return (
-    <div
-      className={`fixed top-0 z-20 flex h-screen w-full items-center justify-center pb-36 font-bold transition-all duration-1000 ${
-        isClicked
-          ? 'text-md cursor-normal translate-y-[-100%] opacity-0 md:text-2xl'
-          : 'translate-y-0 cursor-pointer text-xl opacity-100 sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
-      }`}
-      onClick={() => setIsClicked(true)}
-    >
-      {textParts.map((part, index) => (
-        <span
-          key={index}
-          className={`inline-block ${
-            index < visibleChars
-              ? 'max-w-full opacity-100'
-              : 'max-w-0 opacity-0'
-          } ${part.color}`}
-        >
-          {part.content === ' ' ? '\u00A0' : part.content}
-        </span>
-      ))}
-      <p className='ml-1 animate-blink'>{'|'}</p>
+    <div className='fixed z-20 flex h-screen w-full items-center justify-center'>
+      <div
+        className={`flex w-full cursor-pointer items-center justify-center pb-32 font-bold transition-all duration-1000 ${
+          isClicked
+            ? 'text-md translate-y-[-100%] opacity-0 md:text-2xl'
+            : 'translate-y-0 text-xl opacity-100 sm:text-3xl md:translate-y-0 md:text-4xl xl:text-6xl'
+        }`}
+        onClick={() => setIsClicked(true)}
+      >
+        {textParts.map((part, index) => (
+          <span
+            key={index}
+            className={`inline-block ${
+              index < visibleChars
+                ? 'max-w-full opacity-100'
+                : 'max-w-0 opacity-0'
+            } ${part.color}`}
+          >
+            {part.content === ' ' ? '\u00A0' : part.content}
+          </span>
+        ))}
+        <p className='ml-1 animate-blink'>{'|'}</p>
+      </div>
     </div>
   );
 };
