@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 // 유틸 함수 분리
 import { scrollToSection } from '@/shared/utils/scroll';
@@ -21,6 +21,11 @@ import { useSectionStore } from '@/store/useSectionStore';
 
 const Home = () => {
   const { setActiveSection } = useSectionStore();
+  const introRef = useRef(null);
+  const aboutRef = useRef(null);
+  const experienceRef = useRef(null);
+  const skillsRef = useRef(null);
+  const projectsRef = useRef(null);
 
   useEffect(() => {
     if (window.console != undefined) {
@@ -46,32 +51,33 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    const allSections = document.querySelectorAll('section'); // 모든 섹션 가져오기
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveSection(entry.target.id); // 현재 뷰포트에 보이는 섹션 ID 설정
+            setActiveSection(entry.target.id);
           }
         });
       },
-      { threshold: 0.3, rootMargin: '0px 0px' }, // 90% 이상 보이면 트리거
+      projectsRef.current || introRef.current
+        ? { threshold: 0.1 }
+        : { threshold: 0.3 },
     );
 
-    allSections.forEach((section) => {
-      observer.observe(section);
-    });
+    [introRef, aboutRef, experienceRef, skillsRef, projectsRef].forEach(
+      (ref) => {
+        if (ref.current) observer.observe(ref.current);
+      },
+    );
 
-    return () => {
-      observer.disconnect();
-    };
+    return () => observer.disconnect();
   }, []);
 
   return (
     <main className='flex flex-col gap-4 px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px] 3xl:px-[460px]'>
       <section
         id='Intro'
+        ref={introRef}
         className={`flex min-h-screen w-full flex-col items-start justify-center px-4 pb-10 text-[#fffff56e]`}
       >
         <p className='mb-4 text-[20px] font-semibold md:text-[24px] lg:mb-8 xl:text-[30px]'>
@@ -121,10 +127,18 @@ const Home = () => {
           <p>Scroll</p>
         </div>
       </section>
-      <AboutSection />
-      <ExperienceSection />
-      <SkillSection />
-      <ProjectSection />
+      <div ref={aboutRef} id='About'>
+        <AboutSection />
+      </div>
+      <div ref={experienceRef} id='Experience'>
+        <ExperienceSection />
+      </div>
+      <div ref={skillsRef} id='Skills'>
+        <SkillSection />
+      </div>
+      <div ref={projectsRef} id='Projects'>
+        <ProjectSection />
+      </div>
     </main>
   );
 };

@@ -12,7 +12,7 @@ const SectionContainer = ({
   const { isClicked } = useClickedStore();
 
   return (
-    <section id={sectionTitle} className='relative w-full'>
+    <section className='relative w-full'>
       <div
         className={`transition-all duration-1000 ${
           isClicked ? 'opacity-100' : 'opacity-0'
