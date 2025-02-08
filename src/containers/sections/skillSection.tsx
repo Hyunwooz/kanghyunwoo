@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { frontend, backend, database, etc } from '@/data/skills';
 import SkillCard from '@/components/card/skillCard';
 import { SkillCardProps } from '@/shared/types/skills';
-import SectionContainer from '../sectionContainer';
 
 type SkillSetKey = 'Front-End' | 'Back-End' | 'DataBase' | 'ETC';
 
@@ -20,7 +19,7 @@ const SkillSection = () => {
   const [skillSet, setSkillSet] = useState<SkillSetKey>('Front-End');
 
   return (
-    <SectionContainer sectionTitle='Skills'>
+    <>
       <div className='mb-8 flex gap-2 md:mb-8 md:gap-2 lg:gap-4 xl:gap-10'>
         {skillTitle.map((title, index) => (
           <button
@@ -48,7 +47,7 @@ const SkillSection = () => {
           ))}
         </div>
       </div>
-    </SectionContainer>
+    </>
   );
 };
 

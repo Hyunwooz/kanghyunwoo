@@ -1,10 +1,9 @@
-import SectionContainer from '../sectionContainer';
 import { experienceList } from '@/data/experience';
 import ExperienceCard from '@/components/card/experienceCard';
 
 const ExperienceSection = () => {
   return (
-    <SectionContainer sectionTitle='Experience'>
+    <>
       {experienceList.map((exp, index) => (
         <ExperienceCard
           key={index}
@@ -17,7 +16,7 @@ const ExperienceSection = () => {
           styleClasses='mb-20 '
         />
       ))}
-    </SectionContainer>
+    </>
   );
 };
 

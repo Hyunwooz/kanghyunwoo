@@ -5,3 +5,10 @@ export const sectionList = [
   { name: 'Skills' },
   { name: 'Projects' },
 ];
+
+export const renderSectionList = [
+  { name: 'About' },
+  { name: 'Experience' },
+  { name: 'Skills' },
+  { name: 'Projects' },
+];

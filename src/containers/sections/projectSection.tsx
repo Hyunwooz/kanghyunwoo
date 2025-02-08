@@ -1,10 +1,9 @@
-import SectionContainer from '../sectionContainer';
 import { projectList } from '@/data/project';
 import ProjectCard from '@/components/card/projectCard';
 
 const ProjectSection = () => {
   return (
-    <SectionContainer sectionTitle='Projects'>
+    <>
       {projectList.map((project, index) => (
         <ProjectCard
           key={index}
@@ -22,7 +21,7 @@ const ProjectSection = () => {
           align={index % 2 == 0 ? 'left' : 'right'}
         />
       ))}
-    </SectionContainer>
+    </>
   );
 };
 

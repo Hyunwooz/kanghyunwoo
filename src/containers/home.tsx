@@ -1,83 +1,48 @@
-import { useEffect, useRef } from 'react';
-
 // 유틸 함수 분리
 import { scrollToSection } from '@/shared/utils/scroll';
 
 // 데이터 분할 관리
 import { linkIconList } from '@/data/linkIcon';
+import { renderSectionList } from '@/data/section';
 
 // 컴포넌트
 import AboutSection from './sections/aboutSection';
 import ExperienceSection from './sections/experienceSection';
 import SkillSection from './sections/skillSection';
 import ProjectSection from './sections/projectSection';
+import SectionContainer from './sectionContainer';
+
 import LinkIconMenu from '@/components/linkIconMenu';
 
-import { cssLogo1, cssLogo2 } from '@/constants/cssLogo';
-import { cssRule, cssRule2, cssRule3 } from '@/constants/cssRule';
-
-// Store
-import { useSectionStore } from '@/store/useSectionStore';
+import { useSectionObserver } from '@/hook/useSectionObserver';
+import { useConsoleWelcome } from '@/hook/useConsoleWelcome';
 
 const Home = () => {
-  const { setActiveSection } = useSectionStore();
-  const introRef = useRef(null);
-  const aboutRef = useRef(null);
-  const experienceRef = useRef(null);
-  const skillsRef = useRef(null);
-  const projectsRef = useRef(null);
+  useConsoleWelcome();
+  const sectionRefs = useSectionObserver();
 
-  useEffect(() => {
-    if (window.console != undefined) {
-      setTimeout(
-        console.log.bind(console, '%cWooh%cDev', cssLogo1, cssLogo2),
-        50,
-      );
-      setTimeout(
-        console.log.bind(
-          console,
-          `%c안녕하세요. 주니어 프론트 엔드 개발자 강현우입니다
-          \n\n%cContact\n\n%cEmail : gusdn0481@gmail.com
-          \n\n%cChannel\n\n%cGithub : https://github.com/hyunwooz\n`,
-          cssRule3,
-          cssRule2,
-          cssRule,
-          cssRule2,
-          cssRule,
-        ),
-        50,
-      );
+  const renderSection = (name: string) => {
+    switch (name) {
+      case 'About':
+        return <AboutSection />;
+      case 'Experience':
+        return <ExperienceSection />;
+      case 'Skills':
+        return <SkillSection />;
+      case 'Projects':
+        return <ProjectSection />;
+      default:
+        return <></>;
     }
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      projectsRef.current || introRef.current
-        ? { threshold: 0.1 }
-        : { threshold: 0.3 },
-    );
-
-    [introRef, aboutRef, experienceRef, skillsRef, projectsRef].forEach(
-      (ref) => {
-        if (ref.current) observer.observe(ref.current);
-      },
-    );
-
-    return () => observer.disconnect();
-  }, []);
+  };
 
   return (
     <main className='flex flex-col gap-4 px-4 md:px-12 lg:px-[160px] xl:px-[280px] 2xl:px-[360px] 3xl:px-[460px]'>
       <section
         id='Intro'
-        ref={introRef}
+        ref={(el) => {
+          sectionRefs.current.intro = el;
+        }}
         className={`flex min-h-screen w-full flex-col items-start justify-center px-4 pb-10 text-[#fffff56e]`}
       >
         <p className='mb-4 text-[20px] font-semibold md:text-[24px] lg:mb-8 xl:text-[30px]'>
@@ -127,18 +92,17 @@ const Home = () => {
           <p>Scroll</p>
         </div>
       </section>
-      <div ref={aboutRef} id='About'>
-        <AboutSection />
-      </div>
-      <div ref={experienceRef} id='Experience'>
-        <ExperienceSection />
-      </div>
-      <div ref={skillsRef} id='Skills'>
-        <SkillSection />
-      </div>
-      <div ref={projectsRef} id='Projects'>
-        <ProjectSection />
-      </div>
+      {renderSectionList.map((section, index) => (
+        <SectionContainer
+          key={index}
+          sectionTitle={section.name}
+          ref={(el) => {
+            sectionRefs.current[section.name] = el;
+          }}
+        >
+          {renderSection(section.name)}
+        </SectionContainer>
+      ))}
     </main>
   );
 };

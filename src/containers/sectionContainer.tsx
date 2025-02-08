@@ -1,18 +1,19 @@
 'use client';
 
 import { useClickedStore } from '@/store/useClick';
+import { forwardRef } from 'react';
 
-const SectionContainer = ({
-  children,
-  sectionTitle,
-}: Readonly<{
-  children: React.ReactNode;
-  sectionTitle: string;
-}>) => {
+const SectionContainer = forwardRef<
+  HTMLElement, // ref 타입 (HTML 요소)
+  Readonly<{
+    children: React.ReactNode;
+    sectionTitle: string;
+  }>
+>(({ children, sectionTitle }, ref) => {
   const { isClicked } = useClickedStore();
 
   return (
-    <section className='relative w-full'>
+    <section ref={ref} className='relative w-full' id={sectionTitle}>
       <div
         className={`transition-all duration-1000 ${
           isClicked ? 'opacity-100' : 'opacity-0'
@@ -29,6 +30,8 @@ const SectionContainer = ({
       </div>
     </section>
   );
-};
+});
+
+SectionContainer.displayName = 'SectionContainer';
 
 export default SectionContainer;
