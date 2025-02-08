@@ -1,3 +1,5 @@
+'use client';
+
 // 유틸 함수 분리
 import { scrollToSection } from '@/shared/utils/scroll';
 
