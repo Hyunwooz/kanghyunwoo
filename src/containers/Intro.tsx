@@ -29,6 +29,12 @@ const Intro = () => {
         className={`flex w-full translate-y-[-40%] cursor-pointer items-center justify-center font-bold sm:text-3xl md:text-4xl xl:text-6xl`}
         onClick={() => setIsClicked(true)}
       >
+        <p className='mr-1 inline-block max-w-full text-white opacity-100'>
+          {'<'}
+        </p>
+        <p className='inline-block max-w-full text-tagColor opacity-100'>
+          KangHyunWoo
+        </p>
         {textParts.map((part, index) => (
           <span
             key={index}
@@ -41,6 +47,12 @@ const Intro = () => {
             {part.content === ' ' ? '\u00A0' : part.content}
           </span>
         ))}
+        <p className='mr-1 inline-block max-w-full text-closeColor opacity-100'>
+          {'/'}
+        </p>
+        <p className='mr-1 inline-block max-w-full text-white opacity-100'>
+          {'>'}
+        </p>
         <p className='ml-1 animate-blink'>{'|'}</p>
       </div>
     </div>
