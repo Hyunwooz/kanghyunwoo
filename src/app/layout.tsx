@@ -13,16 +13,16 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'WoohDev | 웹 개발자 포트폴리오',
+  title: 'WoohDev | 프론트엔드 개발자 포트폴리오',
   description:
-    'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+    'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
   keywords:
     '웹 개발자, 포트폴리오, 프론트엔드, 백엔드, Next.js, React, TailwindCSS, TypeScript, 강현우, 강현우 포트폴리오',
   authors: { name: 'WoohDev' },
   openGraph: {
     title: 'WoohDev | 웹 개발자 포트폴리오',
     description:
-      'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+      'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
     url: 'https://kanghyunwoo.com/',
     siteName: 'WoohDev',
     type: 'website',
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
         url: 'https://kanghyunwoo.com/images/og.png',
         width: 1200,
         height: 630,
-        alt: 'WoohDev 포트폴리오',
+        alt: 'WoohDev 프론트엔드 개발자 포트폴리오',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WoohDev | 웹 개발자 포트폴리오',
+    title: 'WoohDev | 프론트엔드 개발자 포트폴리오',
     description:
-      'WoohDev의 포트폴리오 사이트 입니다. 웹 개발에 대한 진정성과 프론트엔드, 백엔드, 최신 기술 트렌드와 함께하는 개발 여정을 확인하세요.',
+      'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
     images: ['https://kanghyunwoo.com/images/og.png'],
   },
   other: {
