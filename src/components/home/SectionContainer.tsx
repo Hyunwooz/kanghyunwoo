@@ -4,7 +4,7 @@ import { useClickedStore } from '@/store/useClick';
 import { forwardRef } from 'react';
 
 const SectionContainer = forwardRef<
-  HTMLElement, // ref 타입 (HTML 요소)
+  HTMLElement,
   Readonly<{
     children: React.ReactNode;
     sectionTitle: string;

@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import { SkillCardProps } from '@/shared/types/skills';
+import { Skill } from '@/shared/types/skills';
 
-const SkillCard = ({ src, alt, desc }: SkillCardProps) => {
+const SkillCard = ({ src, alt, desc }: Skill) => {
   return (
     <div className='flex py-2'>
       <div className='mr-3 flex w-[50px] items-start justify-center'>

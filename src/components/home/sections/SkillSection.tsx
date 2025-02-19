@@ -2,13 +2,13 @@
 
 import { useState } from 'react';
 import { frontend, backend, database, etc } from '@/data/skills';
-import SkillCard from '@/components/card/skillCard';
-import { SkillCardProps } from '@/shared/types/skills';
+import SkillCard from '@/components/home/card/skillCard';
+import { Skill } from '@/shared/types/skills';
 
 type SkillSetKey = 'Front-End' | 'Back-End' | 'DataBase' | 'ETC';
 
 const skillTitle = ['Front-End', 'Back-End', 'DataBase', 'ETC'];
-const skillSetList: Record<SkillSetKey, SkillCardProps[]> = {
+const skillSetList: Record<SkillSetKey, Skill[]> = {
   'Front-End': frontend,
   'Back-End': backend,
   DataBase: database,

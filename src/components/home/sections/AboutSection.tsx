@@ -1,5 +1,5 @@
 import { aboutDatas } from '@/data/about';
-import AboutCard from '@/components/card/aboutCard';
+import AboutCard from '@/components/home/card/aboutCard';
 
 const AboutSection = () => {
   return (

@@ -8,13 +8,13 @@ import { linkIconList } from '@/data/linkIcon';
 import { renderSectionList } from '@/data/section';
 
 // 컴포넌트
-import AboutSection from './sections/aboutSection';
-import ExperienceSection from './sections/experienceSection';
-import SkillSection from './sections/skillSection';
-import ProjectSection from './sections/projectSection';
-import SectionContainer from './sectionContainer';
+import AboutSection from './sections/AboutSection';
+import ExperienceSection from './sections/ExperienceSection';
+import SkillSection from './sections/SkillSection';
+import ProjectSection from './sections/ProjectSection';
+import SectionContainer from './SectionContainer';
 
-import LinkIconMenu from '@/components/linkIconMenu';
+import LinkIconMenu from '@/components/common/menu/linkIconMenu';
 
 import { useSectionObserver } from '@/hook/useSectionObserver';
 import { useConsoleWelcome } from '@/hook/useConsoleWelcome';

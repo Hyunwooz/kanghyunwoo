@@ -1,14 +1,14 @@
 'use client';
 
-import Home from '@/containers/home';
-import Intro from '@/containers/Intro';
+import Home from '@/components/home';
+import Intro from '@/components/intro';
 import SideBar from '@/components/layout/sideBar';
 
 const App = () => {
   return (
     <>
-      <SideBar />
       <Intro />
+      <SideBar />
       <Home />
     </>
   );

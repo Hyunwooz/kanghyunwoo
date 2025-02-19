@@ -1,4 +1,4 @@
-import { SkillBadge } from '../badge/skillBadge';
+import { SkillBadge } from '../../common/badge/skillBadge';
 
 interface ExperienceCardProps {
   name: string;

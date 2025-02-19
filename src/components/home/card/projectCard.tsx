@@ -2,7 +2,7 @@ import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
-import { SkillBadge } from '../badge/skillBadge';
+import { SkillBadge } from '../../common/badge/skillBadge';
 
 interface ContributionType {
   type: string;

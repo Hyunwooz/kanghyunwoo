@@ -1,7 +1,7 @@
 'use client';
 
-import NavMenuItem from '../navMenu';
-import LinkIconMenu from '../linkIconMenu';
+import NavMenuItem from './menu/navMenu';
+import LinkIconMenu from '../common/menu/linkIconMenu';
 import { sectionList } from '@/data/section';
 import { linkIconList } from '@/data/linkIcon';
 import { useClickedStore } from '@/store/useClick';
