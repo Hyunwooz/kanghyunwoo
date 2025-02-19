@@ -20,9 +20,13 @@ export const useSectionObserver = () => {
           }
         });
       },
-      sectionRefs.current.projects || sectionRefs.current.intro
-        ? { threshold: 0.1 }
-        : { threshold: 0.3 },
+      sectionRefs.current.projects
+        ? {
+            threshold: 0.1,
+          }
+        : {
+            threshold: 0.2,
+          },
     );
 
     Object.values(sectionRefs.current).forEach((section) => {
