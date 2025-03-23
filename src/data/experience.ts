@@ -3,7 +3,7 @@ export const experienceList = [
     name: 'S&G Company',
     decs: '테크 기반 마케팅 및 프롭테크 서비스 스타트업',
     role: '프론트엔드 개발자',
-    period: '2023.11 ~ 현재',
+    period: '2023.11 ~ 2025.04',
     works: [
       '개발 업무 프로세스 구축 및 프로젝트 문서화 진행',
       'Github Action을 이용한 자동 배포 및 Git Flow 적용을 통한 개발 환경 개선',

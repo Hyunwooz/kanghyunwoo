@@ -25,11 +25,6 @@ export const frontend = [
     desc: '최근 즐겨 사용하고 있습니다. 프로젝트에 적용한 경험이 있습니다.',
   },
   {
-    src: '/svgs/Bootstrap.svg',
-    alt: 'Bootstrap',
-    desc: '프로젝트에 적용한 경험이 있습니다.',
-  },
-  {
     src: '/svgs/NextJS-Light.svg',
     alt: 'NextJS',
     desc: '상황별 SSR, CSR 활용이 가능합니다.',
