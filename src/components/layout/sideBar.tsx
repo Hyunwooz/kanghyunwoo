@@ -11,7 +11,7 @@ const SideBar = () => {
 
   return (
     <aside
-      className={`fixed left-0 top-0 hidden h-screen justify-between px-6 pb-[50px] pt-[200px] lg:flex lg:flex-col xl:px-10 xl:pt-[260px] ${
+      className={`fixed left-0 top-0 z-10 hidden h-screen justify-between px-6 pb-[50px] pt-[200px] lg:flex lg:flex-col xl:px-10 xl:pt-[260px] ${
         isClicked ? 'opacity-100' : 'opacity-0'
       }`}
     >
@@ -24,7 +24,7 @@ const SideBar = () => {
         {linkIconList.map((menu, index) => (
           <LinkIconMenu link={menu.link} icon={menu.icon} key={index} />
         ))}
-        <p className='text-xs font-light'>Updated 2025/02/19</p>
+        <p className='text-xs font-light'>Updated 2025/03/23</p>
       </div>
     </aside>
   );

@@ -19,7 +19,7 @@ const Intro = () => {
 
   return (
     <div
-      className={`fixed z-10 flex h-screen w-full items-center justify-center bg-background transition-all duration-1000 ${
+      className={`fixed z-20 flex h-screen w-full items-center justify-center bg-background transition-all duration-1000 ${
         isClicked
           ? 'translate-y-[-100%] opacity-0'
           : 'translate-y-0 text-xl opacity-100'
