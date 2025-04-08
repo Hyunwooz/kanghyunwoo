@@ -24,7 +24,7 @@ const SideBar = () => {
         {linkIconList.map((menu, index) => (
           <LinkIconMenu link={menu.link} icon={menu.icon} key={index} />
         ))}
-        <p className='text-xs font-light'>Updated 2025/03/23</p>
+        <p className='text-xs font-light'>Updated 2025/04/08</p>
       </div>
     </aside>
   );

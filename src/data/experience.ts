@@ -1,5 +1,23 @@
 export const experienceList = [
   {
+    name: '샐러드랩',
+    decs: '리뷰관리 솔루션과 상품추천 솔루션, 그리고 마케팅 CRM솔루션',
+    role: '프론트엔드 개발자',
+    period: '2025.04 ~',
+    works: [
+      '알파업셀 어드민 대시보드 구축 및 유지보수',
+      '알파업셀 위젯 구축 및 유지보수',
+    ],
+    skillStacks: [
+      'TypeScript',
+      'JavaScript',
+      'RxJS',
+      'Angular',
+      'AWS EC2',
+      'AWS S3',
+    ],
+  },
+  {
     name: 'S&G Company',
     decs: '테크 기반 마케팅 및 프롭테크 서비스 스타트업',
     role: '프론트엔드 개발자',
