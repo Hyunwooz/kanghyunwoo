@@ -118,7 +118,7 @@ const ProjectCard = ({
             </div>
           </div>
         </div>
-        <div className='relative h-[240px] w-[900px]'>
+        <div className='max-w[900px] relative h-[240px] w-full'>
           {mainUrl ? (
             <Link href={mainUrl} target='_blank'>
               <Image
