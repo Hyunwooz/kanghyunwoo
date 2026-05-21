@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import NavMenuItem from './menu/navMenu';
 import LinkIconMenu from '../common/menu/linkIconMenu';
 import { sectionList } from '@/data/section';
@@ -16,6 +17,27 @@ const SideBar = () => {
       }`}
     >
       <div className='flex flex-col items-start'>
+        <Link
+          href='/'
+          className='group mb-6 inline-flex items-center gap-2 pl-6 text-[11px] uppercase tracking-[0.25em] text-main/60 transition-colors hover:text-main'
+        >
+          <svg
+            width='12'
+            height='12'
+            viewBox='0 0 24 24'
+            fill='none'
+            className='transition-transform group-hover:-translate-x-0.5'
+          >
+            <path
+              d='M19 12H5M11 18l-6-6 6-6'
+              stroke='currentColor'
+              strokeWidth='1.8'
+              strokeLinecap='round'
+              strokeLinejoin='round'
+            />
+          </svg>
+          <span>Archive</span>
+        </Link>
         {sectionList.map((section, index) => (
           <NavMenuItem key={index} name={section.name} />
         ))}

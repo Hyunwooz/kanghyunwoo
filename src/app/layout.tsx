@@ -13,16 +13,16 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'WoohDev | 프론트엔드 개발자 포트폴리오',
+  title: 'WoohDev | Photo Archive',
   description:
-    'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
+    '강현우(WoohDev)의 사진 아카이브. 오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리.',
   keywords:
-    '웹 개발자, 포트폴리오, 프론트엔드, 백엔드, Next.js, React, TailwindCSS, TypeScript, 강현우, 강현우 포트폴리오',
+    '사진 아카이브, 포트폴리오, 갤러리, 프론트엔드, Next.js, 강현우, WoohDev',
   authors: { name: 'WoohDev' },
   openGraph: {
-    title: 'WoohDev | 웹 개발자 포트폴리오',
+    title: 'WoohDev | Photo Archive',
     description:
-      'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
+      '오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리. 도시의 소음 너머, 빛이 머무는 자리들.',
     url: 'https://kanghyunwoo.com/',
     siteName: 'WoohDev',
     type: 'website',
@@ -32,15 +32,15 @@ export const metadata: Metadata = {
         url: 'https://kanghyunwoo.com/images/og.png',
         width: 1200,
         height: 630,
-        alt: 'WoohDev 프론트엔드 개발자 포트폴리오',
+        alt: 'WoohDev Photo Archive',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WoohDev | 프론트엔드 개발자 포트폴리오',
+    title: 'WoohDev | Photo Archive',
     description:
-      'WoohDev의 포트폴리오 사이트 입니다. 새로운 프로젝트를 시작할 때마다 단순히 이전에 사용하던 기술을 활용하는 것이 아닌, 이전 프로젝트에서 아쉬웠던 부분을 개선하고 새로운 코드 스타일이나 기술을 적용하는 것에 큰 즐거움을 느낍니다.',
+      '오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리.',
     images: ['https://kanghyunwoo.com/images/og.png'],
   },
   other: {
