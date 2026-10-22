@@ -18,7 +18,7 @@ const SideBar = () => {
     >
       <div className='flex flex-col items-start'>
         <Link
-          href='/'
+          href='/archive'
           className='group mb-6 inline-flex items-center gap-2 pl-6 text-[11px] uppercase tracking-[0.25em] text-main/60 transition-colors hover:text-main'
         >
           <svg

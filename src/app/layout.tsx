@@ -13,16 +13,14 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'WoohDev | Photo Archive',
-  description:
-    '강현우(WoohDev)의 사진 아카이브. 오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리.',
+  title: 'WoohDev',
+  description: '강현우(WoohDev)의 개인 사이트.',
   keywords:
     '사진 아카이브, 포트폴리오, 갤러리, 프론트엔드, Next.js, 강현우, WoohDev',
   authors: { name: 'WoohDev' },
   openGraph: {
-    title: 'WoohDev | Photo Archive',
-    description:
-      '오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리. 도시의 소음 너머, 빛이 머무는 자리들.',
+    title: 'WoohDev',
+    description: '강현우(WoohDev)의 개인 사이트.',
     url: 'https://kanghyunwoo.com/',
     siteName: 'WoohDev',
     type: 'website',
@@ -32,15 +30,14 @@ export const metadata: Metadata = {
         url: 'https://kanghyunwoo.com/images/og.png',
         width: 1200,
         height: 630,
-        alt: 'WoohDev Photo Archive',
+        alt: 'WoohDev',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'WoohDev | Photo Archive',
-    description:
-      '오래 머무르고 싶은 장면들을 모아둔 조용한 갤러리.',
+    title: 'WoohDev',
+    description: '강현우(WoohDev)의 개인 사이트.',
     images: ['https://kanghyunwoo.com/images/og.png'],
   },
   other: {
