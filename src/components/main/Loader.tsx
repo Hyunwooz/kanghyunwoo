@@ -73,12 +73,15 @@ const Loader = () => {
             finish(imgs[index]);
             return;
           }
+          // 이전 트윈이 남아 있으면 다시 보이게 되므로 먼저 죽인다
+          gsap.killTweensOf(imgs[index]);
           gsap.set(imgs[index], { autoAlpha: 0 });
           index = (index + 1) % imgs.length;
+          gsap.killTweensOf(imgs[index]);
           gsap.fromTo(
             imgs[index],
-            { autoAlpha: 1, opacity: 0, scale: 0.8 },
-            { opacity: 1, scale: 1, rotation: gsap.utils.random(-15, 15), duration: 0.32, ease: 'back.out(1.2)' },
+            { autoAlpha: 0, scale: 0.8 },
+            { autoAlpha: 1, scale: 1, rotation: gsap.utils.random(-15, 15), duration: 0.32, ease: 'back.out(1.2)' },
           );
           const wait = 100 + 400 * (1 - Math.sin(Math.min(elapsed / 5000, 1) * Math.PI));
           timers.push(window.setTimeout(next, wait));
