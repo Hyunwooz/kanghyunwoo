@@ -77,6 +77,10 @@ html.lenis body {
   overflow: hidden;
 }
 
+.wd-loader-skip [data-loader-root] {
+  display: none;
+}
+
 .wd-home {
   font-family: 'PP Neue Montreal', var(--font-pretendard), Arial, sans-serif;
   font-weight: 500;

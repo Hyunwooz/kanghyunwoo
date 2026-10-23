@@ -3,6 +3,8 @@ export const HERO_REVEAL_START = 'wd:hero-reveal-start';
 export const HERO_REVEALED = 'wd:hero-revealed';
 
 export const LOADER_SESSION_KEY = 'wd:loader-played';
+// 로더를 이미 본 세션이면 <html> 에 붙는 클래스 (globals.css 에서 로더를 숨김)
+export const LOADER_SKIP_CLASS = 'wd-loader-skip';
 
 // 이미 발생한 이벤트 (리스너가 늦게 붙어도 알 수 있게)
 export const fired = new Set<string>();

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { loaderImages } from '@/data/home';
 import { wordmarkLetters, WORDMARK_HEIGHT } from '@/data/wordmark';
 import { gsap } from '@/lib/gsap';
-import { emit, HERO_REVEAL_START, HERO_REVEALED, isDesktop, LOADER_SESSION_KEY } from './core/events';
+import { emit, HERO_REVEAL_START, HERO_REVEALED, isDesktop, LOADER_SESSION_KEY, LOADER_SKIP_CLASS } from './core/events';
 import { useLenis } from './core/SmoothScroll';
 
 const first = wordmarkLetters[0];
@@ -61,7 +61,10 @@ const Loader = () => {
           .to(letter, { yPercent: 100, duration: 1, ease: 'power4.inOut' }, '<')
           .to(dot, { scale: 0, duration: 1, ease: 'power4.inOut' }, '<')
           .to(el, { height: 0, duration: 1.8, ease: 'power4.inOut' }, '<')
-          .add(() => setHidden(true));
+          .add(() => {
+            document.documentElement.classList.add(LOADER_SKIP_CLASS);
+            setHidden(true);
+          });
       };
 
       const cycle = () => {
@@ -125,6 +128,7 @@ const Loader = () => {
   return (
     <div
       ref={root}
+      data-loader-root
       className='fixed inset-x-0 top-0 z-[1001] flex h-[100svh] items-center justify-center overflow-hidden bg-black text-white'
       aria-hidden
     >
@@ -133,7 +137,7 @@ const Loader = () => {
           <svg
             data-loader-letter
             viewBox={`0 0 254 ${WORDMARK_HEIGHT}`}
-            className='h-[7.6rem] w-auto max-lg:h-16'
+            className='h-[7.6rem] w-auto opacity-0 max-lg:h-16'
             fill='currentColor'
           >
             <path d={first.d} />
@@ -147,14 +151,14 @@ const Loader = () => {
               data-loader-img
               src={src}
               alt=''
-              className='absolute left-1/2 top-1/2 h-[14rem] w-[11rem] rounded-[0.25rem] object-cover max-lg:h-28 max-lg:w-24'
+              className='invisible absolute left-1/2 top-1/2 h-[14rem] w-[11rem] rounded-[0.25rem] object-cover max-lg:h-28 max-lg:w-24'
             />
           ))}
         </div>
         <svg
           data-loader-dot
           viewBox={`1350 0 60 ${WORDMARK_HEIGHT}`}
-          className='h-[7.6rem] w-auto max-lg:h-16'
+          className='h-[7.6rem] w-auto scale-0 max-lg:h-16'
           fill='currentColor'
         >
           <path d={accent.d} />

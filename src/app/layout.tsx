@@ -5,6 +5,7 @@ import localFont from 'next/font/local';
 
 // 스타일링
 import '../styles/globals.css';
+import { LOADER_SESSION_KEY, LOADER_SKIP_CLASS } from '@/components/main/core/events';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -59,10 +60,20 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html lang='ko'>
+    <html lang='ko' suppressHydrationWarning>
       <body
         className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} bg-background text-main`}
       >
+        {/*
+          메인 로더를 이미 본 세션이면 하이드레이션 전에 숨겨 검은 화면이 번쩍이지 않게 한다.
+          <script> 를 JSX 로 직접 쓰면 React 19 가 경고하므로, HTML 문자열로 넣어 파서가 바로 실행하게 한다.
+        */}
+        <div
+          hidden
+          dangerouslySetInnerHTML={{
+            __html: `<script>try{if(sessionStorage.getItem('${LOADER_SESSION_KEY}')==='1')document.documentElement.classList.add('${LOADER_SKIP_CLASS}')}catch(e){}</script>`,
+          }}
+        />
         {children}
       </body>
     </html>

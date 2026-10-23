@@ -403,10 +403,12 @@ export class FluidReveal {
       svgRect.height * dpr,
     );
     this.baseTexture.needsUpdate = true;
-    svg.style.visibility = 'hidden';
   }
 
+  // 첫 프레임을 바로 그린 뒤에 SVG 를 숨겨야 캔버스가 비어 있는 한 프레임(배경 깜빡임)이 안 생긴다
   start() {
+    this.step();
+    this.options.svg.style.visibility = 'hidden';
     const loop = () => {
       this.step();
       this.raf = requestAnimationFrame(loop);
