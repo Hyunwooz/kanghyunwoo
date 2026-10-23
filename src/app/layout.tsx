@@ -1,5 +1,6 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
+import { IBM_Plex_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // 스타일링
@@ -10,6 +11,13 @@ const pretendard = localFont({
   display: 'swap',
   weight: '45 920',
   variable: '--font-pretendard',
+});
+
+const plexMono = IBM_Plex_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  display: 'swap',
+  variable: '--font-plex-mono',
 });
 
 export const metadata: Metadata = {
@@ -52,7 +60,9 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='ko'>
-      <body className={`${pretendard.className} bg-background text-main`}>
+      <body
+        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} bg-background text-main`}
+      >
         {children}
       </body>
     </html>
