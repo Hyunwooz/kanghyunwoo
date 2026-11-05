@@ -15,9 +15,16 @@ module.exports = {
         tagColor: '#66d9ed',
         funcColor: '#6de58b',
         closeColor: '#BB77FF',
-        paper: '#F3F2EE',
-        ink: '#121212',
-        accent: '#2B2BD9',
+        // 포트폴리오(종이): 순백·순흑 없이. accent 는 번호와 밑줄에만.
+        paper: '#F4F1EA',
+        ink: '#161616',
+        muted: '#75716A',
+        rule: '#D8D3C8',
+        accent: '#C8401F',
+      },
+      fontFamily: {
+        serif: ['var(--font-serif)', 'var(--font-pretendard)', 'Georgia', 'serif'],
+        mono: ['var(--font-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       animation: {
         'bounce-updown': 'bounce-updown 1s infinite ease-in-out',

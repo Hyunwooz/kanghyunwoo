@@ -1,6 +1,6 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono } from 'next/font/google';
+import { IBM_Plex_Mono, Instrument_Serif } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // 스타일링
@@ -19,6 +19,15 @@ const plexMono = IBM_Plex_Mono({
   weight: ['400', '500'],
   display: 'swap',
   variable: '--font-plex-mono',
+});
+
+// 포트폴리오 제목용 세리프
+const instrumentSerif = Instrument_Serif({
+  subsets: ['latin'],
+  weight: '400',
+  style: ['normal', 'italic'],
+  display: 'swap',
+  variable: '--font-serif',
 });
 
 export const metadata: Metadata = {
@@ -62,7 +71,7 @@ const RootLayout = ({
   return (
     <html lang='ko' suppressHydrationWarning>
       <body
-        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} bg-background text-main`}
+        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} ${instrumentSerif.variable} bg-background text-main`}
       >
         {/*
           메인 로더를 이미 본 세션이면 하이드레이션 전에 숨겨 검은 화면이 번쩍이지 않게 한다.
