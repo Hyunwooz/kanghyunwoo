@@ -1,12 +1,14 @@
 import { archivePhotos } from './archive';
 import { experienceList } from './experience';
-import { projectList } from './project';
 
-// 메인 페이지 문구/미디어. noth.in 의 섹션 구성에 1:1 로 대응한다.
-// TODO 표시가 있는 값은 실제 사진·영상·문구로 바꿔 끼우면 된다.
+// 메인 페이지 문구/미디어.
+// 메인은 "누구인지" 만 말하고, 작업물은 /portfolio, 사진은 /archive 로 보낸다.
 
 const photo = (id: string) =>
   archivePhotos.find((p) => p.id === id) ?? archivePhotos[0];
+
+// 아카이브에 섞지 않는 사진 (R2 web/ 에만 있다)
+const R2_WEB = 'https://pub-80e73ef9e7374f46a2b21b346a400cc0.r2.dev/web';
 
 export const socials = [
   { label: 'Instagram', href: 'https://www.instagram.com/wooh.dev/' },
@@ -19,7 +21,6 @@ export const contact = {
 };
 
 export const navLinks = [
-  { label: 'works', href: '#works' },
   { label: 'person', href: '#person' },
   { label: 'archive', href: '/archive' },
   { label: 'portfolio', href: '/portfolio' },
@@ -27,72 +28,28 @@ export const navLinks = [
 ];
 
 export const hero = {
-  tagline: ['Bridging business and code.', 'Sharing the world, through light.'],
-  cta: { label: 'enter the archive', href: '/archive' },
   caption: 'Developer & photographer in Seoul',
+  cta: { label: 'enter the archive', href: '/archive' },
   // 커서로 워드마크를 지우면 드러나는 배경. 영상(mp4)을 쓰려면 video 에 경로를 넣는다.
   media: { image: photo('14').src, video: '' as string },
 };
 
-export const showreel = {
-  title: ['많이 만드는 것보다,', '오래 남는 걸 만듭니다.'],
-  // TODO: 쇼릴 영상이 생기면 video 에 넣기 (없으면 이미지)
-  media: { image: photo('15').src, video: '' as string },
-  label: '( A step aside )',
-  text: '이미지가 넘치는 세상에서 귀한 건 또렷함이라고 생각해요. 그래서 무엇을 만들든 더하기보다 덜어내는 쪽을 고릅니다.',
-};
-
-export const works = {
-  word: 'works',
-  title: ['Good code works.', 'Great code disappears.'],
-  // 비스테이션 관련 작업은 메인에서 제외 (/portfolio 에는 남아 있음)
-  items: projectList
-    .filter((project) => !project.name.startsWith('Bstation'))
-    .map((project) => ({
-      name: project.name,
-      tagline: project.decs,
-      image: project.thumbnail,
-      href: project.siteUrl ?? project.githubUrl ?? '/portfolio',
-    })),
-  viewAll: { label: 'View all', href: '/portfolio' },
-  years: '© 23 . 26',
-};
-
-export const musee = {
-  // noth.in 은 하얀 전시장 사진(bg) 위에 액자 영상이 줄어들며 들어간다.
-  // 전시장 배경 (AI 생성 이미지, 원하면 교체)
-  room: '/images/home/room.png',
-  media: { image: photo('05').src, video: '' as string },
-};
-
 export const person = {
-  label: '( The Person )',
+  label: '소개',
   text: '화면을 만드는 일과 장면을 남기는 일. 둘은 다른 일 같지만, 결국 무엇을 남기고 무엇을 덜어낼지 고르는 같은 일이라고 생각해요.',
-  leftImage: photo('17').src,
-  leftCaption: ['or something', 'unexpected.'],
+  // 본인 사진 (4:5). 서울 사장 간판 앞에서 카메라를 든 모습.
+  leftImage: `${R2_WEB}/portrait.webp`,
+  leftCaption: ['강현우,', '서울에서 만들고 찍습니다.'],
   rightImage: photo('03').src,
   title: ['Slow, but', 'steady.'],
-  listLabel: 'I build :',
-  list: [
-    'Web products',
-    'Admin dashboards',
-    'Design systems',
-    'Automation',
-    'Photo archives',
-  ],
-  aside: 'Perspective is where code meets the way people see.',
-  // 커서를 피해 흩어지는 오브제 (원본의 3D 오브제 + NOTHIN 글자 자리)
-  objects: [
-    photo('07').src,
-    photo('18').src,
-    photo('01').src,
-    photo('04').src,
-    photo('13').src,
-  ],
+  listLabel: '만드는 것',
+  list: ['웹 프로덕트', '어드민 대시보드', '디자인 시스템', '자동화 도구', '사진 아카이브'],
+  aside: '코드든 사진이든, 결국 어떻게 보느냐의 문제라고 생각해요.',
+  portfolio: { label: 'view portfolio', href: '/portfolio' },
 };
 
 export const people = {
-  label: 'Nothing without people :',
+  label: '지나온 곳, 쓰는 도구',
   columns: [
     {
       title: 'experience',
@@ -111,22 +68,19 @@ export const people = {
   ],
 };
 
-export const glitch = {
-  background: photo('10').src,
-  phrase: 'slow but steady',
-  noise: 'Pj(è !!” .      U§h s .   j k j . k .     r h',
-  finalText: [
-    '화면을 만들고,',
-    '장면을 남기고,',
-    '그 사이에서',
-    '오래 머뭅니다.',
-  ],
-  images: [photo('06').src, photo('16').src],
+// 벤토 격자. 사진 id 순서가 칸 순서다 (배치는 PhotoGrid 의 LAYOUT 참고):
+// 1 큰 가로 / 2 세로 / 3 세로 / 4 정사각 / 5 파노라마 / 6 정사각 / 7 작은 가로 / 8 작은 가로
+export const gallery = {
+  label: '사진',
+  text: '오래 머무르고 싶은 장면들. 도시의 소음 너머, 빛이 머무는 자리들을 모아 둡니다.',
+  // 히어로(14)·소개(03)와 겹치지 않는 사진만 쓴다
+  photos: ['07', '08', '11', '04', '18', '17', '13', '02'].map((id) => photo(id)),
+  cta: { label: 'see the archive', href: '/archive' },
+  total: archivePhotos.length,
 };
 
 export const faq = {
-  letters: ['F', 'A', 'Q', 'S'],
-  label: '( Questions I get asked )',
+  label: '자주 받는 질문',
   items: [
     {
       q: '어떤 일을 하나요?',

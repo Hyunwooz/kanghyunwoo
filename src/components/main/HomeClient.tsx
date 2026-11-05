@@ -6,16 +6,14 @@ import { initReveals } from './core/reveal';
 import SmoothScroll from './core/SmoothScroll';
 import FooterSection from './FooterSection';
 import Faq from './Faq';
-import Glitch from './Glitch';
-import HeroShowreel from './HeroShowreel';
+import Hero from './Hero';
 import Loader from './Loader';
-import Musee from './Musee';
 import Nav from './Nav';
 import PersonSection from './PersonSection';
-import Works from './Works';
+import PhotoGrid from './PhotoGrid';
 
-// noth.in 홈 섹션 순서 그대로:
-// loader → nav → hero(유체 마스크) + showreel → works → 전시장 영상 → studio → glitch → faq → footer
+// 섹션 순서: loader → nav → hero(유체 마스크) → person → 사진 격자 → faq → footer
+// 작업물(works)은 /portfolio 로, 사진은 /archive 로 보내고 메인은 "누구인지"만 말한다.
 const HomeClient = () => {
   const root = useRef<HTMLElement>(null);
 
@@ -61,11 +59,9 @@ const HomeClient = () => {
       <main ref={root} className='wd-home overflow-x-clip'>
         <Loader />
         <Nav />
-        <HeroShowreel />
-        <Works />
-        <Musee />
+        <Hero />
         <PersonSection />
-        <Glitch />
+        <PhotoGrid />
         <Faq />
         <FooterSection />
       </main>

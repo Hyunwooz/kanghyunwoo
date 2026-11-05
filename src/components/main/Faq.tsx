@@ -93,16 +93,8 @@ const Faq = () => {
   }, []);
 
   return (
-    <section ref={root} className='relative bg-black px-[1.25rem] pb-[4rem] pt-[1rem] text-white max-lg:px-4 max-lg:pt-10'>
-      <div className='flex justify-between text-[1.4rem] font-bold uppercase leading-none max-lg:text-xl'>
-        {faq.letters.map((letter) => (
-          <span key={letter} data-line>
-            {letter}
-          </span>
-        ))}
-      </div>
-
-      <div className='mt-[5rem] grid grid-cols-[32.5rem_1fr] max-lg:mt-12 max-lg:grid-cols-1 max-lg:gap-8'>
+    <section ref={root} className='relative bg-black px-[1.25rem] pb-[4rem] pt-[8rem] text-white max-lg:px-4 max-lg:pt-20'>
+      <div className='grid grid-cols-[32.5rem_1fr] max-lg:grid-cols-1 max-lg:gap-8'>
         <div data-line className='text-[1.125rem] leading-[1.2] max-lg:text-base'>
           {faq.label}
         </div>
