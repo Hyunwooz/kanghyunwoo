@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { loaderImages } from '@/data/home';
-import { wordmarkLetters, WORDMARK_HEIGHT } from '@/data/wordmark';
+import { wordmarkLetters, WORDMARK_ACCENT_WIDTH, WORDMARK_ACCENT_X, WORDMARK_FIRST_WIDTH, WORDMARK_HEIGHT } from '@/data/wordmark';
 import { gsap } from '@/lib/gsap';
 import { emit, HERO_REVEAL_START, HERO_REVEALED, isDesktop, LOADER_SESSION_KEY, LOADER_SKIP_CLASS } from './core/events';
 import { useLenis } from './core/SmoothScroll';
@@ -14,7 +14,7 @@ const accent = wordmarkLetters[wordmarkLetters.length - 1];
 const LOADER_MS = 2600;
 
 // 원본 로더: 검은 화면 가운데 "N ’" 사이로 오브제 이미지가 빠르게 바뀐다 (원본의 100 → 000 카운터는 뺐다).
-// 여기서는 "W ." 사이로 사진이 바뀐다. 세션당 한 번만 재생.
+// 여기서는 "H ." 사이로 사진이 바뀐다. 세션당 한 번만 재생.
 const Loader = () => {
   const root = useRef<HTMLDivElement>(null);
   const [hidden, setHidden] = useState(false);
@@ -126,7 +126,7 @@ const Loader = () => {
         <div className='flex overflow-hidden'>
           <svg
             data-loader-letter
-            viewBox={`0 0 254 ${WORDMARK_HEIGHT}`}
+            viewBox={`0 0 ${WORDMARK_FIRST_WIDTH} ${WORDMARK_HEIGHT}`}
             className='h-[7.6rem] w-auto opacity-0 max-lg:h-16'
             fill='currentColor'
           >
@@ -147,7 +147,7 @@ const Loader = () => {
         </div>
         <svg
           data-loader-dot
-          viewBox={`1350 0 60 ${WORDMARK_HEIGHT}`}
+          viewBox={`${WORDMARK_ACCENT_X - 3} 0 ${WORDMARK_ACCENT_WIDTH + 6} ${WORDMARK_HEIGHT}`}
           className='h-[7.6rem] w-auto scale-0 max-lg:h-16'
           fill='currentColor'
         >

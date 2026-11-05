@@ -2,14 +2,23 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { navLinks } from '@/data/home';
-import { wordmarkLetters, WORDMARK_HEIGHT, WORDMARK_WIDTH } from '@/data/wordmark';
+import {
+  wordmarkLetters,
+  WORDMARK_ACCENT_WIDTH,
+  WORDMARK_ACCENT_X,
+  WORDMARK_FIRST_WIDTH,
+  WORDMARK_GAP,
+  WORDMARK_HEIGHT,
+  WORDMARK_WIDTH,
+} from '@/data/wordmark';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { isDesktop, shuffle } from './core/events';
 import { useLenis } from './core/SmoothScroll';
 
-const LOGO_REST_WIDTH = 317;
+// 접힌 로고 "H." : 첫 글자 + 간격 + 점
+const LOGO_REST_WIDTH = WORDMARK_FIRST_WIDTH + WORDMARK_GAP + WORDMARK_ACCENT_WIDTH;
 const accent = wordmarkLetters[wordmarkLetters.length - 1];
-const ACCENT_REST_X = -(1353.41 - 262);
+const ACCENT_REST_X = -(WORDMARK_ACCENT_X - (WORDMARK_FIRST_WIDTH + WORDMARK_GAP));
 const middle = wordmarkLetters.slice(1, -1);
 
 // 4개의 작은 사각형("::")이 45도 돌며 모이는 메뉴 아이콘
@@ -21,7 +30,7 @@ const rects = [
 ];
 
 // 원본 nav: 고정 + mix-blend-difference. 로고 N’ 에 호버하면 NOTHIN’ 으로 펼쳐진다.
-// 여기서는 W. → WOOHYUN.
+// 여기서는 H. → HYUNWOO.
 const Nav = () => {
   const root = useRef<HTMLElement>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -132,7 +141,7 @@ const Nav = () => {
         data-delay='1.5'
         className='fixed inset-x-0 top-0 z-[1001] flex items-center justify-between px-[1.25rem] pt-[1.28rem] text-white mix-blend-difference max-lg:px-4 max-lg:pt-4'
       >
-        <a data-logo href='#top' onClick={go('#top')} className='block h-[1.49rem] max-lg:h-5' aria-label='WOOHYUN.'>
+        <a data-logo href='#top' onClick={go('#top')} className='block h-[1.49rem] max-lg:h-5' aria-label='HYUNWOO.'>
           <svg
             viewBox={`0 0 ${LOGO_REST_WIDTH} ${WORDMARK_HEIGHT}`}
             className='h-full w-auto overflow-hidden'

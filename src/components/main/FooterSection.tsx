@@ -5,6 +5,7 @@ import { contact, footer, socials } from '@/data/home';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { shuffle } from './core/events';
 import Btn from './ui/Btn';
+import { footerWordmarkLetters } from '@/data/wordmark';
 import WordmarkSvg from './ui/WordmarkSvg';
 
 // 링크 밑줄: 왼쪽에서 그어졌다가, 마우스를 떼면 오른쪽으로 빠져나간다
@@ -133,7 +134,7 @@ const FooterSection = () => {
       </div>
 
       <div className='mt-[9.5rem] max-lg:mt-16'>
-        <WordmarkSvg ref={svgRef} className='text-white' />
+        <WordmarkSvg ref={svgRef} letters={footerWordmarkLetters} label='WOOHYUN.' className='text-white' />
       </div>
 
       <div className='mt-[1.3rem] flex items-center justify-between gap-[2rem] text-[0.875rem] leading-none tracking-[-0.01em] max-lg:flex-col max-lg:items-start max-lg:gap-3 max-lg:text-xs'>
