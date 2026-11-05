@@ -77,7 +77,7 @@ const PersonSection = () => {
           <div
             data-parallax
             data-clip
-            className='relative aspect-[4/5] overflow-hidden bg-white/[0.04]'
+            className='relative aspect-[3/4] overflow-hidden bg-white/[0.04]'
           >
             <img
               src={person.portrait}
