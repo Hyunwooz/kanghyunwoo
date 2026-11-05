@@ -115,7 +115,7 @@ const FooterSection = () => {
             {footer.title[1]}
           </h2>
           <div data-opacity className='mt-[1.75rem] flex flex-wrap gap-[0.7rem]'>
-            <Btn href='/archive'>see the archive</Btn>
+            <Btn href='/archive'>view the archive</Btn>
             <Btn href={`mailto:${contact.email}`} icon='at'>
               drop me an email
             </Btn>

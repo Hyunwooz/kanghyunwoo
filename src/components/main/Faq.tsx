@@ -121,7 +121,11 @@ const Faq = () => {
               </div>
               <div data-faq-a>
                 <p className='max-w-[38rem] break-keep pt-[1.4rem] text-[1rem] font-normal leading-[1.4] max-lg:text-sm'>{item.a}</p>
-                <a href={item.link.href} className='mt-[1rem] inline-block border-b border-white text-[1rem] leading-[1.1] max-lg:text-sm'>
+                <a
+                  href={item.link.href}
+                  {...(item.link.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                  className='mt-[1rem] inline-block border-b border-white text-[1rem] leading-[1.1] max-lg:text-sm'
+                >
                   {item.link.label}
                 </a>
               </div>
