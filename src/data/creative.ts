@@ -37,8 +37,8 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 208,
       src: `${AUDIO_BASE}/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2.mp3`,
-      cover: '/images/creative/3dcad263.jpeg',
-      hue: 308,
+      cover: '/images/creative/0f70046d.jpeg',
+      hue: 300,
       link: 'https://suno.com/song/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2',
     },
     {
