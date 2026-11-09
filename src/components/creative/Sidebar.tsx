@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { collectionNav, siteNav } from '@/data/creative';
+import { collections, siteNav } from '@/data/creative';
 
 // 데스크톱 왼쪽 패널. 사이트 이동 + 컬렉션 목록.
 const Sidebar = () => {
@@ -24,21 +24,22 @@ const Sidebar = () => {
       <div className='flex-1 rounded-[10px] bg-cr-panel px-5 py-5'>
         <p className='font-mono text-[10px] uppercase tracking-[0.22em] text-white/40'>Collections</p>
         <ul className='mt-4 space-y-1'>
-          {collectionNav.map((c) => (
-            <li key={c.kind}>
-              {c.ready ? (
-                <a href={`#${c.kind}`} className='flex items-center justify-between rounded-md bg-white/[0.06] px-2 py-2 text-[14px] font-semibold text-white'>
-                  {c.label}
-                  <span className='h-1.5 w-1.5 rounded-full bg-cr-accent' />
-                </a>
-              ) : (
-                <span className='flex items-center justify-between px-2 py-2 text-[14px] text-white/30'>
-                  {c.label}
-                  <span className='font-mono text-[9px] uppercase tracking-[0.18em]'>soon</span>
+          {collections.map((c) => (
+            <li key={c.id}>
+              <a href={`#${c.id}`} className='flex items-center justify-between gap-3 rounded-md px-2 py-2 text-[14px] font-semibold text-white/80 transition-colors hover:bg-white/[0.06] hover:text-white'>
+                <span className='truncate'>{c.title}</span>
+                <span className='shrink-0 font-mono text-[9px] uppercase tracking-[0.18em] text-white/35'>
+                  {c.type} · {c.tracks.length}
                 </span>
-              )}
+              </a>
             </li>
           ))}
+          <li>
+            <span className='flex items-center justify-between px-2 py-2 text-[14px] text-white/30'>
+              Video
+              <span className='font-mono text-[9px] uppercase tracking-[0.18em]'>soon</span>
+            </span>
+          </li>
         </ul>
       </div>
     </aside>

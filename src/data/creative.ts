@@ -1,51 +1,180 @@
 import type { Collection } from '@/shared/types/creative';
 
-// /creative 데이터.
-// 곡을 추가하려면: 음원을 public/audio/creative/<id>.mp3 (또는 R2) 에 올리고,
-// 커버를 public/images/creative/<id>.jpeg 에 넣고 아래 tracks 에 한 줄 넣는다.
-// Suno 공유 링크 페이지의 og:image (cdn2.suno.ai/image_large_<id>.jpeg) 가 그 곡의 커버다.
-// hue 는 커버의 대표색. 헤더 그라디언트에 쓰이니 커버와 어울리게 고른다.
+// /creative 데이터. Suno 플레이리스트 API(studio-api.prod.suno.com/api/playlist/<id>) 에서 받은 값으로 만들었다.
+// 음원은 Suno 의 공개 CloudFront(.m4a) 를 바로 스트리밍한다. 막히면 받아서 /audio/creative/<id>.m4a 로 바꾼다.
+// 커버는 public/images/creative/<clip id 앞 8자리>.jpeg. hue 는 커버의 대표색(헤더 그라디언트용).
 
-export const music: Collection = {
-  id: 'music',
+// 정규 앨범. 다섯 곡이 한 커버를 쓴다.
+export const uselessSeason: Collection = {
+  id: 'useless-season',
   kind: 'music',
-  title: 'AI Music',
-  description: '프롬프트로 쓰고 Suno 로 부른 곡들. 사이트 배경음악으로 쓰거나, 그냥 듣고 싶어서 만든 것들.',
+  type: 'album',
+  title: '쓸모없는 계절',
+  description:
+    '낭비 없는 낭만은 없다. 쓸모없는 시간에 숨겨진 가치를 찾기보다, 아무런 이유 없이 마음이 이끄는 대로 살아가는 순간들을 노래한 앨범.',
+  cover: '/images/creative/88db0890.jpeg',
+  link: 'https://suno.com/album/3980fcab-1ebe-437c-b286-190ea3b4470a',
   tracks: [
     {
-      id: 'same-place',
-      title: '같은 곳을 보고',
-      desc: '이 사이트의 배경음악. 같은 곳을 바라보는 두 사람에 대해.',
-      tool: 'Suno',
+      id: '27843aff-3236-4009-b9bc-7f02902c55c1',
+      title: '아무 일도 없는 날',
+      desc: 'Korean indie hip-hop with alternative R&B and breezy indie pop',
+      tool: 'Suno v6-mini',
       date: '2026.11',
-      // TODO: 실제 음원(/audio/bgm.mp3)이 들어오면 되돌린다. 지금은 60초 테스트 톤.
-      src: '/audio/test-60s.wav',
-      cover: '/images/creative/same-place.jpeg',
-      hue: 215,
-      link: 'https://suno.com/s/pk3tayHJbF5LWWOz',
-      tags: ['ballad', 'site bgm'],
+      duration: 209,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/27843aff-3236-4009-b9bc-7f02902c55c1.m4a',
+      cover: '/images/creative/88db0890.jpeg',
+      hue: 308,
+      link: 'https://suno.com/song/27843aff-3236-4009-b9bc-7f02902c55c1',
     },
     {
-      id: 'nothing-day',
-      title: '아무 일도 없는 날',
-      tool: 'Suno',
+      id: '0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2',
+      title: '별일 아닌 마음',
+      desc: 'Korean alternative hip-hop with groovy indie R&B: warm',
+      tool: 'Suno v6-mini',
       date: '2026.11',
-      // TODO: Suno 에서 받은 mp3 를 /audio/creative/nothing-day.mp3 로 넣고 되돌린다. 지금은 60초 테스트 톤.
-      src: '/audio/test-60s.wav',
-      cover: '/images/creative/nothing-day.jpeg',
-      hue: 290,
-      link: 'https://suno.com/s/bvX9FYyn6kXBRjZw',
+      duration: 208,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2.m4a',
+      cover: '/images/creative/88db0890.jpeg',
+      hue: 308,
+      link: 'https://suno.com/song/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2',
+    },
+    {
+      id: '859e65b2-6314-4a01-8be6-ef6f973526e5',
+      title: '비를 맞는 이유',
+      desc: 'Korean alternative indie rock with melodic hip-hop groove',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 216,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/859e65b2-6314-4a01-8be6-ef6f973526e5.m4a',
+      cover: '/images/creative/88db0890.jpeg',
+      hue: 308,
+      link: 'https://suno.com/song/859e65b2-6314-4a01-8be6-ef6f973526e5',
+    },
+    {
+      id: 'd2c79f80-2495-4aee-bfea-c2b117c528e3',
+      title: '여름의 뒷면',
+      desc: 'Korean psychedelic indie hip-hop with dreamy alternative R&B…',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 252,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d2c79f80-2495-4aee-bfea-c2b117c528e3.m4a',
+      cover: '/images/creative/88db0890.jpeg',
+      hue: 308,
+      link: 'https://suno.com/song/d2c79f80-2495-4aee-bfea-c2b117c528e3',
+    },
+    {
+      id: 'd33b416d-5e17-4960-8ea7-68fb99c4f838',
+      title: '내일도 여기',
+      desc: 'Korean indie R&B with dreamy alternative hip-hop and bedroom pop',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 222,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d33b416d-5e17-4960-8ea7-68fb99c4f838.m4a',
+      cover: '/images/creative/88db0890.jpeg',
+      hue: 308,
+      link: 'https://suno.com/song/d33b416d-5e17-4960-8ea7-68fb99c4f838',
     },
   ],
 };
 
-export const collections: Collection[] = [music];
+// 플레이리스트. 곡마다 커버가 다르다. 사이트 배경음악도 여기 둔다.
+export const myMusic: Collection = {
+  id: 'my-music',
+  kind: 'music',
+  type: 'playlist',
+  title: 'my music',
+  description: '앨범에 묶지 않은 곡들. 프롬프트로 쓰고 Suno 로 불렀다.',
+  link: 'https://suno.com/playlist/c964980a-bf02-42a4-bd74-e589dc2ed3b1',
+  tracks: [
+    {
+      id: 'b85f66e2-6402-4215-b9e7-6783529e55f9',
+      title: '너의 하늘',
+      desc: 'Dreamy indie rock',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 320,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/b85f66e2-6402-4215-b9e7-6783529e55f9.m4a',
+      cover: '/images/creative/b85f66e2.jpeg',
+      hue: 200,
+      link: 'https://suno.com/song/b85f66e2-6402-4215-b9e7-6783529e55f9',
+    },
+    {
+      id: 'c4604288-0708-44c3-b360-8ee035ee5944',
+      title: '우연을 연습해',
+      desc: 'Korean indie R&B',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 197,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/c4604288-0708-44c3-b360-8ee035ee5944.m4a',
+      cover: '/images/creative/c4604288.jpeg',
+      hue: 220,
+      link: 'https://suno.com/song/c4604288-0708-44c3-b360-8ee035ee5944',
+    },
+    {
+      id: 'd552363f-3400-46e5-81d1-4891654ec59d',
+      title: '너도 우연일까',
+      desc: 'Korean indie R&B',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 202,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d552363f-3400-46e5-81d1-4891654ec59d.m4a',
+      cover: '/images/creative/d552363f.jpeg',
+      hue: 35,
+      link: 'https://suno.com/song/d552363f-3400-46e5-81d1-4891654ec59d',
+    },
+    {
+      id: '8e5d32c6-27e6-48b5-b92b-fde56bf14bd7',
+      title: '미완성',
+      desc: 'Korean indie rock and indie pop',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 230,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/8e5d32c6-27e6-48b5-b92b-fde56bf14bd7.m4a',
+      cover: '/images/creative/8e5d32c6.jpeg',
+      hue: 209,
+      link: 'https://suno.com/song/8e5d32c6-27e6-48b5-b92b-fde56bf14bd7',
+    },
+    {
+      id: '78076ae2-d316-4e22-8c32-9c6915b395e1',
+      title: '내 속도로',
+      desc: 'Korean indie rock and indie pop',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 189,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/78076ae2-d316-4e22-8c32-9c6915b395e1.m4a',
+      cover: '/images/creative/78076ae2.jpeg',
+      hue: 116,
+      link: 'https://suno.com/song/78076ae2-d316-4e22-8c32-9c6915b395e1',
+    },
+    {
+      id: '47fcdf90-7936-4b42-b998-46c1f051b7d1',
+      title: '보통의 밤',
+      desc: 'Korean indie pop',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 202,
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/47fcdf90-7936-4b42-b998-46c1f051b7d1.m4a',
+      cover: '/images/creative/47fcdf90.jpeg',
+      hue: 42,
+      link: 'https://suno.com/song/47fcdf90-7936-4b42-b998-46c1f051b7d1',
+    },
+    {
+      id: '3bd696fd-bf6a-4910-aa9b-99f0aa058645',
+      title: '같은 곳을 보고',
+      desc: '이 사이트의 배경음악. 같은 곳을 바라보는 두 사람에 대해.',
+      tool: 'Suno',
+      date: '2026.11',
+      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/3bd696fd-bf6a-4910-aa9b-99f0aa058645.m4a',
+      cover: '/images/creative/3bd696fd.jpeg',
+      hue: 210,
+      link: 'https://suno.com/s/pk3tayHJbF5LWWOz',
+      tags: ['site bgm'],
+    },
+  ],
+};
 
-// 왼쪽 사이드바의 컬렉션 목록. 아직 없는 건 soon 으로 표시만.
-export const collectionNav = [
-  { kind: 'music', label: 'Music', ready: true },
-  { kind: 'video', label: 'Video', ready: false },
-] as const;
+export const collections: Collection[] = [uselessSeason, myMusic];
 
 export const siteNav = [
   { label: 'Home', href: '/' },

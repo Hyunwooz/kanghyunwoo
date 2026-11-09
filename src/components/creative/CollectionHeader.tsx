@@ -17,7 +17,10 @@ const CollectionHeader = ({ collection, durations }: CollectionHeaderProps) => {
   const playing = usePlayer((s) => s.playing);
   const inThisList = current ? collection.tracks.some((t) => t.id === current.id) : false;
 
-  const shown = inThisList && current ? current : collection.tracks[0];
+  const first = collection.tracks[0];
+  // 앨범은 대표 커버 한 장, 플레이리스트는 재생 중인 곡(없으면 첫 곡)의 커버
+  const shown = inThisList && current ? current : first;
+  const coverTrack = collection.cover && shown ? { ...shown, cover: collection.cover } : shown;
   const hue = shown?.hue ?? 260;
   const total = fmtTotal(collection.tracks.map((t) => durations[t.id]));
 
@@ -29,9 +32,9 @@ const CollectionHeader = ({ collection, durations }: CollectionHeaderProps) => {
       }}
     >
       <div className='flex flex-col gap-6 md:flex-row md:items-end md:gap-7'>
-        {shown ? (
+        {coverTrack ? (
           <Cover
-            track={shown}
+            track={coverTrack}
             state={inThisList ? (playing ? 'playing' : 'paused') : 'idle'}
             priority
             className='w-[168px] shrink-0 rounded-[8px] shadow-[0_18px_50px_rgba(0,0,0,0.5)] md:w-[220px]'
@@ -41,7 +44,7 @@ const CollectionHeader = ({ collection, durations }: CollectionHeaderProps) => {
         )}
         <div className='min-w-0'>
           <p className='font-mono text-[11px] uppercase tracking-[0.22em] text-white/70'>
-            {inThisList ? 'Now playing' : 'Collection'}
+            {inThisList ? `Now playing · ${collection.title}` : collection.type}
           </p>
           <h1 className='mt-2 truncate text-[44px] font-black leading-[0.95] tracking-[-0.03em] md:text-[80px]'>
             {inThisList && shown ? shown.title : collection.title}
@@ -57,6 +60,14 @@ const CollectionHeader = ({ collection, durations }: CollectionHeaderProps) => {
               <>
                 <span aria-hidden>·</span>
                 <span className='text-white/60'>{total}</span>
+              </>
+            )}
+            {collection.link && (
+              <>
+                <span aria-hidden>·</span>
+                <a href={collection.link} target='_blank' rel='noopener noreferrer' className='text-white/60 underline-offset-4 hover:text-white hover:underline'>
+                  Suno ↗
+                </a>
               </>
             )}
           </p>

@@ -8,7 +8,8 @@ import { usePlayer } from '@/components/creative/store';
 // 사이트 전체 배경음악. 루트 레이아웃에 두어 페이지를 옮겨도 끊기지 않는다.
 // 브라우저는 사용자 입력 없이 소리를 못 틀므로, 첫 클릭/스크롤/키 입력 때 켠다.
 // 한 번 끈 사람에게는 다시 자동으로 틀지 않는다 (localStorage).
-const SRC = '/audio/bgm.mp3';
+// Suno 의 공개 CloudFront 음원 ("같은 곳을 보고"). 로컬에 받아 두려면 /audio/bgm.mp3 로 바꾼다.
+const SRC = 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/3bd696fd-bf6a-4910-aa9b-99f0aa058645.m4a';
 const TITLE = '같은 곳을 보고';
 const VOLUME = 0.35;
 const FADE_MS = 1800;
