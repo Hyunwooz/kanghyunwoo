@@ -1,6 +1,6 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
-import { IBM_Plex_Mono, Instrument_Serif } from 'next/font/google';
+import { Dela_Gothic_One, IBM_Plex_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // 스타일링
@@ -22,13 +22,12 @@ const plexMono = IBM_Plex_Mono({
   variable: '--font-plex-mono',
 });
 
-// 포트폴리오 제목용 세리프
-const instrumentSerif = Instrument_Serif({
+// 포트폴리오 제목용 디스플레이. 80~90년대 레코드 재킷 느낌의 굵은 고딕. 한글은 Pretendard 로 떨어진다.
+const delaGothic = Dela_Gothic_One({
   subsets: ['latin'],
   weight: '400',
-  style: ['normal', 'italic'],
   display: 'swap',
-  variable: '--font-serif',
+  variable: '--font-display',
 });
 
 export const metadata: Metadata = {
@@ -72,7 +71,7 @@ const RootLayout = ({
   return (
     <html lang='ko' suppressHydrationWarning>
       <body
-        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} ${instrumentSerif.variable} bg-background text-main`}
+        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} ${delaGothic.variable} bg-background text-main`}
       >
         {/*
           메인 로더를 이미 본 세션이면 하이드레이션 전에 숨겨 검은 화면이 번쩍이지 않게 한다.

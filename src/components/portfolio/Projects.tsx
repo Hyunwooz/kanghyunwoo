@@ -50,33 +50,36 @@ const Projects = () => {
     <section id='projects' className='scroll-mt-16 pb-24 md:pb-32'>
       <SectionHead no='03' title='Projects' note='눌러서 펼치면 한 일과 맡은 몫이 나옵니다.' />
 
-      <ol className='border-t border-rule'>
+      <ol className='retro-card bg-retro-cream'>
         {projects.map((p, i) => {
           const isOpen = open === i;
           return (
-            <li key={p.name} data-reveal data-reveal-delay={String(i * 0.04)} className='border-b border-rule'>
+            <li
+              key={p.name}
+              data-reveal
+              data-reveal-delay={String(i * 0.04)}
+              className={`${i > 0 ? 'border-t-[3px] border-retro-ink' : ''} ${isOpen ? 'bg-retro-yellow/40' : ''} transition-colors duration-300`}
+            >
               <button
                 type='button'
                 aria-expanded={isOpen}
                 onClick={() => setOpen(isOpen ? null : i)}
                 onMouseEnter={() => setHover(i)}
                 onMouseLeave={() => setHover(null)}
-                className={`${GRID} group w-full items-baseline py-6 text-left md:py-7`}
+                className={`${GRID} group w-full items-center px-5 py-5 text-left md:px-7 md:py-6`}
               >
-                <span className='col-span-2 font-mono text-[12px] text-muted transition-colors group-hover:text-accent md:col-span-1'>
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                <span className='col-span-10 font-serif text-[30px] leading-[1] tracking-[-0.015em] md:col-span-5 md:text-[44px]'>
+                <span className='col-span-2 font-mono text-[12px] md:col-span-1'>{String(i + 1).padStart(2, '0')}</span>
+                <span className='col-span-10 font-display text-[22px] leading-[1.05] tracking-[0.01em] transition-colors group-hover:text-retro-pink md:col-span-5 md:text-[32px]'>
                   {p.name}
                 </span>
-                <span className='col-span-10 col-start-3 mt-2 break-keep text-[14px] text-muted md:col-span-4 md:col-start-auto md:mt-0 md:text-[15px]'>
+                <span className='col-span-10 col-start-3 mt-2 break-keep text-[14px] font-medium text-retro-ink/70 md:col-span-4 md:col-start-auto md:mt-0 md:text-[15px]'>
                   {p.decs}
                 </span>
-                <span className='col-span-10 col-start-3 mt-2 flex items-baseline justify-between font-mono text-[12px] text-muted md:col-span-2 md:col-start-auto md:mt-0 md:justify-end md:gap-6'>
+                <span className='col-span-10 col-start-3 mt-2 flex items-center justify-between font-mono text-[12px] md:col-span-2 md:col-start-auto md:mt-0 md:justify-end md:gap-5'>
                   <span>{year(p.period)}</span>
                   <span
                     aria-hidden
-                    className={`inline-block text-[16px] leading-none transition-transform duration-500 ${isOpen ? 'rotate-45' : 'group-hover:rotate-90'}`}
+                    className={`retro-card-sm inline-flex h-8 w-8 items-center justify-center bg-retro-cream text-[18px] leading-none transition-all duration-300 group-hover:bg-retro-yellow ${isOpen ? 'rotate-45 bg-retro-pink text-retro-cream' : ''}`}
                   >
                     +
                   </span>
@@ -85,23 +88,23 @@ const Projects = () => {
 
               <div className={`grid transition-[grid-template-rows] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}>
                 <div className='overflow-hidden'>
-                  <div className={`${GRID} pb-10 pt-2 md:pb-12`}>
+                  <div className={`${GRID} px-5 pb-8 pt-2 md:px-7 md:pb-10`}>
                     <ul className='col-span-12 space-y-2 text-[15px] leading-[1.6] md:col-span-6 md:col-start-2'>
                       {p.done.map((d) => (
                         <li key={d} className='flex gap-3 break-keep'>
-                          <span className='mt-[0.75em] h-px w-3 shrink-0 bg-ink/40' />
+                          <span className='mt-[0.2em] shrink-0 text-[12px] text-retro-pink'>✦</span>
                           <span>{d}</span>
                         </li>
                       ))}
                     </ul>
 
-                    <dl className='col-span-12 mt-8 border-t border-rule text-[13px] md:col-span-3 md:col-start-9 md:mt-0'>
+                    <dl className='retro-card-sm col-span-12 mt-8 bg-retro-cream text-[13px] md:col-span-4 md:col-start-9 md:mt-0'>
                       <Row label='Period' value={p.period} />
                       <Row label='Team' value={p.role} />
                       <Row label='Part' value={p.contribution.map((c) => `${c.type} ${c.percent}%`).join(' · ')} />
                       <Row label='Stack' value={p.skillStacks.join(', ')} />
                       {(p.siteUrl || p.githubUrl) && (
-                        <div className='flex flex-wrap gap-x-5 gap-y-1 py-3 font-mono text-[11px] uppercase tracking-[0.14em]'>
+                        <div className='flex flex-wrap gap-2 px-3 py-3 font-mono text-[11px] uppercase tracking-[0.14em]'>
                           {p.siteUrl && <ExtLink href={p.siteUrl}>Site</ExtLink>}
                           {p.githubUrl && <ExtLink href={p.githubUrl}>GitHub</ExtLink>}
                         </div>
@@ -109,7 +112,7 @@ const Projects = () => {
                     </dl>
 
                     {/* hover 미리보기가 없는 기기에서는 펼쳤을 때 썸네일을 보여준다 */}
-                    <div className='relative col-span-12 mt-8 aspect-[16/10] overflow-hidden bg-rule md:hidden'>
+                    <div className='retro-card-sm relative col-span-12 mt-8 aspect-[16/10] overflow-hidden bg-retro-cream md:hidden'>
                       <Image src={p.thumbnail} alt={p.name} fill sizes='100vw' className='object-cover' />
                     </div>
                   </div>
@@ -124,7 +127,7 @@ const Projects = () => {
       <div
         ref={previewRef}
         aria-hidden
-        className={`pointer-events-none fixed left-0 top-0 z-40 hidden aspect-[16/10] w-[300px] overflow-hidden bg-rule transition-opacity duration-300 md:block ${
+        className={`retro-card pointer-events-none fixed left-0 top-0 z-40 hidden aspect-[16/10] w-[300px] rotate-3 overflow-hidden bg-retro-cream transition-opacity duration-300 md:block ${
           hover === null || hover === open ? 'opacity-0' : 'opacity-100'
         }`}
       >
@@ -144,9 +147,9 @@ const Projects = () => {
 };
 
 const Row = ({ label, value }: { label: string; value: string }) => (
-  <div className='grid grid-cols-[5.5em_1fr] gap-3 border-b border-rule py-2.5'>
-    <dt className='font-mono text-[11px] uppercase tracking-[0.14em] text-muted'>{label}</dt>
-    <dd className='break-keep leading-[1.5]'>{value}</dd>
+  <div className='grid grid-cols-[5.5em_1fr] gap-3 border-b-2 border-retro-ink px-3 py-2.5'>
+    <dt className='font-mono text-[11px] uppercase tracking-[0.14em] text-retro-ink/70'>{label}</dt>
+    <dd className='break-keep font-medium leading-[1.5]'>{value}</dd>
   </div>
 );
 
@@ -155,7 +158,7 @@ const ExtLink = ({ href, children }: { href: string; children: React.ReactNode }
     href={href}
     target='_blank'
     rel='noopener noreferrer'
-    className='underline decoration-accent decoration-1 underline-offset-4 transition-colors hover:text-accent'
+    className='border-2 border-retro-ink bg-retro-ink px-2.5 py-1 text-retro-cream transition-colors hover:bg-retro-pink'
   >
     {children} ↗
   </a>

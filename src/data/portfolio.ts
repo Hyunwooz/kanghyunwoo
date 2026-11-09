@@ -23,8 +23,11 @@ export const nav = [
 
 export const hero = {
   eyebrow: 'Portfolio',
-  // 세리프 영문 제목. 두 번째 줄은 이탤릭.
+  // 디스플레이 영문 제목. 대문자로 렌더링된다.
   title: ['Hyunwoo', 'Kang'],
+  // 히어로 오른쪽 일러스트. public/ 경로를 넣으면 자리표시 그래픽 대신 그림이 들어간다. (권장 1200×1500, 투명 배경 PNG/WebP)
+  illustration: null as string | null,
+  ticker: ['Frontend Developer', 'Seoul, KR', 'Since 2023', 'Open to talk', 'City Pop Mode'],
   lead: '프론트엔드 개발자. 어드민 대시보드와 위젯처럼 매일 쓰이는 화면을 만듭니다. 화려한 것보다 오래 쓰여도 괜찮은 쪽을 고릅니다.',
   meta: [
     { label: 'Based in', value: 'Seoul, KR' },
@@ -66,5 +69,5 @@ export const experiences = experienceList;
 export const footer = {
   title: ['Let’s talk', 'about what lasts.'],
   note: '짧은 프로젝트든 긴 협업이든, 메일 한 통이면 충분해요.',
-  colophon: ['Set in Instrument Serif & Pretendard', 'Built with Next.js', '© 2026 Kang Hyunwoo'],
+  colophon: ['Set in Dela Gothic One & Pretendard', 'Built with Next.js', '© 2026 Kang Hyunwoo'],
 };

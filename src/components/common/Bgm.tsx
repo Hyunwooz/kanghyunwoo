@@ -104,8 +104,8 @@ const Bgm = () => {
     }
   };
 
-  // 포트폴리오(종이)에서는 잉크색, 그 외(검정 바탕)에서는 흰색
-  const onPaper = pathname?.startsWith('/portfolio');
+  // 포트폴리오(레트로)에서는 크림 바탕에 남색, 그 외(검정 바탕)에서는 흰색
+  const onRetro = pathname?.startsWith('/portfolio');
 
   return (
     <>
@@ -118,8 +118,8 @@ const Bgm = () => {
         title={`${TITLE} — AI로 만든 곡`}
         className={twMerge(
           'fixed bottom-4 left-4 z-[1002] flex items-center gap-2 rounded-full border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] backdrop-blur-md transition-opacity duration-700 md:bottom-5 md:left-5',
-          onPaper
-            ? 'border-ink/20 bg-paper/70 text-ink hover:border-ink/50'
+          onRetro
+            ? 'border-2 border-retro-ink bg-retro-cream text-retro-ink shadow-[3px_3px_0_#1A1838] hover:bg-retro-yellow'
             : 'border-white/25 bg-black/30 text-white hover:border-white/60',
           ready ? 'opacity-100' : 'opacity-0',
         )}

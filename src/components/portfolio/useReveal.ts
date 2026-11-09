@@ -1,6 +1,6 @@
 import { useEffect, type RefObject } from 'react';
 
-// [data-reveal] 요소가 화면에 들어오면 .is-in 을 붙인다. 스타일은 globals.css 의 .wd-paper 블록.
+// [data-reveal] 요소가 화면에 들어오면 .is-in 을 붙인다. 스타일은 globals.css 의 .wd-retro 블록.
 // data-reveal-delay="0.1" 처럼 초 단위 지연을 줄 수 있다.
 export const useReveal = (root: RefObject<HTMLElement | null>) => {
   useEffect(() => {

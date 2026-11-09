@@ -126,31 +126,89 @@ html.lenis body {
 }
 
 /* ------------------------------------------------------------------ */
-/* 포트폴리오(종이 테마) 전용                                            */
+/* 포트폴리오(레트로 시티팝 테마) 전용                                    */
+/* 틸 바탕 + 대각선 스트라이프 + 하프톤 + 두꺼운 남색 외곽선과 그림자.      */
 /* ------------------------------------------------------------------ */
-html:has(.wd-paper) {
-  background: #f4f1ea;
+html:has(.wd-retro) {
+  background: #3bbca9;
 }
-.wd-paper {
+.wd-retro {
+  --ink: #1a1838;
+  --cream: #fff3df;
+  --pink: #f2588c;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-.wd-paper [data-reveal] {
-  opacity: 0;
-  transform: translateY(14px);
-  transition:
-    opacity 0.9s ease,
-    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+/* 종이 질감처럼 깔리는 노이즈. 화면 전체에 고정, 클릭은 통과 */
+.wd-retro::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
-.wd-paper [data-reveal].is-in {
+
+/* 디스플레이 글자: 남색 외곽선 + 딱딱한 오프셋 그림자 (스티커 느낌) */
+.retro-stroke {
+  -webkit-text-stroke: 0.035em var(--ink);
+  paint-order: stroke fill;
+  text-shadow: 0.06em 0.06em 0 var(--ink);
+}
+.retro-stroke-thin {
+  -webkit-text-stroke: 0.02em var(--ink);
+  paint-order: stroke fill;
+}
+
+/* 카드: 두꺼운 외곽선 + 오프셋 그림자 */
+.retro-card {
+  border: 3px solid var(--ink);
+  box-shadow: 6px 6px 0 var(--ink);
+}
+.retro-card-sm {
+  border: 2px solid var(--ink);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+/* 대각선 스트라이프 (핑크/크림 교대) */
+.retro-stripes {
+  background-image: repeating-linear-gradient(
+    -32deg,
+    var(--pink) 0 22px,
+    var(--cream) 22px 44px
+  );
+}
+/* 하프톤 점무늬. 색은 currentColor */
+.retro-halftone {
+  background-image: radial-gradient(currentColor 1.1px, transparent 1.6px);
+  background-size: 9px 9px;
+}
+
+/* 개별 translate, rotate 속성을 써서 Tailwind 의 rotate, translate 유틸(transform)과 충돌하지 않게 한다 */
+.wd-retro [data-reveal] {
+  opacity: 0;
+  translate: 0 22px;
+  rotate: -0.6deg;
+  transition:
+    opacity 0.7s ease,
+    translate 0.8s cubic-bezier(0.34, 1.4, 0.64, 1),
+    rotate 0.8s cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+.wd-retro [data-reveal].is-in {
   opacity: 1;
-  transform: none;
+  translate: 0 0;
+  rotate: 0deg;
 }
 @media (prefers-reduced-motion: reduce) {
-  .wd-paper [data-reveal] {
+  .wd-retro [data-reveal] {
     opacity: 1;
-    transform: none;
+    translate: 0 0;
+    rotate: 0deg;
     transition: none;
+  }
+  .wd-retro .animate-marquee {
+    animation: none;
   }
 }
 

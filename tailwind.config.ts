@@ -15,15 +15,19 @@ module.exports = {
         tagColor: '#66d9ed',
         funcColor: '#6de58b',
         closeColor: '#BB77FF',
-        // 포트폴리오(종이): 순백·순흑 없이. accent 는 번호와 밑줄에만.
-        paper: '#F4F1EA',
-        ink: '#161616',
-        muted: '#75716A',
-        rule: '#D8D3C8',
-        accent: '#C8401F',
+        // 포트폴리오(레트로/시티팝): 틸 바탕 위에 핑크·옐로·바이올렛. 외곽선과 글자는 남색 ink.
+        retro: {
+          teal: '#3BBCA9',
+          deep: '#1F8F80',
+          pink: '#F2588C',
+          yellow: '#F8D257',
+          violet: '#6A4CE8',
+          cream: '#FFF3DF',
+          ink: '#1A1838',
+        },
       },
       fontFamily: {
-        serif: ['var(--font-serif)', 'var(--font-pretendard)', 'Georgia', 'serif'],
+        display: ['var(--font-display)', 'var(--font-pretendard)', 'Impact', 'sans-serif'],
         mono: ['var(--font-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       animation: {

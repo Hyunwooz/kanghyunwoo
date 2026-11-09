@@ -10,26 +10,34 @@ const Contact = () => {
       <div className={GRID}>
         <h2
           data-reveal
-          className='col-span-12 font-serif text-[clamp(44px,8vw,128px)] leading-[0.92] tracking-[-0.025em] md:col-span-9 md:col-start-4'
+          className='retro-stroke col-span-12 font-display text-[clamp(40px,8vw,120px)] uppercase leading-[0.92] tracking-[-0.005em] text-retro-yellow'
         >
           {footer.title[0]}
           <br />
-          <em className='font-normal italic'>{footer.title[1]}</em>
+          <span className='text-retro-cream'>{footer.title[1]}</span>
         </h2>
-        <p data-reveal className='col-span-12 mt-8 max-w-[28em] break-keep text-[16px] leading-[1.6] text-muted md:col-span-5 md:col-start-4 md:mt-12'>
+        <p
+          data-reveal
+          className='col-span-12 mt-8 max-w-[28em] break-keep text-[16px] font-semibold leading-[1.6] text-retro-ink/85 md:col-span-6 md:mt-12'
+        >
           {footer.note}
         </p>
-        <div data-reveal className='col-span-12 mt-10 md:col-span-9 md:col-start-4 md:mt-12'>
+        <div data-reveal className='col-span-12 mt-10 md:mt-12'>
           <a
             href={`mailto:${contact.email}`}
-            className='inline-block break-all text-[20px] tracking-[-0.01em] underline decoration-accent decoration-1 underline-offset-[10px] transition-colors hover:text-accent md:text-[32px]'
+            className='retro-card inline-block break-all bg-retro-pink px-6 py-4 text-[18px] font-bold tracking-[-0.01em] text-retro-cream transition-all duration-200 hover:-translate-y-1 hover:shadow-[9px_9px_0_#1A1838] active:translate-x-1 active:translate-y-1 active:shadow-[2px_2px_0_#1A1838] md:text-[26px]'
           >
             {contact.email}
           </a>
-          <ul className='mt-8 flex flex-wrap gap-x-7 gap-y-2 font-mono text-[11px] uppercase tracking-[0.16em]'>
+          <ul className='mt-8 flex flex-wrap gap-3 font-mono text-[11px] uppercase tracking-[0.14em]'>
             {contact.socials.map((s) => (
               <li key={s.href}>
-                <a href={s.href} target='_blank' rel='noopener noreferrer' className='text-muted transition-colors hover:text-ink'>
+                <a
+                  href={s.href}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='retro-card-sm inline-block bg-retro-cream px-3 py-1.5 transition-colors hover:bg-retro-yellow'
+                >
                   {s.label} ↗
                 </a>
               </li>
@@ -38,17 +46,17 @@ const Contact = () => {
         </div>
       </div>
 
-      <footer className='mt-24 flex flex-col justify-between gap-3 border-t border-rule py-6 font-mono text-[11px] uppercase tracking-[0.14em] text-muted md:mt-32 md:flex-row md:items-center'>
+      <footer className='mt-24 flex flex-col justify-between gap-3 border-t-[3px] border-retro-ink py-6 font-mono text-[11px] uppercase tracking-[0.14em] md:mt-32 md:flex-row md:items-center'>
         <div className='flex flex-wrap gap-x-6 gap-y-1'>
           {footer.colophon.map((c) => (
             <span key={c}>{c}</span>
           ))}
         </div>
         <div className='flex gap-6'>
-          <Link href='/' className='transition-colors hover:text-ink'>
+          <Link href='/' className='underline decoration-retro-pink decoration-2 underline-offset-4 hover:text-retro-cream'>
             Home
           </Link>
-          <Link href='/archive' className='transition-colors hover:text-ink'>
+          <Link href='/archive' className='underline decoration-retro-pink decoration-2 underline-offset-4 hover:text-retro-cream'>
             Archive
           </Link>
         </div>
