@@ -15,6 +15,12 @@ module.exports = {
         tagColor: '#66d9ed',
         funcColor: '#6de58b',
         closeColor: '#BB77FF',
+        // 크리에이티브(스트리밍 앱 느낌의 다크): 바탕·패널·강조색
+        cr: {
+          bg: '#0B0B10',
+          panel: '#16161D',
+          accent: '#8B7CFF',
+        },
         // 포트폴리오(레트로/시티팝): 틸 바탕 위에 핑크·옐로·바이올렛. 외곽선과 글자는 남색 ink.
         retro: {
           teal: '#3BBCA9',

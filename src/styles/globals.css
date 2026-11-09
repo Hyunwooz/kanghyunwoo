@@ -209,6 +209,66 @@ html:has(.wd-retro) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 크리에이티브(AI 작업물) 전용                                          */
+/* ------------------------------------------------------------------ */
+html:has(.wd-creative) {
+  background: #0b0b10;
+}
+.wd-creative {
+  -webkit-font-smoothing: antialiased;
+}
+/* 플레이어 슬라이더: 왼쪽은 강조색, 오른쪽은 흐린 선. --p 가 진행률, 색은 페이지 테마가 넘긴다 */
+.cr-range {
+  appearance: none;
+  -webkit-appearance: none;
+  background: linear-gradient(
+    to right,
+    var(--range-accent, #8b7cff) var(--p, 0%),
+    var(--range-track, rgba(255, 255, 255, 0.15)) var(--p, 0%)
+  );
+  border-radius: 999px;
+  cursor: pointer;
+}
+.cr-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 999px;
+  background: var(--range-accent, #fff);
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+.cr-range:hover::-webkit-slider-thumb,
+.cr-range:focus-visible::-webkit-slider-thumb {
+  opacity: 1;
+}
+.cr-range::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--range-accent, #fff);
+}
+/* 재생 중인 커버는 LP 처럼 돈다. 일시정지면 멈춘 자리 그대로 */
+@keyframes cr-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.cr-spin {
+  animation: cr-spin 6s linear infinite;
+}
+.cr-spin-paused {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .cr-eq > span,
+  .cr-spin {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
 /* 배경음악 토글의 이퀄라이저 막대                                        */
 /* ------------------------------------------------------------------ */
 @keyframes wd-eq {

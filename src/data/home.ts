@@ -24,6 +24,7 @@ export const navLinks = [
   { label: 'about', href: '#person' },
   { label: 'archive', href: '/archive' },
   { label: 'portfolio', href: '/portfolio' },
+  { label: 'creative', href: '/creative' },
   { label: 'contact', href: '#footer' },
 ];
 
@@ -101,5 +102,6 @@ export const footer = {
   links: [
     { label: 'ARCHIVE', href: '/archive' },
     { label: 'PORTFOLIO', href: '/portfolio' },
+    { label: 'CREATIVE', href: '/creative' },
   ],
 };

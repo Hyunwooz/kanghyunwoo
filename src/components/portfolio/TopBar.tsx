@@ -22,6 +22,12 @@ const TopBar = () => {
         </nav>
         <div className='flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em]'>
           <Link
+            href='/creative'
+            className='retro-card-sm hidden bg-retro-violet px-2.5 py-1 text-retro-cream transition-colors hover:bg-retro-pink sm:block'
+          >
+            Creative
+          </Link>
+          <Link
             href='/archive'
             className='retro-card-sm bg-retro-cream px-2.5 py-1 transition-colors hover:bg-retro-yellow'
           >

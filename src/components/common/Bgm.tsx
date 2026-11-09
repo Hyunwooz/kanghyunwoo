@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import { usePlayer } from '@/components/creative/store';
 
 // 사이트 전체 배경음악. 루트 레이아웃에 두어 페이지를 옮겨도 끊기지 않는다.
 // 브라우저는 사용자 입력 없이 소리를 못 틀므로, 첫 클릭/스크롤/키 입력 때 켠다.
@@ -78,6 +79,15 @@ const Bgm = () => {
     return off;
   }, [play]);
 
+  // /creative 플레이어가 곡을 틀면 배경음악은 비켜준다 (끈 걸로 기억하진 않는다)
+  useEffect(() => {
+    const onCreativePlay = () => {
+      if (audioRef.current && !audioRef.current.paused) stop();
+    };
+    window.addEventListener('wd:creative-play', onCreativePlay);
+    return () => window.removeEventListener('wd:creative-play', onCreativePlay);
+  }, [stop]);
+
   // 탭을 떠나면 멈추고, 돌아오면 이어서
   useEffect(() => {
     const onVisibility = () => {
@@ -104,8 +114,13 @@ const Bgm = () => {
     }
   };
 
+  // 경로에 따른 모양은 마운트 뒤(ready)에만 정한다. 루트 레이아웃에서는 서버의 pathname 이
+  // 클라이언트와 달라 hydration 이 어긋나기 때문. 마운트 전엔 어차피 opacity-0 이라 보이지 않는다.
   // 포트폴리오(레트로)에서는 크림 바탕에 남색, 그 외(검정 바탕)에서는 흰색
-  const onRetro = pathname?.startsWith('/portfolio');
+  const onRetro = ready && pathname?.startsWith('/portfolio');
+  // /creative 에서는, 그리고 곡 플레이어가 떠 있는 동안에는 토글 버튼을 숨긴다 (자리가 겹친다)
+  const playerOpen = usePlayer((s) => s.index >= 0);
+  const onCreative = ready && (pathname?.startsWith('/creative') || playerOpen);
 
   return (
     <>
@@ -122,6 +137,7 @@ const Bgm = () => {
             ? 'border-2 border-retro-ink bg-retro-cream text-retro-ink shadow-[3px_3px_0_#1A1838] hover:bg-retro-yellow'
             : 'border-white/25 bg-black/30 text-white hover:border-white/60',
           ready ? 'opacity-100' : 'opacity-0',
+          onCreative && 'hidden',
         )}
       >
         <span className='flex h-[10px] items-end gap-[2px]' aria-hidden>

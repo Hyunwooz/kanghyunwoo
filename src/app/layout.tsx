@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 // 스타일링
 import '../styles/globals.css';
 import Bgm from '@/components/common/Bgm';
+import PlayerBar from '@/components/creative/PlayerBar';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -74,6 +75,8 @@ const RootLayout = ({
       >
         {children}
         <Bgm />
+        {/* /creative 의 곡 플레이어. 페이지를 옮겨도 이어서 나고, 모양은 페이지 디자인을 따른다 */}
+        <PlayerBar />
       </body>
     </html>
   );
