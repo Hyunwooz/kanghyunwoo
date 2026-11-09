@@ -103,13 +103,3 @@ export const footer = {
     { label: 'PORTFOLIO', href: '/portfolio' },
   ],
 };
-
-export const loaderImages = [
-  photo('01').src,
-  photo('02').src,
-  photo('03').src,
-  photo('04').src,
-  photo('06').src,
-  photo('08').src,
-  photo('11').src,
-];

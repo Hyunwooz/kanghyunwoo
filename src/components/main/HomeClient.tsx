@@ -2,20 +2,27 @@
 
 import { useEffect, useRef } from 'react';
 import { ScrollTrigger } from '@/lib/gsap';
+import { emit, HERO_REVEAL_START } from './core/events';
 import { initReveals } from './core/reveal';
 import SmoothScroll from './core/SmoothScroll';
 import FooterSection from './FooterSection';
 import Faq from './Faq';
 import Hero from './Hero';
-import Loader from './Loader';
 import Nav from './Nav';
 import PersonSection from './PersonSection';
 import PhotoGrid from './PhotoGrid';
 
-// 섹션 순서: loader → nav → hero(유체 마스크) → person → 사진 격자 → faq → footer
+// 섹션 순서: nav → hero(유체 마스크) → person → 사진 격자 → faq → footer
 // 작업물(works)은 /portfolio 로, 사진은 /archive 로 보내고 메인은 "누구인지"만 말한다.
 const HomeClient = () => {
   const root = useRef<HTMLElement>(null);
+
+  // 인트로 로더를 없앴으므로 히어로 등장 신호를 마운트 직후 바로 쏜다.
+  // 자식(Hero) 이펙트가 먼저 돌아 리스너가 붙어 있고, 늦게 붙는 쪽은 events.fired 로 알 수 있다.
+  useEffect(() => {
+    const id = requestAnimationFrame(() => emit(HERO_REVEAL_START));
+    return () => cancelAnimationFrame(id);
+  }, []);
 
   useEffect(() => {
     const el = root.current;
@@ -57,7 +64,6 @@ const HomeClient = () => {
   return (
     <SmoothScroll>
       <main ref={root} className='wd-home overflow-x-clip'>
-        <Loader />
         <Nav />
         <Hero />
         <PersonSection />
