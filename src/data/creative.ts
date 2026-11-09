@@ -7,14 +7,14 @@ import type { Collection } from '@/shared/types/creative';
 
 export const AUDIO_BASE = '/audio/creative';
 
-// 정규 앨범. 다섯 곡이 한 커버를 쓴다.
+// 정규 앨범. 대표 커버 한 장 + 곡마다 다른 커버.
 export const uselessSeason: Collection = {
   id: 'useless-season',
   kind: 'music',
   type: 'album',
   title: '쓸모없는 계절',
   description: '낭비 없는 낭만은 없다. 쓸모없는 시간에 숨겨진 가치를 찾기보다, 아무런 이유 없이 마음이 이끄는 대로 살아가는 순간들을 노래한 앨범.',
-  cover: '/images/creative/88db0890.jpeg',
+  cover: '/images/creative/3dcad263.jpeg',
   link: 'https://suno.com/album/3980fcab-1ebe-437c-b286-190ea3b4470a',
   tracks: [
     {
@@ -25,8 +25,8 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 209,
       src: `${AUDIO_BASE}/27843aff-3236-4009-b9bc-7f02902c55c1.mp3`,
-      cover: '/images/creative/88db0890.jpeg',
-      hue: 308,
+      cover: '/images/creative/13bfe895.jpeg',
+      hue: 340,
       link: 'https://suno.com/song/27843aff-3236-4009-b9bc-7f02902c55c1',
     },
     {
@@ -37,7 +37,7 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 208,
       src: `${AUDIO_BASE}/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2.mp3`,
-      cover: '/images/creative/88db0890.jpeg',
+      cover: '/images/creative/3dcad263.jpeg',
       hue: 308,
       link: 'https://suno.com/song/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2',
     },
@@ -49,7 +49,7 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 216,
       src: `${AUDIO_BASE}/859e65b2-6314-4a01-8be6-ef6f973526e5.mp3`,
-      cover: '/images/creative/88db0890.jpeg',
+      cover: '/images/creative/3dcad263.jpeg',
       hue: 308,
       link: 'https://suno.com/song/859e65b2-6314-4a01-8be6-ef6f973526e5',
     },
@@ -61,8 +61,8 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 252,
       src: `${AUDIO_BASE}/d2c79f80-2495-4aee-bfea-c2b117c528e3.mp3`,
-      cover: '/images/creative/88db0890.jpeg',
-      hue: 308,
+      cover: '/images/creative/8c9d12c2.jpeg',
+      hue: 220,
       link: 'https://suno.com/song/d2c79f80-2495-4aee-bfea-c2b117c528e3',
     },
     {
@@ -73,8 +73,8 @@ export const uselessSeason: Collection = {
       date: '2026.11',
       duration: 222,
       src: `${AUDIO_BASE}/d33b416d-5e17-4960-8ea7-68fb99c4f838.mp3`,
-      cover: '/images/creative/88db0890.jpeg',
-      hue: 308,
+      cover: '/images/creative/984184ba.jpeg',
+      hue: 275,
       link: 'https://suno.com/song/d33b416d-5e17-4960-8ea7-68fb99c4f838',
     },
   ],
