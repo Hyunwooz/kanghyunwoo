@@ -3,14 +3,24 @@
 import { useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import { collections } from '@/data/creative';
 import Cover from './Cover';
 import { fmtTime } from './format';
-import { CloseIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon, VolumeIcon } from './Icons';
+import { ChevronDownIcon, ChevronUpIcon, CloseIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon, VolumeIcon } from './Icons';
 import { placeholderUrl } from './placeholder';
 import { useCurrentTrack, usePlayer } from './store';
 
 // 페이지 전체 배경음악(Bgm)에게 "내가 튼다" 고 알리는 이벤트. Bgm 은 이걸 받으면 멈춘다.
 export const CREATIVE_PLAY_EVENT = 'wd:creative-play';
+// Bgm 과 같은 키. 메인에서 플레이어를 끈 사람에게는 다시 자동으로 틀지 않는다.
+const BGM_STORAGE_KEY = 'wd:bgm';
+
+// 아직 아무 곡도 안 틀었을 때 플레이어가 보여주는 기본 곡(사이트 배경음악). 큐는 전체 곡.
+const ALL_TRACKS = collections.flatMap((c) => c.tracks);
+const DEFAULT_INDEX = Math.max(
+  0,
+  ALL_TRACKS.findIndex((t) => t.id.startsWith('3bd696fd')),
+);
 
 /*
  * 화면 아래 고정 플레이어. 루트 레이아웃에 있어서 페이지를 옮겨도 이어서 난다.
@@ -82,7 +92,8 @@ const PlayerBar = () => {
   const current = usePlayer((s) => s.current);
   const duration = usePlayer((s) => s.duration);
   const volume = usePlayer((s) => s.volume);
-  const { toggle, next, prev, setPlaying, setTime, setVolume, close } = usePlayer.getState();
+  const minimized = usePlayer((s) => s.minimized);
+  const { play, toggle, next, prev, setPlaying, setTime, setVolume, setMinimized, close } = usePlayer.getState();
   const [muted, setMuted] = useState(false);
   // 실제 음원이 없어 임시 음원으로 틀고 있는지 (플레이어에 demo 표시)
   const [demo, setDemo] = useState(false);
@@ -90,6 +101,39 @@ const PlayerBar = () => {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
   const t = mounted ? themeFor(pathname) : THEMES.dark;
+
+  // 메인에서는 곡을 안 틀었어도 플레이어가 떠 있다 (기본 곡을 보여주는 대기 상태).
+  // 메인의 배경음악 역할도 이 플레이어가 맡는다: 첫 입력에 기본 곡을 튼다 (끈 사람은 제외).
+  const home = mounted && pathname === '/';
+  const shown = track ?? ALL_TRACKS[DEFAULT_INDEX];
+  const visible = !!track || home;
+  const startDefault = () => play(ALL_TRACKS, DEFAULT_INDEX);
+  const onToggle = () => {
+    if (!track) {
+      startDefault();
+      return;
+    }
+    toggle();
+    try {
+      localStorage.setItem(BGM_STORAGE_KEY, playing ? 'off' : 'on');
+    } catch {}
+  };
+
+  useEffect(() => {
+    if (!home || track) return;
+    let optedOut = false;
+    try {
+      optedOut = localStorage.getItem(BGM_STORAGE_KEY) === 'off';
+    } catch {}
+    if (optedOut) return;
+    const events: (keyof WindowEventMap)[] = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
+    const start = () => {
+      events.forEach((e) => window.removeEventListener(e, start));
+      play(ALL_TRACKS, DEFAULT_INDEX);
+    };
+    events.forEach((e) => window.addEventListener(e, start, { passive: true }));
+    return () => events.forEach((e) => window.removeEventListener(e, start));
+  }, [home, track, play]);
 
   // 곡이 바뀌면 소스를 갈아 끼우고 처음부터
   useEffect(() => {
@@ -209,9 +253,43 @@ const PlayerBar = () => {
         onPause={() => setPlaying(false)}
       />
 
+      {/* 접힌 상태: 작은 알약. 커버(LP) + 제목 + 재생/정지 + 펼치기. 메인은 좌우 하단에 링크가 있어 가운데에 둔다 */}
       <div
-        aria-hidden={!track}
-        className={`fixed inset-x-0 bottom-0 z-[1000] px-[8px] pb-[8px] text-[14px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-[12px] md:pb-[12px] ${track ? 'translate-y-0' : 'translate-y-[120%]'}`}
+        aria-hidden={!visible || !minimized}
+        className={`fixed bottom-[8px] z-[1000] text-[14px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:bottom-[12px] ${
+          home ? 'left-1/2 -translate-x-1/2' : 'right-[8px] md:right-[12px]'
+        } ${visible && minimized ? 'translate-y-0' : 'translate-y-[160%]'}`}
+      >
+        <div className={twMerge('flex items-center gap-[10px] py-[6px] pl-[6px] pr-[8px]', t.shell, 'rounded-full')}>
+          <Cover track={shown} state={track ? (playing ? 'playing' : 'paused') : 'idle'} className='w-[36px] shrink-0 rounded-full' />
+          <button
+            type='button'
+            onClick={() => setMinimized(false)}
+            aria-label='플레이어 펼치기'
+            className={`hidden max-w-[160px] truncate text-left text-[13px] font-semibold leading-[1.3] sm:block ${t.title}`}
+          >
+            {shown.title}
+          </button>
+          <button
+            type='button'
+            onClick={onToggle}
+            aria-label={playing ? '일시정지' : '재생'}
+            className={`flex h-[30px] w-[30px] shrink-0 items-center justify-center rounded-full transition-transform hover:scale-105 active:scale-95 ${t.play}`}
+          >
+            {playing ? <PauseIcon className='h-[16px] w-[16px]' /> : <PlayIcon className='h-[16px] w-[16px] translate-x-[1px]' />}
+          </button>
+          <button type='button' onClick={() => setMinimized(false)} aria-label='플레이어 펼치기' className={`shrink-0 transition-colors ${t.icon}`}>
+            <ChevronUpIcon className='h-[18px] w-[18px]' />
+          </button>
+        </div>
+      </div>
+
+      {/* 펼친 상태: 전체 바 */}
+      <div
+        aria-hidden={!visible || minimized}
+        className={`fixed inset-x-0 bottom-0 z-[1000] px-[8px] pb-[8px] text-[14px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-[12px] md:pb-[12px] ${
+          visible && !minimized ? 'translate-y-0' : 'translate-y-[120%]'
+        }`}
       >
         <div
           className={twMerge(
@@ -221,10 +299,10 @@ const PlayerBar = () => {
         >
           {/* 곡 정보 */}
           <div className='flex min-w-0 items-center gap-[12px]'>
-            {track && <Cover track={track} state={playing ? 'playing' : 'paused'} className='w-[48px] shrink-0 rounded-[4px]' />}
+            <Cover track={shown} state={track ? (playing ? 'playing' : 'paused') : 'idle'} className='w-[48px] shrink-0 rounded-[4px]' />
             <div className='min-w-0'>
               <p className={`flex items-center gap-[6px] text-[14px] font-semibold leading-[1.3] ${t.title}`}>
-                <span className='truncate'>{track?.title ?? ''}</span>
+                <span className='truncate'>{shown.title}</span>
                 {demo && (
                   <span
                     className='shrink-0 rounded-[3px] border border-current px-[4px] py-[1px] font-mono text-[9px] uppercase tracking-[0.14em] opacity-60'
@@ -234,7 +312,7 @@ const PlayerBar = () => {
                   </span>
                 )}
               </p>
-              <p className={`truncate text-[12px] leading-[1.3] ${t.sub}`}>{track ? `WoohDev · ${track.tool}` : ''}</p>
+              <p className={`truncate text-[12px] leading-[1.3] ${t.sub}`}>WoohDev · {shown.tool}</p>
             </div>
           </div>
 
@@ -246,7 +324,7 @@ const PlayerBar = () => {
               </button>
               <button
                 type='button'
-                onClick={toggle}
+                onClick={onToggle}
                 aria-label={playing ? '일시정지' : '재생'}
                 className={`flex h-[36px] w-[36px] items-center justify-center rounded-full transition-transform hover:scale-105 active:scale-95 ${t.play}`}
               >
@@ -273,7 +351,12 @@ const PlayerBar = () => {
             </div>
           </div>
 
-          {/* 볼륨 + 닫기 */}
+          {/* 모바일: 접기 */}
+          <button type='button' onClick={() => setMinimized(true)} aria-label='플레이어 접기' className={`transition-colors md:hidden ${t.icon}`}>
+            <ChevronDownIcon className='h-[20px] w-[20px]' />
+          </button>
+
+          {/* 볼륨 + 접기 + 닫기 */}
           <div className='hidden items-center justify-end gap-[12px] md:flex'>
             <button type='button' onClick={() => setMuted((m) => !m)} aria-label={muted ? '소리 켜기' : '소리 끄기'} className={`transition-colors ${t.icon}`}>
               <VolumeIcon className='h-[20px] w-[20px]' muted={muted || volume === 0} />
@@ -292,7 +375,10 @@ const PlayerBar = () => {
               className='cr-range h-[4px] w-[96px]'
               style={{ ...rangeVars, ['--p' as string]: `${(muted ? 0 : volume) * 100}%` }}
             />
-            <button type='button' onClick={close} aria-label='플레이어 닫기' className={`ml-[8px] transition-colors ${t.icon}`}>
+            <button type='button' onClick={() => setMinimized(true)} aria-label='플레이어 접기' className={`ml-[8px] transition-colors ${t.icon}`}>
+              <ChevronDownIcon className='h-[20px] w-[20px]' />
+            </button>
+            <button type='button' onClick={close} aria-label='플레이어 닫기' className={`transition-colors ${t.icon}`}>
               <CloseIcon className='h-[20px] w-[20px]' />
             </button>
           </div>

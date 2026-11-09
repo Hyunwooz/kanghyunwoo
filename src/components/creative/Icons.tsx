@@ -38,6 +38,18 @@ export const CloseIcon = ({ className }: P) => (
   </svg>
 );
 
+export const ChevronDownIcon = ({ className }: P) => (
+  <svg viewBox='0 0 24 24' className={className} fill='none' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+    <path d='M6 9l6 6 6-6' />
+  </svg>
+);
+
+export const ChevronUpIcon = ({ className }: P) => (
+  <svg viewBox='0 0 24 24' className={className} fill='none' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
+    <path d='M6 15l6-6 6 6' />
+  </svg>
+);
+
 export const ExternalIcon = ({ className }: P) => (
   <svg viewBox='0 0 24 24' className={className} fill='none' stroke='currentColor' strokeWidth='1.8' strokeLinecap='round' strokeLinejoin='round' aria-hidden>
     <path d='M14 5h5v5M19 5l-8 8M18 14v4a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h4' />

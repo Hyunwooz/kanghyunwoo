@@ -33,9 +33,10 @@ const Bgm = () => {
     const from = audio.volume;
     const start = performance.now();
     const tick = (now: number) => {
-      const t = Math.min((now - start) / FADE_MS, 1);
+      // rAF 타임스탬프는 프레임 시작 시각이라 start 보다 앞설 수 있다. 음수가 되면 이징이 1을 넘어 볼륨이 범위를 벗어난다.
+      const t = Math.min(Math.max((now - start) / FADE_MS, 0), 1);
       const eased = 1 - Math.pow(1 - t, 3);
-      audio.volume = from + (to - from) * eased;
+      audio.volume = Math.min(Math.max(from + (to - from) * eased, 0), 1);
       if (t < 1) fadeRef.current = requestAnimationFrame(tick);
       else then?.();
     };
@@ -76,9 +77,13 @@ const Bgm = () => {
     fade(0, () => audio.pause());
   }, [fade]);
 
+  // 메인(/)에서는 곡 플레이어가 배경음악 역할까지 맡으므로 여기선 자동재생도 토글도 하지 않는다
+  const onHome = pathname === '/';
+
   // 첫 사용자 입력에 자동 재생 (꺼둔 적이 없을 때만)
   useEffect(() => {
     setReady(true);
+    if (onHome) return;
     let optedOut = false;
     try {
       optedOut = localStorage.getItem(STORAGE_KEY) === 'off';
@@ -92,7 +97,7 @@ const Bgm = () => {
     };
     events.forEach((e) => window.addEventListener(e, start, { passive: true }));
     return off;
-  }, [play]);
+  }, [play, onHome]);
 
   // /creative 플레이어가 곡을 틀면 배경음악은 비켜준다 (끈 걸로 기억하진 않는다)
   useEffect(() => {
@@ -133,9 +138,9 @@ const Bgm = () => {
   // 클라이언트와 달라 hydration 이 어긋나기 때문. 마운트 전엔 어차피 opacity-0 이라 보이지 않는다.
   // 포트폴리오(레트로)에서는 크림 바탕에 남색, 그 외(검정 바탕)에서는 흰색
   const onRetro = ready && pathname?.startsWith('/portfolio');
-  // /creative 에서는, 그리고 곡 플레이어가 떠 있는 동안에는 토글 버튼을 숨긴다 (자리가 겹친다)
+  // 메인·/creative 에서는, 그리고 곡 플레이어가 떠 있는 동안에는 토글 버튼을 숨긴다 (플레이어가 그 역할을 한다)
   const playerOpen = usePlayer((s) => s.index >= 0);
-  const onCreative = ready && (pathname?.startsWith('/creative') || playerOpen);
+  const onCreative = ready && (onHome || pathname?.startsWith('/creative') || playerOpen);
 
   return (
     <>
