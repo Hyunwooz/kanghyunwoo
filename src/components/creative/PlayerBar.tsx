@@ -6,6 +6,7 @@ import { twMerge } from 'tailwind-merge';
 import Cover from './Cover';
 import { fmtTime } from './format';
 import { CloseIcon, NextIcon, PauseIcon, PlayIcon, PrevIcon, VolumeIcon } from './Icons';
+import { placeholderUrl } from './placeholder';
 import { useCurrentTrack, usePlayer } from './store';
 
 // 페이지 전체 배경음악(Bgm)에게 "내가 튼다" 고 알리는 이벤트. Bgm 은 이걸 받으면 멈춘다.
@@ -83,6 +84,8 @@ const PlayerBar = () => {
   const volume = usePlayer((s) => s.volume);
   const { toggle, next, prev, setPlaying, setTime, setVolume, close } = usePlayer.getState();
   const [muted, setMuted] = useState(false);
+  // 실제 음원이 없어 임시 음원으로 틀고 있는지 (플레이어에 demo 표시)
+  const [demo, setDemo] = useState(false);
   // 경로별 모양은 마운트 뒤에 정한다 (루트 레이아웃에서 서버 pathname 이 달라 hydration 이 어긋나므로)
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
@@ -92,10 +95,25 @@ const PlayerBar = () => {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio || !track) return;
+    setDemo(false);
     audio.src = track.src;
     audio.currentTime = 0;
     audio.load();
   }, [track?.id]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 음원을 못 열면(아직 파일이 없음) 임시 음원으로 바꿔 끼운다. 임시 음원마저 실패하면 멈춘다.
+  const onError = () => {
+    const audio = audioRef.current;
+    if (!audio || !track) return;
+    if (audio.src.startsWith('blob:')) {
+      setPlaying(false);
+      return;
+    }
+    setDemo(true);
+    audio.src = placeholderUrl();
+    audio.load();
+    if (usePlayer.getState().playing) audio.play().catch(() => setPlaying(false));
+  };
 
   // 재생/정지 반영
   useEffect(() => {
@@ -103,7 +121,13 @@ const PlayerBar = () => {
     if (!audio || !track) return;
     if (playing) {
       window.dispatchEvent(new Event(CREATIVE_PLAY_EVENT));
-      audio.play().catch(() => setPlaying(false));
+      // 소스를 못 열면(NotSupported) error 핸들러가 임시 음원으로 바꿔 끼운 뒤 다시 튼다.
+      // 그 과정에서 load() 가 끼어들어 생기는 AbortError 도 실패가 아니다.
+      audio.play().catch((e: unknown) => {
+        const name = e instanceof DOMException ? e.name : '';
+        if (name === 'NotSupportedError' || name === 'AbortError' || audio.error) return;
+        setPlaying(false);
+      });
     } else {
       audio.pause();
     }
@@ -143,8 +167,10 @@ const PlayerBar = () => {
     if (!track) return;
     const onKey = (e: KeyboardEvent) => {
       if (e.code !== 'Space') return;
-      const tag = (e.target as HTMLElement | null)?.tagName;
-      if (tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'BUTTON' || tag === 'A') return;
+      const el = e.target as HTMLElement | null;
+      const tag = el?.tagName;
+      // 글자를 입력 중일 때만 양보한다. 버튼에 포커스가 있어도 스페이스는 재생/정지 (버튼 기본 동작은 막는다)
+      if (tag === 'INPUT' || tag === 'TEXTAREA' || el?.isContentEditable) return;
       e.preventDefault();
       toggle();
     };
@@ -178,6 +204,7 @@ const PlayerBar = () => {
         onTimeUpdate={(e) => setTime(e.currentTarget.currentTime, e.currentTarget.duration || 0)}
         onLoadedMetadata={(e) => setTime(e.currentTarget.currentTime, e.currentTarget.duration || 0)}
         onEnded={onEnded}
+        onError={onError}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
       />
@@ -196,7 +223,17 @@ const PlayerBar = () => {
           <div className='flex min-w-0 items-center gap-[12px]'>
             {track && <Cover track={track} state={playing ? 'playing' : 'paused'} className='w-[48px] shrink-0 rounded-[4px]' />}
             <div className='min-w-0'>
-              <p className={`truncate text-[14px] font-semibold leading-[1.3] ${t.title}`}>{track?.title ?? ''}</p>
+              <p className={`flex items-center gap-[6px] text-[14px] font-semibold leading-[1.3] ${t.title}`}>
+                <span className='truncate'>{track?.title ?? ''}</span>
+                {demo && (
+                  <span
+                    className='shrink-0 rounded-[3px] border border-current px-[4px] py-[1px] font-mono text-[9px] uppercase tracking-[0.14em] opacity-60'
+                    title='실제 음원이 아직 없어 임시 음원으로 재생 중'
+                  >
+                    demo
+                  </span>
+                )}
+              </p>
               <p className={`truncate text-[12px] leading-[1.3] ${t.sub}`}>{track ? `WoohDev · ${track.tool}` : ''}</p>
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import { placeholderUrl } from '@/components/creative/placeholder';
 import { usePlayer } from '@/components/creative/store';
 
 // 사이트 전체 배경음악. 루트 레이아웃에 두어 페이지를 옮겨도 끊기지 않는다.
@@ -46,7 +47,20 @@ const Bgm = () => {
     if (!audio) return false;
     try {
       audio.volume = 0;
-      await audio.play();
+      try {
+        await audio.play();
+      } catch (e) {
+        // 음원 파일이 아직 없으면 임시 음원으로. 자동재생 차단 등 다른 이유면 그대로 실패
+        if (!audio.error) throw e;
+        audio.src = placeholderUrl();
+        audio.load();
+        await audio.play();
+      }
+      // 기다리는 사이 /creative 플레이어가 곡을 틀었으면 배경음악은 비켜준다
+      if (usePlayer.getState().index >= 0) {
+        audio.pause();
+        return true;
+      }
       fade(VOLUME);
       setPlaying(true);
       return true;
