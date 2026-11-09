@@ -6,6 +6,7 @@ import localFont from 'next/font/local';
 // 스타일링
 import '../styles/globals.css';
 import { LOADER_SESSION_KEY, LOADER_SKIP_CLASS } from '@/components/main/core/events';
+import Bgm from '@/components/common/Bgm';
 
 const pretendard = localFont({
   src: '../../public/fonts/PretendardVariable.woff2',
@@ -84,6 +85,7 @@ const RootLayout = ({
           }}
         />
         {children}
+        <Bgm />
       </body>
     </html>
   );

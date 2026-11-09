@@ -153,3 +153,20 @@ html:has(.wd-paper) {
     transition: none;
   }
 }
+
+/* ------------------------------------------------------------------ */
+/* 배경음악 토글의 이퀄라이저 막대                                        */
+/* ------------------------------------------------------------------ */
+@keyframes wd-eq {
+  from {
+    transform: scaleY(0.25);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  [aria-pressed] [aria-hidden] > span {
+    animation: none !important;
+  }
+}
