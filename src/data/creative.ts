@@ -1,8 +1,11 @@
 import type { Collection } from '@/shared/types/creative';
 
-// /creative 데이터. Suno 플레이리스트 API(studio-api.prod.suno.com/api/playlist/<id>) 에서 받은 값으로 만들었다.
-// 음원은 Suno 의 공개 CloudFront(.m4a) 를 바로 스트리밍한다. 막히면 받아서 /audio/creative/<id>.m4a 로 바꾼다.
+// /creative 데이터. 곡 정보는 Suno 플레이리스트 API(studio-api.prod.suno.com/api/playlist/<id>) 에서 받았다.
+// 음원은 Suno 가 암호화해 내보내서 외부에서 스트리밍할 수 없다. Suno 에서 받은 mp3 를
+// public/audio/creative/<clip id>.mp3 로 넣는다 (목록은 public/audio/README.md). R2 로 옮기면 AUDIO_BASE 만 바꾼다.
 // 커버는 public/images/creative/<clip id 앞 8자리>.jpeg. hue 는 커버의 대표색(헤더 그라디언트용).
+
+export const AUDIO_BASE = '/audio/creative';
 
 // 정규 앨범. 다섯 곡이 한 커버를 쓴다.
 export const uselessSeason: Collection = {
@@ -10,8 +13,7 @@ export const uselessSeason: Collection = {
   kind: 'music',
   type: 'album',
   title: '쓸모없는 계절',
-  description:
-    '낭비 없는 낭만은 없다. 쓸모없는 시간에 숨겨진 가치를 찾기보다, 아무런 이유 없이 마음이 이끄는 대로 살아가는 순간들을 노래한 앨범.',
+  description: '낭비 없는 낭만은 없다. 쓸모없는 시간에 숨겨진 가치를 찾기보다, 아무런 이유 없이 마음이 이끄는 대로 살아가는 순간들을 노래한 앨범.',
   cover: '/images/creative/88db0890.jpeg',
   link: 'https://suno.com/album/3980fcab-1ebe-437c-b286-190ea3b4470a',
   tracks: [
@@ -22,7 +24,7 @@ export const uselessSeason: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 209,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/27843aff-3236-4009-b9bc-7f02902c55c1.m4a',
+      src: `${AUDIO_BASE}/27843aff-3236-4009-b9bc-7f02902c55c1.mp3`,
       cover: '/images/creative/88db0890.jpeg',
       hue: 308,
       link: 'https://suno.com/song/27843aff-3236-4009-b9bc-7f02902c55c1',
@@ -34,7 +36,7 @@ export const uselessSeason: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 208,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2.m4a',
+      src: `${AUDIO_BASE}/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2.mp3`,
       cover: '/images/creative/88db0890.jpeg',
       hue: 308,
       link: 'https://suno.com/song/0f70046d-5c33-4d7a-9c2c-6195b1ef7bf2',
@@ -46,7 +48,7 @@ export const uselessSeason: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 216,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/859e65b2-6314-4a01-8be6-ef6f973526e5.m4a',
+      src: `${AUDIO_BASE}/859e65b2-6314-4a01-8be6-ef6f973526e5.mp3`,
       cover: '/images/creative/88db0890.jpeg',
       hue: 308,
       link: 'https://suno.com/song/859e65b2-6314-4a01-8be6-ef6f973526e5',
@@ -58,7 +60,7 @@ export const uselessSeason: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 252,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d2c79f80-2495-4aee-bfea-c2b117c528e3.m4a',
+      src: `${AUDIO_BASE}/d2c79f80-2495-4aee-bfea-c2b117c528e3.mp3`,
       cover: '/images/creative/88db0890.jpeg',
       hue: 308,
       link: 'https://suno.com/song/d2c79f80-2495-4aee-bfea-c2b117c528e3',
@@ -70,7 +72,7 @@ export const uselessSeason: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 222,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d33b416d-5e17-4960-8ea7-68fb99c4f838.m4a',
+      src: `${AUDIO_BASE}/d33b416d-5e17-4960-8ea7-68fb99c4f838.mp3`,
       cover: '/images/creative/88db0890.jpeg',
       hue: 308,
       link: 'https://suno.com/song/d33b416d-5e17-4960-8ea7-68fb99c4f838',
@@ -94,7 +96,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 320,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/b85f66e2-6402-4215-b9e7-6783529e55f9.m4a',
+      src: `${AUDIO_BASE}/b85f66e2-6402-4215-b9e7-6783529e55f9.mp3`,
       cover: '/images/creative/b85f66e2.jpeg',
       hue: 200,
       link: 'https://suno.com/song/b85f66e2-6402-4215-b9e7-6783529e55f9',
@@ -106,7 +108,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 197,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/c4604288-0708-44c3-b360-8ee035ee5944.m4a',
+      src: `${AUDIO_BASE}/c4604288-0708-44c3-b360-8ee035ee5944.mp3`,
       cover: '/images/creative/c4604288.jpeg',
       hue: 220,
       link: 'https://suno.com/song/c4604288-0708-44c3-b360-8ee035ee5944',
@@ -118,7 +120,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 202,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/d552363f-3400-46e5-81d1-4891654ec59d.m4a',
+      src: `${AUDIO_BASE}/d552363f-3400-46e5-81d1-4891654ec59d.mp3`,
       cover: '/images/creative/d552363f.jpeg',
       hue: 35,
       link: 'https://suno.com/song/d552363f-3400-46e5-81d1-4891654ec59d',
@@ -130,7 +132,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 230,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/8e5d32c6-27e6-48b5-b92b-fde56bf14bd7.m4a',
+      src: `${AUDIO_BASE}/8e5d32c6-27e6-48b5-b92b-fde56bf14bd7.mp3`,
       cover: '/images/creative/8e5d32c6.jpeg',
       hue: 209,
       link: 'https://suno.com/song/8e5d32c6-27e6-48b5-b92b-fde56bf14bd7',
@@ -142,7 +144,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 189,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/78076ae2-d316-4e22-8c32-9c6915b395e1.m4a',
+      src: `${AUDIO_BASE}/78076ae2-d316-4e22-8c32-9c6915b395e1.mp3`,
       cover: '/images/creative/78076ae2.jpeg',
       hue: 116,
       link: 'https://suno.com/song/78076ae2-d316-4e22-8c32-9c6915b395e1',
@@ -154,7 +156,7 @@ export const myMusic: Collection = {
       tool: 'Suno v6-mini',
       date: '2026.11',
       duration: 202,
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/47fcdf90-7936-4b42-b998-46c1f051b7d1.m4a',
+      src: `${AUDIO_BASE}/47fcdf90-7936-4b42-b998-46c1f051b7d1.mp3`,
       cover: '/images/creative/47fcdf90.jpeg',
       hue: 42,
       link: 'https://suno.com/song/47fcdf90-7936-4b42-b998-46c1f051b7d1',
@@ -165,7 +167,7 @@ export const myMusic: Collection = {
       desc: '이 사이트의 배경음악. 같은 곳을 바라보는 두 사람에 대해.',
       tool: 'Suno',
       date: '2026.11',
-      src: 'https://d2lwuy8qc234o3.cloudfront.net/1/clip/3bd696fd-bf6a-4910-aa9b-99f0aa058645.m4a',
+      src: `${AUDIO_BASE}/3bd696fd-bf6a-4910-aa9b-99f0aa058645.mp3`,
       cover: '/images/creative/3bd696fd.jpeg',
       hue: 210,
       link: 'https://suno.com/s/pk3tayHJbF5LWWOz',

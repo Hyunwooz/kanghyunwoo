@@ -49,3 +49,7 @@ public/sitemap*.xml
 
 # 테스트 음원 (플레이어 확인용, 커밋하지 않음)
 public/audio/test-*.wav
+
+# 음원 mp3 (크기가 커서 저장소엔 안 올린다. public/audio/README.md 참고)
+public/audio/**/*.mp3
+public/audio/*.mp3
