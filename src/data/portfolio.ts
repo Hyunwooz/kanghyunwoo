@@ -5,7 +5,7 @@ import { backend, database, etc, frontend } from './skills';
 // /portfolio 문구. 작업 데이터(경력·프로젝트·기술)는 각 파일에서 가져오고 여기엔 편집용 문장만 둔다.
 
 export const contact = {
-  email: 'hyunwoo.kang@saladlab.co',
+  email: 'gusdn0481@gmail.com',
   socials: [
     { label: 'GitHub', href: 'https://github.com/hyunwooz' },
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/woohyundev/' },
@@ -28,7 +28,7 @@ export const hero = {
   // 히어로 오른쪽 일러스트. public/ 경로를 넣으면 자리표시 그래픽 대신 그림이 들어간다. (권장 1200×1500, 투명 배경 PNG/WebP)
   illustration: null as string | null,
   ticker: ['Frontend Developer', 'Seoul, KR', 'Since 2023', 'Open to talk', 'City Pop Mode'],
-  lead: '프론트엔드 개발자. 어드민 대시보드와 위젯처럼 매일 쓰이는 화면을 만듭니다. 화려한 것보다 오래 쓰여도 괜찮은 쪽을 고릅니다.',
+  lead: '누군가 매일 여는 화면을 만듭니다. 좋은 화면은 눈에 띄지 않고, 오래 써도 불편하지 않다고 믿습니다.',
   meta: [
     { label: 'Based in', value: 'Seoul, KR' },
     { label: 'Currently', value: `${experienceList[0].role} · ${experienceList[0].name}` },
