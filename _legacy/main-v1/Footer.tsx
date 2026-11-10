@@ -24,7 +24,7 @@ const Footer = () => {
             from here<span className='text-accent'>.</span>
           </h2>
           <div className='mt-10 flex flex-wrap gap-3'>
-            <Pill href='mailto:hyunwoo.kang@saladlab.co' inverted icon='@'>
+            <Pill href='mailto:gusdn0481@gmail.com' inverted icon='@'>
               drop me an email
             </Pill>
             <Pill href='/archive' inverted>

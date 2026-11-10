@@ -3,15 +3,15 @@ import CreativePage from '@/components/creative';
 
 export const metadata: Metadata = {
   title: 'WoohDev | Creative',
-  description: '강현우(WoohDev)가 AI 로 만든 것들. 프롬프트로 쓰고 모델이 부른 음악.',
+  description: '강현우(WoohDev)의 노래들. 마음이 이끄는 대로 쓰고, AI 로 불렀습니다.',
   openGraph: {
     title: 'WoohDev | Creative',
-    description: 'AI 로 만든 음악과 작업물.',
+    description: '마음이 이끄는 대로 쓰고, AI 로 부른 노래들.',
     url: 'https://kanghyunwoo.com/creative',
   },
   twitter: {
     title: 'WoohDev | Creative',
-    description: 'AI 로 만든 음악과 작업물.',
+    description: '마음이 이끄는 대로 쓰고, AI 로 부른 노래들.',
   },
 };
 

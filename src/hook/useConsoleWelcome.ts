@@ -12,7 +12,7 @@ export const useConsoleWelcome = () => {
       setTimeout(
         console.log.bind(
           console,
-          `%c안녕하세요. 주니어 프론트 엔드 개발자 강현우입니다
+          `%c안녕하세요. 프론트엔드 개발자 강현우입니다
           \n\n%cContact\n\n%cEmail : gusdn0481@gmail.com
           \n\n%cChannel\n\n%cGithub : https://github.com/hyunwooz\n`,
           cssRule3,

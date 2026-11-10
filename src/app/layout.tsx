@@ -32,13 +32,13 @@ const delaGothic = Dela_Gothic_One({
 
 export const metadata: Metadata = {
   title: 'WoohDev',
-  description: '강현우(WoohDev)의 개인 사이트.',
+  description: '강현우(WoohDev)의 개인 사이트. 화면을 만들고, 사진을 찍고, 노래를 만듭니다.',
   keywords:
-    '사진 아카이브, 포트폴리오, 갤러리, 프론트엔드, Next.js, 강현우, WoohDev',
+    '사진 아카이브, 포트폴리오, 갤러리, 음악, AI 음악, 프론트엔드, Next.js, 강현우, WoohDev',
   authors: { name: 'WoohDev' },
   openGraph: {
     title: 'WoohDev',
-    description: '강현우(WoohDev)의 개인 사이트.',
+    description: '강현우(WoohDev)의 개인 사이트. 화면을 만들고, 사진을 찍고, 노래를 만듭니다.',
     url: 'https://kanghyunwoo.com/',
     siteName: 'WoohDev',
     type: 'website',
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'WoohDev',
-    description: '강현우(WoohDev)의 개인 사이트.',
+    description: '강현우(WoohDev)의 개인 사이트. 화면을 만들고, 사진을 찍고, 노래를 만듭니다.',
     images: ['https://kanghyunwoo.com/images/og.png'],
   },
   other: {

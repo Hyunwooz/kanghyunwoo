@@ -17,7 +17,7 @@ export const socials = [
 ];
 
 export const contact = {
-  email: 'hyunwoo.kang@saladlab.co',
+  email: 'gusdn0481@gmail.com',
 };
 
 export const navLinks = [
