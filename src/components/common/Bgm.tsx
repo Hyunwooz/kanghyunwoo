@@ -77,8 +77,9 @@ const Bgm = () => {
     fade(0, () => audio.pause());
   }, [fade]);
 
-  // 메인(/)에서는 곡 플레이어가 배경음악 역할까지 맡으므로 여기선 자동재생도 토글도 하지 않는다
-  const onHome = pathname === '/';
+  // 메인(/)과 /creative 에서는 곡 플레이어가 배경음악 역할까지 맡으므로 여기선 자동재생도 토글도 하지 않는다.
+  // (토글 버튼이 숨는 페이지에서 여기서 틀면 끌 방법 없이 소리만 난다)
+  const onHome = pathname === '/' || !!pathname?.startsWith('/creative');
 
   // 첫 사용자 입력에 자동 재생 (꺼둔 적이 없을 때만)
   useEffect(() => {
@@ -140,7 +141,7 @@ const Bgm = () => {
   const onRetro = ready && pathname?.startsWith('/portfolio');
   // 메인·/creative 에서는, 그리고 곡 플레이어가 떠 있는 동안에는 토글 버튼을 숨긴다 (플레이어가 그 역할을 한다)
   const playerOpen = usePlayer((s) => s.index >= 0);
-  const onCreative = ready && (onHome || pathname?.startsWith('/creative') || playerOpen);
+  const onCreative = ready && (onHome || playerOpen);
 
   return (
     <>

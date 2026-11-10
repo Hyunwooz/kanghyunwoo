@@ -105,6 +105,8 @@ const PlayerBar = () => {
   // 메인에서는 곡을 안 틀었어도 플레이어가 떠 있다 (기본 곡을 보여주는 대기 상태).
   // 메인의 배경음악 역할도 이 플레이어가 맡는다: 첫 입력에 기본 곡을 튼다 (끈 사람은 제외).
   const home = mounted && pathname === '/';
+  // /creative 도 첫 입력에 기본 곡을 틀되, 틀기 전엔 플레이어를 띄우지 않는다 (틀면 재생 상태로 나타난다)
+  const autoStart = home || (mounted && !!pathname?.startsWith('/creative'));
   const shown = track ?? ALL_TRACKS[DEFAULT_INDEX];
   const visible = !!track || home;
   const startDefault = () => play(ALL_TRACKS, DEFAULT_INDEX);
@@ -120,20 +122,22 @@ const PlayerBar = () => {
   };
 
   useEffect(() => {
-    if (!home || track) return;
+    if (!autoStart || track) return;
     let optedOut = false;
     try {
       optedOut = localStorage.getItem(BGM_STORAGE_KEY) === 'off';
     } catch {}
     if (optedOut) return;
     const events: (keyof WindowEventMap)[] = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
-    const start = () => {
-      events.forEach((e) => window.removeEventListener(e, start));
+    const start = (e: Event) => {
+      // /creative 에서 곡(버튼)을 직접 누르는 중이면 그 클릭에 맡긴다. 여기서 먼저 틀면 같은 곡을 누른 경우 토글돼 멈춘다
+      if (!home && e.target instanceof Element && e.target.closest('button')) return;
+      events.forEach((ev) => window.removeEventListener(ev, start));
       play(ALL_TRACKS, DEFAULT_INDEX);
     };
     events.forEach((e) => window.addEventListener(e, start, { passive: true }));
     return () => events.forEach((e) => window.removeEventListener(e, start));
-  }, [home, track, play]);
+  }, [autoStart, track, play]);
 
   // 곡이 바뀌면 소스를 갈아 끼우고 처음부터
   useEffect(() => {
