@@ -49,11 +49,10 @@ const TrackList = ({ tracks, durations }: TrackListProps) => {
       </div>
 
       {/* 머리글 */}
-      <div className='grid grid-cols-[32px_1fr_auto] items-center gap-4 border-b border-white/10 px-2 pb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-white/40 md:grid-cols-[32px_minmax(0,1fr)_140px_90px_64px]'>
+      <div className='grid grid-cols-[32px_1fr_auto] items-center gap-4 border-b border-white/10 px-2 pb-2 font-mono text-[11px] uppercase tracking-[0.16em] text-white/40 md:grid-cols-[32px_minmax(0,1fr)_140px_64px]'>
         <span className='text-center'>#</span>
         <span>Title</span>
         <span className='hidden md:block'>Tool</span>
-        <span className='hidden md:block'>Date</span>
         <span className='text-right'>Time</span>
       </div>
 
@@ -68,7 +67,7 @@ const TrackList = ({ tracks, durations }: TrackListProps) => {
           return (
             <li key={t.id}>
               <div
-                className={`group grid grid-cols-[32px_1fr_auto] items-center gap-4 rounded-md px-2 py-2 transition-colors hover:bg-white/[0.06] md:grid-cols-[32px_minmax(0,1fr)_140px_90px_64px] ${isCurrent ? 'bg-white/[0.04]' : ''}`}
+                className={`group grid grid-cols-[32px_1fr_auto] items-center gap-4 rounded-md px-2 py-2 transition-colors hover:bg-white/[0.06] md:grid-cols-[32px_minmax(0,1fr)_140px_64px] ${isCurrent ? 'bg-white/[0.04]' : ''}`}
               >
                 {/* 번호 / 재생 */}
                 <button
@@ -107,7 +106,6 @@ const TrackList = ({ tracks, durations }: TrackListProps) => {
                 </button>
 
                 <span className='hidden truncate text-[13px] text-white/55 md:block'>{t.tool}</span>
-                <span className='hidden font-mono text-[12px] text-white/45 md:block'>{t.date}</span>
 
                 <span className='flex items-center justify-end gap-2 font-mono text-[12px] tabular-nums text-white/50'>
                   {t.link && (
