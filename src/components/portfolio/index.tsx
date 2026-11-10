@@ -24,7 +24,8 @@ const PortfolioPage = () => {
       className='wd-quiet relative min-h-screen overflow-x-clip bg-quiet-paper text-quiet-ink selection:bg-quiet-ink selection:text-quiet-paper'
     >
       <TopBar />
-      <main className='mx-auto max-w-[1280px] px-5 md:px-10 lg:px-14'>
+      {/* 아래 여백은 떠 있는 플레이어가 푸터 링크를 가리지 않게 */}
+      <main className='mx-auto max-w-[1280px] px-5 pb-16 md:px-10 lg:px-14'>
         <Hero />
         <About />
         <Experience />

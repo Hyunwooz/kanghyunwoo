@@ -5,7 +5,6 @@ import localFont from 'next/font/local';
 
 // 스타일링
 import '../styles/globals.css';
-import Bgm from '@/components/common/Bgm';
 import PlayerBar from '@/components/creative/PlayerBar';
 
 const pretendard = localFont({
@@ -68,8 +67,7 @@ const RootLayout = ({
         className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} bg-background text-main`}
       >
         {children}
-        <Bgm />
-        {/* /creative 의 곡 플레이어. 페이지를 옮겨도 이어서 나고, 모양은 페이지 디자인을 따른다 */}
+        {/* 곡 플레이어 겸 사이트 배경음악. 모든 페이지에 떠 있고, 페이지를 옮겨도 이어서 나며, 모양은 페이지 디자인을 따른다 */}
         <PlayerBar />
       </body>
     </html>

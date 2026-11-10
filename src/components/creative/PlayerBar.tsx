@@ -10,9 +10,7 @@ import { ChevronDownIcon, ChevronUpIcon, CloseIcon, NextIcon, PauseIcon, PlayIco
 import { placeholderUrl } from './placeholder';
 import { useCurrentTrack, usePlayer } from './store';
 
-// 페이지 전체 배경음악(Bgm)에게 "내가 튼다" 고 알리는 이벤트. Bgm 은 이걸 받으면 멈춘다.
-export const CREATIVE_PLAY_EVENT = 'wd:creative-play';
-// Bgm 과 같은 키. 메인에서 플레이어를 끈 사람에게는 다시 자동으로 틀지 않는다.
+// 음악을 끈 사람에게는 다시 자동으로 틀지 않는다 (예전 배경음악 토글과 같은 키)
 const BGM_STORAGE_KEY = 'wd:bgm';
 
 // 아직 아무 곡도 안 틀었을 때 플레이어가 보여주는 기본 곡(사이트 배경음악). 큐는 전체 곡.
@@ -23,7 +21,7 @@ const DEFAULT_INDEX = Math.max(
 );
 
 /*
- * 화면 아래 고정 플레이어. 루트 레이아웃에 있어서 페이지를 옮겨도 이어서 난다.
+ * 화면 아래 고정 플레이어. 루트 레이아웃에 있어서 모든 페이지에 떠 있고, 페이지를 옮겨도 이어서 난다.
  * 실제 <audio> 는 여기 하나뿐. 모양은 지금 있는 페이지의 디자인을 따른다:
  *  - /creative  : 다크 패널 + 보라
  *  - /portfolio : 종이색 카드 + 먹색 (조용한 테마)
@@ -102,13 +100,12 @@ const PlayerBar = () => {
   useEffect(() => setMounted(true), []);
   const t = mounted ? themeFor(pathname) : THEMES.dark;
 
-  // 메인에서는 곡을 안 틀었어도 플레이어가 떠 있다 (기본 곡을 보여주는 대기 상태).
-  // 메인의 배경음악 역할도 이 플레이어가 맡는다: 첫 입력에 기본 곡을 튼다 (끈 사람은 제외).
+  // 플레이어는 모든 페이지에 떠 있다. 곡을 안 틀었으면 기본 곡을 보여주는 대기 상태.
+  // 사이트 배경음악 역할도 이 플레이어가 맡는다: 첫 입력에 기본 곡을 튼다 (끈 사람은 제외).
   const home = mounted && pathname === '/';
-  // /creative 도 첫 입력에 기본 곡을 틀되, 틀기 전엔 플레이어를 띄우지 않는다 (틀면 재생 상태로 나타난다)
-  const autoStart = home || (mounted && !!pathname?.startsWith('/creative'));
+  const onCreative = mounted && !!pathname?.startsWith('/creative');
   const shown = track ?? ALL_TRACKS[DEFAULT_INDEX];
-  const visible = !!track || home;
+  const visible = mounted;
   const startDefault = () => play(ALL_TRACKS, DEFAULT_INDEX);
   const onToggle = () => {
     if (!track) {
@@ -120,9 +117,16 @@ const PlayerBar = () => {
       localStorage.setItem(BGM_STORAGE_KEY, playing ? 'off' : 'on');
     } catch {}
   };
+  // 닫으면 끈 것으로 기억한다. 안 그러면 다음 클릭에 기본 곡이 다시 자동으로 나온다
+  const onClose = () => {
+    close();
+    try {
+      localStorage.setItem(BGM_STORAGE_KEY, 'off');
+    } catch {}
+  };
 
   useEffect(() => {
-    if (!autoStart || track) return;
+    if (!mounted || track) return;
     let optedOut = false;
     try {
       optedOut = localStorage.getItem(BGM_STORAGE_KEY) === 'off';
@@ -130,14 +134,15 @@ const PlayerBar = () => {
     if (optedOut) return;
     const events: (keyof WindowEventMap)[] = ['pointerdown', 'keydown', 'wheel', 'touchstart'];
     const start = (e: Event) => {
-      // /creative 에서 곡(버튼)을 직접 누르는 중이면 그 클릭에 맡긴다. 여기서 먼저 틀면 같은 곡을 누른 경우 토글돼 멈춘다
-      if (!home && e.target instanceof Element && e.target.closest('button')) return;
+      // 플레이어나 /creative 의 곡(버튼)을 직접 누르는 중이면 그 클릭에 맡긴다. 여기서 먼저 틀면 그 클릭이 토글이 돼 바로 멈춘다
+      const el = e.target instanceof Element ? e.target : null;
+      if (el?.closest('[data-player]') || (onCreative && el?.closest('button'))) return;
       events.forEach((ev) => window.removeEventListener(ev, start));
       play(ALL_TRACKS, DEFAULT_INDEX);
     };
     events.forEach((e) => window.addEventListener(e, start, { passive: true }));
     return () => events.forEach((e) => window.removeEventListener(e, start));
-  }, [autoStart, track, play]);
+  }, [mounted, onCreative, track, play]);
 
   // 곡이 바뀌면 소스를 갈아 끼우고 처음부터
   useEffect(() => {
@@ -168,7 +173,6 @@ const PlayerBar = () => {
     const audio = audioRef.current;
     if (!audio || !track) return;
     if (playing) {
-      window.dispatchEvent(new Event(CREATIVE_PLAY_EVENT));
       // 소스를 못 열면(NotSupported) error 핸들러가 임시 음원으로 바꿔 끼운 뒤 다시 튼다.
       // 그 과정에서 load() 가 끼어들어 생기는 AbortError 도 실패가 아니다.
       audio.play().catch((e: unknown) => {
@@ -259,6 +263,7 @@ const PlayerBar = () => {
 
       {/* 접힌 상태: 작은 알약. 커버(LP) + 제목 + 재생/정지 + 펼치기. 메인은 좌우 하단에 링크가 있어 가운데에 둔다 */}
       <div
+        data-player
         aria-hidden={!visible || !minimized}
         className={`fixed bottom-[8px] z-[1000] text-[14px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:bottom-[12px] ${
           home ? 'left-1/2 -translate-x-1/2' : 'right-[8px] md:right-[12px]'
@@ -290,6 +295,7 @@ const PlayerBar = () => {
 
       {/* 펼친 상태: 전체 바 */}
       <div
+        data-player
         aria-hidden={!visible || minimized}
         className={`fixed inset-x-0 bottom-0 z-[1000] px-[8px] pb-[8px] text-[14px] transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] md:px-[12px] md:pb-[12px] ${
           visible && !minimized ? 'translate-y-0' : 'translate-y-[120%]'
@@ -382,7 +388,7 @@ const PlayerBar = () => {
             <button type='button' onClick={() => setMinimized(true)} aria-label='플레이어 접기' className={`ml-[8px] transition-colors ${t.icon}`}>
               <ChevronDownIcon className='h-[20px] w-[20px]' />
             </button>
-            <button type='button' onClick={close} aria-label='플레이어 닫기' className={`transition-colors ${t.icon}`}>
+            <button type='button' onClick={onClose} aria-label='플레이어 닫기' className={`transition-colors ${t.icon}`}>
               <CloseIcon className='h-[20px] w-[20px]' />
             </button>
           </div>
