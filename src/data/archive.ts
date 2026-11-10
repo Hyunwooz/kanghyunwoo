@@ -21,7 +21,7 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'mood',
-    date: '2025-07-01',
+    date: '2024-06',
     camera: 'Olympus Pen · Half Frame',
   },
   {
@@ -31,7 +31,7 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'mood',
-    date: '2025-07-14',
+    date: '2024-06-29',
     camera: 'Olympus Pen · Half Frame',
   },
   {
@@ -41,7 +41,7 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'nature',
-    date: '2025-07-14',
+    date: '2024-06-29',
     camera: 'Olympus Pen · Half Frame',
   },
   {
@@ -51,7 +51,7 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'street',
-    date: '2025-08-22',
+    date: '2024-07-20',
     camera: 'Olympus Pen · Half Frame',
   },
   {
