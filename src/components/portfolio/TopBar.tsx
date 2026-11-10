@@ -1,44 +1,35 @@
 import Link from 'next/link';
 import { nav } from '@/data/portfolio';
 
-// 크림색 상단 바. 두꺼운 남색 밑선, 디스플레이 서체 이름, 모노 네비.
+const SITE = [
+  { label: 'Home', href: '/' },
+  { label: 'Archive', href: '/archive' },
+  { label: 'Creative', href: '/creative' },
+];
+
+const LINK = 'text-quiet-mute transition-colors hover:text-quiet-ink';
+
+// 상단 바. 이름, 섹션 이동, 사이트 이동. 전부 같은 크기의 작은 글자다.
 const TopBar = () => {
   return (
-    <header className='sticky top-0 z-30 border-b-[3px] border-retro-ink bg-retro-cream'>
-      <div className='mx-auto flex max-w-[1440px] items-center justify-between px-5 py-3 md:px-10 lg:px-14'>
-        <a href='#top' className='font-display text-[16px] uppercase leading-none tracking-[0.02em] md:text-[18px]'>
-          Hyunwoo<span className='text-retro-pink'>.</span>
+    <header className='sticky top-0 z-30 border-b border-quiet-line bg-quiet-paper/90 backdrop-blur-md'>
+      <div className='mx-auto flex max-w-[1280px] items-center justify-between px-5 py-4 text-[13px] md:px-10 lg:px-14'>
+        <a href='#top' className='font-medium tracking-[-0.01em]'>
+          Hyunwoo Kang
         </a>
-        <nav className='hidden items-center gap-6 md:flex'>
+        <nav className='hidden items-center gap-7 md:flex'>
           {nav.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className='relative font-mono text-[11px] uppercase tracking-[0.16em] after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-0 after:bg-retro-pink after:transition-[width] after:duration-300 hover:after:w-full'
-            >
+            <a key={item.href} href={item.href} className={LINK}>
               {item.label}
             </a>
           ))}
         </nav>
-        <div className='flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.14em]'>
-          <Link
-            href='/creative'
-            className='retro-card-sm hidden bg-retro-violet px-2.5 py-1 text-retro-cream transition-colors hover:bg-retro-pink sm:block'
-          >
-            Creative
-          </Link>
-          <Link
-            href='/archive'
-            className='retro-card-sm bg-retro-cream px-2.5 py-1 transition-colors hover:bg-retro-yellow'
-          >
-            Archive
-          </Link>
-          <Link
-            href='/'
-            className='retro-card-sm bg-retro-ink px-2.5 py-1 text-retro-cream transition-colors hover:bg-retro-violet'
-          >
-            Home
-          </Link>
+        <div className='flex items-center gap-5'>
+          {SITE.map((s) => (
+            <Link key={s.href} href={s.href} className={LINK}>
+              {s.label}
+            </Link>
+          ))}
         </div>
       </div>
     </header>

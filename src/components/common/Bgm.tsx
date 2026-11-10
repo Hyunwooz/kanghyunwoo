@@ -137,8 +137,8 @@ const Bgm = () => {
 
   // 경로에 따른 모양은 마운트 뒤(ready)에만 정한다. 루트 레이아웃에서는 서버의 pathname 이
   // 클라이언트와 달라 hydration 이 어긋나기 때문. 마운트 전엔 어차피 opacity-0 이라 보이지 않는다.
-  // 포트폴리오(레트로)에서는 크림 바탕에 남색, 그 외(검정 바탕)에서는 흰색
-  const onRetro = ready && pathname?.startsWith('/portfolio');
+  // 포트폴리오(종이색 바탕)에서는 먹색, 그 외(검정 바탕)에서는 흰색
+  const onPaper = ready && pathname?.startsWith('/portfolio');
   // 메인·/creative 에서는, 그리고 곡 플레이어가 떠 있는 동안에는 토글 버튼을 숨긴다 (플레이어가 그 역할을 한다)
   const playerOpen = usePlayer((s) => s.index >= 0);
   const onCreative = ready && (onHome || playerOpen);
@@ -154,8 +154,8 @@ const Bgm = () => {
         title={`${TITLE} — AI로 만든 곡`}
         className={twMerge(
           'fixed bottom-4 left-4 z-[1002] flex items-center gap-2 rounded-full border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] backdrop-blur-md transition-opacity duration-700 md:bottom-5 md:left-5',
-          onRetro
-            ? 'border-2 border-retro-ink bg-retro-cream text-retro-ink shadow-[3px_3px_0_#1A1838] hover:bg-retro-yellow'
+          onPaper
+            ? 'border-quiet-line bg-quiet-paper/90 text-quiet-ink hover:border-quiet-ink'
             : 'border-white/25 bg-black/30 text-white hover:border-white/60',
           ready ? 'opacity-100' : 'opacity-0',
           onCreative && 'hidden',

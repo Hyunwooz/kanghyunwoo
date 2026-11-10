@@ -1,25 +1,19 @@
 import { GRID } from './grid';
 
 interface SectionHeadProps {
-  no: string;
   title: string;
   note?: string;
 }
 
-// 섹션 머리. 옐로 번호 스티커 + 크림 디스플레이 제목(남색 외곽선) + 오른쪽 짧은 설명.
-const SectionHead = ({ no, title, note }: SectionHeadProps) => {
+// 섹션 머리. 먹색 가는 선 아래에 제목 / 오른쪽 짧은 설명. 둘 다 선 바로 아래(위쪽)에 맞춘다.
+const SectionHead = ({ title, note }: SectionHeadProps) => {
   return (
-    <header data-reveal className={`${GRID} items-end border-t-[3px] border-retro-ink pb-10 pt-6 md:pb-14 md:pt-8`}>
-      <span className='col-span-12 flex md:col-span-1'>
-        <span className='retro-card-sm inline-flex h-10 w-10 -rotate-6 items-center justify-center bg-retro-yellow font-display text-[14px] md:h-12 md:w-12 md:text-[16px]'>
-          {no}
-        </span>
-      </span>
-      <h2 className='retro-stroke col-span-12 mt-4 font-display text-[40px] uppercase leading-[0.95] tracking-[0.01em] text-retro-cream md:col-span-6 md:mt-0 md:text-[64px]'>
+    <header data-reveal className={`${GRID} items-start border-t border-quiet-ink pb-12 pt-7 md:pb-16 md:pt-8`}>
+      <h2 className='col-span-12 text-[28px] font-medium leading-[1.1] tracking-[-0.02em] md:col-span-7 md:text-[40px]'>
         {title}
       </h2>
       {note && (
-        <p className='col-span-12 mt-4 max-w-[30em] break-keep font-medium text-[14px] leading-[1.6] text-retro-ink/80 md:col-span-5 md:col-start-8 md:mt-0 md:text-right md:text-[15px]'>
+        <p className='col-span-12 mt-3 break-keep text-[14px] leading-[1.6] text-quiet-mute md:col-span-4 md:col-start-9 md:mt-0 md:pt-0.5 md:text-right'>
           {note}
         </p>
       )}

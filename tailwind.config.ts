@@ -21,19 +21,15 @@ module.exports = {
           panel: '#16161D',
           accent: '#8B7CFF',
         },
-        // 포트폴리오(레트로/시티팝): 틸 바탕 위에 핑크·옐로·바이올렛. 외곽선과 글자는 남색 ink.
-        retro: {
-          teal: '#3BBCA9',
-          deep: '#1F8F80',
-          pink: '#F2588C',
-          yellow: '#F8D257',
-          violet: '#6A4CE8',
-          cream: '#FFF3DF',
-          ink: '#1A1838',
+        // 포트폴리오(조용한 음반 재킷): 종이색 바탕, 먹색 글자, 회색 보조 글자, 가는 선
+        quiet: {
+          paper: '#F4F2ED',
+          ink: '#17171A',
+          mute: '#6F6C66',
+          line: '#D8D5CD',
         },
       },
       fontFamily: {
-        display: ['var(--font-display)', 'var(--font-pretendard)', 'Impact', 'sans-serif'],
         mono: ['var(--font-plex-mono)', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       animation: {
@@ -43,7 +39,6 @@ module.exports = {
         'archive-fade': 'archive-fade 500ms ease-out forwards',
         'pulse-soft': 'pulse-soft 2.4s ease-in-out infinite',
         float: 'float 6s ease-in-out infinite',
-        marquee: 'marquee 28s linear infinite',
       },
       keyframes: {
         'bounce-updown': {
@@ -69,10 +64,6 @@ module.exports = {
         float: {
           '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
           '50%': { transform: 'translateY(-14px) rotate(4deg)' },
-        },
-        marquee: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-50%)' },
         },
       },
     },

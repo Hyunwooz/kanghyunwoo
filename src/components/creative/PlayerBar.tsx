@@ -26,7 +26,7 @@ const DEFAULT_INDEX = Math.max(
  * 화면 아래 고정 플레이어. 루트 레이아웃에 있어서 페이지를 옮겨도 이어서 난다.
  * 실제 <audio> 는 여기 하나뿐. 모양은 지금 있는 페이지의 디자인을 따른다:
  *  - /creative  : 다크 패널 + 보라
- *  - /portfolio : 크림 카드 + 남색 외곽선 + 핑크 (레트로)
+ *  - /portfolio : 종이색 카드 + 먹색 (조용한 테마)
  *  - 그 외(메인·아카이브) : 검정 글래스 + 흰색
  * 메인 페이지는 1rem = 1vw 라서 치수는 전부 px 로 둔다.
  */
@@ -42,7 +42,7 @@ type Theme = {
   mobileBar: string;
 };
 
-const THEMES: Record<'creative' | 'retro' | 'dark', Theme> = {
+const THEMES: Record<'creative' | 'quiet' | 'dark', Theme> = {
   creative: {
     shell: 'rounded-[10px] border border-white/10 bg-cr-panel/95 text-white shadow-[0_-10px_40px_rgba(0,0,0,0.45)] backdrop-blur-md',
     title: 'text-white',
@@ -54,16 +54,16 @@ const THEMES: Record<'creative' | 'retro' | 'dark', Theme> = {
     track: 'rgba(255,255,255,0.15)',
     mobileBar: 'bg-white/10',
   },
-  retro: {
-    shell: 'border-[3px] border-retro-ink bg-retro-cream text-retro-ink shadow-[6px_6px_0_#1A1838]',
-    title: 'text-retro-ink',
-    sub: 'text-retro-ink/60',
-    icon: 'text-retro-ink/60 hover:text-retro-ink',
-    play: 'bg-retro-ink text-retro-cream',
-    time: 'text-retro-ink/60',
-    accent: '#F2588C',
-    track: 'rgba(26,24,56,0.18)',
-    mobileBar: 'bg-retro-ink/15',
+  quiet: {
+    shell: 'rounded-[10px] border border-quiet-line bg-quiet-paper/95 text-quiet-ink shadow-[0_-8px_30px_rgba(23,23,26,0.08)] backdrop-blur-md',
+    title: 'text-quiet-ink',
+    sub: 'text-quiet-mute',
+    icon: 'text-quiet-mute hover:text-quiet-ink',
+    play: 'bg-quiet-ink text-quiet-paper',
+    time: 'text-quiet-mute',
+    accent: '#17171A',
+    track: 'rgba(23,23,26,0.15)',
+    mobileBar: 'bg-quiet-ink/15',
   },
   dark: {
     shell: 'rounded-[10px] border border-white/15 bg-black/80 text-white shadow-[0_-10px_40px_rgba(0,0,0,0.5)] backdrop-blur-md',
@@ -80,7 +80,7 @@ const THEMES: Record<'creative' | 'retro' | 'dark', Theme> = {
 
 const themeFor = (pathname: string | null) => {
   if (pathname?.startsWith('/creative')) return THEMES.creative;
-  if (pathname?.startsWith('/portfolio')) return THEMES.retro;
+  if (pathname?.startsWith('/portfolio')) return THEMES.quiet;
   return THEMES.dark;
 };
 

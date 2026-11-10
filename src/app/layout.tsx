@@ -1,6 +1,6 @@
 // React 및 Next.js 관련 패키지
 import type { Metadata } from 'next';
-import { Dela_Gothic_One, IBM_Plex_Mono } from 'next/font/google';
+import { IBM_Plex_Mono } from 'next/font/google';
 import localFont from 'next/font/local';
 
 // 스타일링
@@ -20,14 +20,6 @@ const plexMono = IBM_Plex_Mono({
   weight: ['400', '500'],
   display: 'swap',
   variable: '--font-plex-mono',
-});
-
-// 포트폴리오 제목용 디스플레이. 80~90년대 레코드 재킷 느낌의 굵은 고딕. 한글은 Pretendard 로 떨어진다.
-const delaGothic = Dela_Gothic_One({
-  subsets: ['latin'],
-  weight: '400',
-  display: 'swap',
-  variable: '--font-display',
 });
 
 export const metadata: Metadata = {
@@ -70,8 +62,10 @@ const RootLayout = ({
 }>) => {
   return (
     <html lang='ko' suppressHydrationWarning>
+      {/* 브라우저 확장이 body 에 속성을 붙이면(예: ColorZilla 의 cz-shortcut-listen) hydration 경고가 나므로 body 도 무시한다 */}
       <body
-        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} ${delaGothic.variable} bg-background text-main`}
+        suppressHydrationWarning
+        className={`${pretendard.className} ${pretendard.variable} ${plexMono.variable} bg-background text-main`}
       >
         {children}
         <Bgm />
