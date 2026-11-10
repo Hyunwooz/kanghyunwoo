@@ -6,8 +6,9 @@ export interface ArchivePhoto {
   height: number;
   category: ArchiveCategory;
   date: string;
+  // 촬영 기기. 카메라 이름 (필름은 판형까지)
+  camera?: string;
   location?: string;
-  description?: string;
   tone?: string;
 }
 

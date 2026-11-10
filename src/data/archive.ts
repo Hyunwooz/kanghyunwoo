@@ -21,8 +21,8 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'mood',
-    date: '',
-    description: '벽 위로 기울어진 한 조각의 빛.',
+    date: '2025-07-01',
+    camera: 'Olympus Pen · Half Frame',
   },
   {
     id: '02',
@@ -31,8 +31,8 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'mood',
-    date: '',
-    description: '필름 끝에 번져 든 빛.',
+    date: '2025-07-14',
+    camera: 'Olympus Pen · Half Frame',
   },
   {
     id: '03',
@@ -41,8 +41,8 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'nature',
-    date: '',
-    description: '흙길 위에서 멈춰 선 강아지.',
+    date: '2025-07-14',
+    camera: 'Olympus Pen · Half Frame',
   },
   {
     id: '04',
@@ -51,8 +51,8 @@ export const archivePhotos: ArchivePhoto[] = [
     width: 1692,
     height: 2400,
     category: 'street',
-    date: '',
-    description: '젖은 유리 너머로 번진 밤의 불빛.',
+    date: '2025-08-22',
+    camera: 'Olympus Pen · Half Frame',
   },
   {
     id: '05',
@@ -62,7 +62,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'street',
     date: '2026-01-29',
-    description: '파란 하늘 아래 하얀 건물.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '06',
@@ -72,7 +72,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'travel',
     date: '2026-02-12',
-    description: '비행기 창 너머로 저무는 하늘.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '07',
@@ -82,7 +82,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'travel',
     date: '2026-02-17',
-    description: '대시보드 위의 작은 동행.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '08',
@@ -92,7 +92,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'nature',
     date: '2026-02-17',
-    description: '어두운 숲 사이로 들어온 빛.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '09',
@@ -102,7 +102,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'nature',
     date: '2026-02-17',
-    description: '나무 사이로 이어지는 그늘진 길.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '10',
@@ -112,7 +112,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'mood',
     date: '2026-02-17',
-    description: '나무 데크 위에 길게 누운 그림자.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '11',
@@ -122,7 +122,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'nature',
     date: '2026-02-17',
-    description: '오래된 나무의 거친 표면.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '12',
@@ -132,7 +132,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'travel',
     date: '2026-02-17',
-    description: '역광 속 사이드미러.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '13',
@@ -142,7 +142,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'travel',
     date: '2026-02-17',
-    description: '사이드미러에 담긴 지나온 길.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '14',
@@ -152,7 +152,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'travel',
     date: '2026-02-17',
-    description: '해 질 무렵 비어 있는 도로.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '15',
@@ -162,7 +162,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'travel',
     date: '2026-02-17',
-    description: '저녁 하늘에 선 풍력 발전기.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '16',
@@ -172,7 +172,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'mood',
     date: '2026-03-28',
-    description: '창으로 든 빛과 화분의 그림자.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '17',
@@ -182,7 +182,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 2400,
     category: 'mood',
     date: '2026-03-28',
-    description: '오후의 따뜻한 빛이 머문 벽.',
+    camera: 'Ricoh GR III',
   },
   {
     id: '18',
@@ -192,7 +192,7 @@ export const archivePhotos: ArchivePhoto[] = [
     height: 1600,
     category: 'mood',
     date: '2026-05-04',
-    description: '책상 위 머그잔 하나.',
+    camera: 'Ricoh GR III',
   },
 ];
 

@@ -53,9 +53,9 @@ const PhotoGrid = () => {
                   draggable={false}
                   className='h-full w-full object-cover transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.03]'
                 />
-                {p.description && (
+                {p.camera && (
                   <span className='pointer-events-none absolute bottom-[0.9rem] left-[1rem] max-w-[90%] break-keep text-[0.875rem] leading-[1.2] tracking-[-0.01em] text-white opacity-0 transition-opacity duration-500 group-hover:opacity-100 max-lg:hidden'>
-                    {p.description}
+                    {p.camera}
                   </span>
                 )}
               </a>

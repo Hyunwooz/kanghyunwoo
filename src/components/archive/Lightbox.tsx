@@ -122,19 +122,19 @@ const Lightbox = ({ photo, photos, onClose, onNavigate }: LightboxProps) => {
             <span className='h-[1px] w-6 bg-white/30' />
             <span>#{photo.id}</span>
           </div>
-          <h3 className='mb-3 text-2xl font-semibold leading-tight md:text-3xl'>
-            {photo.alt}
-          </h3>
-          {photo.description && (
-            <p className='mb-5 text-sm leading-relaxed text-white/70 md:text-[15px]'>
-              {photo.description}
-            </p>
-          )}
           <dl className='space-y-2 border-t border-white/10 pt-4 text-[13px]'>
-            <div className='flex justify-between'>
-              <dt className='text-white/40'>Date</dt>
-              <dd className='text-white/90'>{photo.date}</dd>
-            </div>
+            {photo.camera && (
+              <div className='flex justify-between'>
+                <dt className='text-white/40'>Camera</dt>
+                <dd className='text-white/90'>{photo.camera}</dd>
+              </div>
+            )}
+            {photo.date && (
+              <div className='flex justify-between'>
+                <dt className='text-white/40'>Date</dt>
+                <dd className='text-white/90'>{photo.date}</dd>
+              </div>
+            )}
             {photo.location && (
               <div className='flex justify-between'>
                 <dt className='text-white/40'>Location</dt>

@@ -33,11 +33,9 @@ const PhotoCard = ({ photo, index, onOpen }: PhotoCardProps) => {
           <div className='mb-1 flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/70'>
             <span>{photo.category}</span>
             <span className='h-[1px] w-4 bg-white/40' />
-            <span>{photo.date}</span>
+            <span>{photo.camera}</span>
           </div>
-          <p className='text-sm font-medium leading-snug text-white md:text-base'>
-            {photo.description ?? photo.alt}
-          </p>
+          {photo.date && <p className='text-sm font-medium leading-snug text-white md:text-base'>{photo.date}</p>}
           {photo.location && (
             <p className='mt-1 text-[11px] text-white/60'>{photo.location}</p>
           )}
