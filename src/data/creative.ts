@@ -80,6 +80,79 @@ export const uselessSeason: Collection = {
   ],
 };
 
+// 두 번째 정규 앨범. 설명은 Suno 앨범 소개글에서 줄였다 (전문은 link).
+export const reasonForSadness: Collection = {
+  id: 'reason-for-sadness',
+  kind: 'music',
+  type: 'album',
+  title: '슬픔에도 이유가 필요한가요',
+  description: '모든 감정에 이유가 필요한 것은 아닐지도 모른다. 슬픔을 극복하는 방법에 대한 이야기가 아니라, 슬픔이 머물렀다가 지나가는 동안 그 곁에 있었던 다섯 번의 시간에 관한 기록.',
+  cover: '/images/creative/3f7de3d0.jpeg',
+  link: 'https://suno.com/album/b0ab1985-c604-4cc4-84fc-6b72603480f4',
+  tracks: [
+    {
+      id: 'ea306b25-560a-40ef-81cd-a696b00de8fe',
+      title: '괜찮았던 하루',
+      desc: 'indie folk pop, indie rock',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 247,
+      src: `${AUDIO_BASE}/ea306b25-560a-40ef-81cd-a696b00de8fe.mp3`,
+      cover: '/images/creative/ea306b25.jpeg',
+      hue: 54,
+      link: 'https://suno.com/song/ea306b25-560a-40ef-81cd-a696b00de8fe',
+    },
+    {
+      id: 'c981398d-3a96-4bec-abf5-66e3eb244261',
+      title: '읽지 않은 메시지',
+      desc: 'indie pop, indie rock',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 218,
+      src: `${AUDIO_BASE}/c981398d-3a96-4bec-abf5-66e3eb244261.mp3`,
+      cover: '/images/creative/c981398d.jpeg',
+      hue: 68,
+      link: 'https://suno.com/song/c981398d-3a96-4bec-abf5-66e3eb244261',
+    },
+    {
+      id: 'f1b5e757-a8e4-45ae-9c85-18cc9ae4e6e2',
+      title: '슬픔에도 이유가 필요한가요',
+      desc: 'indie pop rock',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 253,
+      src: `${AUDIO_BASE}/f1b5e757-a8e4-45ae-9c85-18cc9ae4e6e2.mp3`,
+      cover: '/images/creative/f1b5e757.jpeg',
+      hue: 210,
+      link: 'https://suno.com/song/f1b5e757-a8e4-45ae-9c85-18cc9ae4e6e2',
+    },
+    {
+      id: '23a18465-2042-41fa-8598-7416d28ee3bd',
+      title: '아무도 없는 방',
+      desc: 'indie folk, minimalist',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 235,
+      src: `${AUDIO_BASE}/23a18465-2042-41fa-8598-7416d28ee3bd.mp3`,
+      cover: '/images/creative/23a18465.jpeg',
+      hue: 26,
+      link: 'https://suno.com/song/23a18465-2042-41fa-8598-7416d28ee3bd',
+    },
+    {
+      id: 'c9b6d20d-e92d-4a9e-b265-819a8db4fc9a',
+      title: '그냥 잠들고 싶어',
+      desc: 'indie folk, minimalist',
+      tool: 'Suno v6-mini',
+      date: '2026.11',
+      duration: 253,
+      src: `${AUDIO_BASE}/c9b6d20d-e92d-4a9e-b265-819a8db4fc9a.mp3`,
+      cover: '/images/creative/c9b6d20d.jpeg',
+      hue: 210,
+      link: 'https://suno.com/song/c9b6d20d-e92d-4a9e-b265-819a8db4fc9a',
+    },
+  ],
+};
+
 // 플레이리스트. 곡마다 커버가 다르다. 사이트 배경음악도 여기 둔다.
 export const myMusic: Collection = {
   id: 'my-music',
@@ -176,7 +249,8 @@ export const myMusic: Collection = {
   ],
 };
 
-export const collections: Collection[] = [uselessSeason, myMusic];
+// 새 앨범이 위로 온다
+export const collections: Collection[] = [reasonForSadness, uselessSeason, myMusic];
 
 export const siteNav = [
   { label: 'Home', href: '/' },
